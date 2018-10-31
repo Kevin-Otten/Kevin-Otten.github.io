@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+								<h1>Hexbased movement system</h1>
+								<div class="line"></div>
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="IndianaBones.html">IndianaBones</a></li>
+							<li><a href="Apex.html">Apex</a></li>
+							<li><a href="HexBasedMovementSystem.html">MovementSystem: HexBased</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<b>
+							<font size="6">
+							<u>What I made</u>
+							</font>
+							</b>
+
+							<b2>
+							<p>
+							<br>I made a hex based movement system using Astart to move further than one space. 
+							This wasn't made for any particular project.
+							</p>
+							</b2>
+
+							<span class="image main"><img src="images/HexBasedPage01.jpg" alt="" /></span>
+
+							<b>
+							<font size="6">
+							<u>Hex connection</u>
+							</font>
+							</b2>
+
+							<b2>
+							<p>
+							<br>I didn't want to make a system that forces a map to be a certain form because of something like a grid system so I decided to make a system that would allow any combination of hex placements both randomly generated or premade to work.
+							because I mainly made this so I could take a shot at making a movement system there is no random generation, its all premade.
+							The class HexInfo has everything for the system.
+							It has a list made out of gameobjects.
+							I decided to make it gameobjects to make it easier in case I needed more out of a tile than just the HexInfo Class.
+							The list gets filled with the tiles neighbours.
+							The way it does this is by using a loop in the Start function to cast a raycast from all the hexes sides adding the first thing they hit (Neighbouring tiles) to the list.
+							</p>
+							</b2>
+
+							<span class="image main"><img src="images/HexBasedPage02.jpg" alt="" /></span>
+
+							<b>
+							<font size="6">
+							<u>Astar system</u>
+							</font>
+							</b>
+
+							<b2>
+							<p>
+							<br>After selecting a unit the Astar system goes into effect.
+							It will first ask the units tile to ask the surrounding tiles what the cost is.
+							If this cost is lower than the amount of movement points on the unit it will ask the same thing to its surrounding tiles.
+							This continues until there are no tiles whit a cost under the movmentpoint left.
+							<br>
+							<br>The system works using 2 functions: The ProcesAStarPathfinding function which Starts the chain and the AStarStep function which requires a refrence to the units movement points and the current cost of moving to decide the pointCost and if a unit can move to it.
+							These combined with the gameobject list filled whit the neighbouring tiles are all in the HexInfo class.
+							<br>
+							<br>The system starts with the ProcesAStarPathfinding function which triggers a loop, taking a tile from the list of tiles and triggering the AStarStep function in the HexInfo class on the tile.
+							It gives these functions the movement points that are left on the unit and a cost of 0 as the cost will always be 0 in the beginning of the chain.
+							First the function will decide its pointCost which is the total cost the unit needs to use to move to the tile.
+							After that the function checks if the pointCost has already been touched by checking if its 0 as all tiles that have been will be above this.
+							If it has been touched the function will check if the newPointCost is less than pointCost 
+							In this case newPointCost will replace pointCost.
+							If not the if statement ends.
+							From here on the function checks specifically if the newPointCost and not the pointCost variable (to avoid a  infinite loop) is the same as the movement points.
+							If it is the same the function will set the canMoveTo boolean on true to allow movement towards that tile and it changes its tiles color.
+							If this is not true it will check if its less than the movement point left.
+							If the outcome is false the if statement ends
+							If its true it will just like the if statement before set the canMoveTo boolean on true and change its tiles color, but it will also trigger the same code as the loop ProcesAStarPathfinding triggers.
+							This will then continue calculating the price to move and checking if this price is equel or lower than the movement points.
+							If any of these two if statements are true it will also add the ResetTyle function to a event in a class called MovementManager to later reset the pointcost and color changes made to the tiles.
+							<br>
+							</p>
+							</b2>
+
+							<span class="image main"><img src="images/HexBasedPage03.jpg" alt="" /></span>
+
+							<b>
+							<font size="6">
+							<u>Movement</u>
+							</font>
+							</b>
+
+							<b2>
+							<p>
+							<br>The movement system is located in the HexInfo class.
+							It uses 2 functions: The OnMouseOver function to interact whit the tile and The ProcesUnit function which requires a reference to a gameobject (in this case a unit) this function is used to apply a newly instantiated unit to a tile or move a unit towards another tile.
+							Besides this it also uses information and a event in the MovementManager Class.
+							<br>
+							<br>The movement system works by hovering youre mouse over a hexagon giving the tile a new color
+							Depending on if the Astar system is working it will show a different color.
+							If you click the right mouse button on a tile whit a active unit it will trigger the ProcesUnit function, giving the movingUnit gameobject from the MovementManager with it.
+							This function first checks if the movingUnit variable in the movement manager is not empty.
+							If it is it will add the reference gameobject (a new unit) to the tile and the tile itself to the gameobject.
+							If it is not empty it will first check if the boolean canPass is true, this boolean has to do with the type of terrain.
+							if its not it will end the if statement if it is true it will move on and ask if canMoveTo is true.
+							canMoveTo was decided to be true or false by the Astar system an if it is false the function ends, if its true it will retract the pointcost from the units movementpoints, change the units tile refrence from the tile it was on to the current tile, adds the unit to the current tile, moves the unit to the current tile and using the event in the MovementManager reset all color and cost values from the subscribed tiles removing the tiles from the event afterwards.
+							</p>
+							</b2>
+
+							</b>
+							<br>
+							<p><a class="link"href="https://github.com/WouterUjvari/y2p4" target="_blank"><b> Click Here </b> to go to the Github </a></p>
+
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="mailto:kevin.otten@ziggo.nl" enctype="text/plain">
+									<div class="field half first">
+										<input type="text" name="name" id="name" placeholder="Name" />
+									</div>
+									<div class="field half">
+										<input type="email" name="email" id="email" placeholder="Email" />
+									</div>
+									<div class="field">
+										<textarea name="message" id="message" placeholder="Message"></textarea>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="special" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="https://github.com/GMD1A-KevinOtten" target="_blank" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="mailto:kevin.otten@ziggo.nl" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>

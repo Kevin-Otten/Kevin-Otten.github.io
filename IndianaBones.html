@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+								<h1>IndianaBones</h1>
+								<div class="line"></div>
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="IndianaBones.html">IndianaBones</a></li>
+							<li><a href="Apex.html">Apex</a></li>
+							<li><a href="HexBasedMovementSystem.html">MovementSystem: HexBased</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							
+							</p>
+							<font size="5">
+							<b> Team: 2 Programmers & 2 artists.
+							<br> My role: Lead Programmer.
+							<br> My contribution:
+							</font>
+							<u>
+							<ul style="list-style-type:disc">
+									<li>SaveGame/Progression system</li>
+									<li>UI logic & UI relevant animations</li>
+									<li>Puzzle elements & system</li>
+									<li>Shop system</li>
+									<li>Movement: jumping</li>
+									<li>InteractableObjects</li>
+									<li>Options/Sound & Quality settings</li>
+							</ul>
+							</u>
+							</b>
+							</p>
+
+							<span class="image main"><img src="images/IndianaBonesPage01.jpg" alt="" /></span>
+
+							<font size="6">
+							<u><b>The Game</b></u>
+							</font>
+
+							<b2>
+							<p>
+							<br>IndianaBones is a 2.5D game with the camera positioned in a side vieuw.
+							The basic idea of the game was to make a puzzle/parkour based adventure game based in a stylized dungeon environment.
+							The player play as a skeleton making your way true several rooms with either a puzzle or parkour challenge.
+							The only information the player can get in the beginning is that the exit only opens for those who are well equipped
+							After traversing the 2 pathways of the dungeon the final gate opens and the player will be able to leave the dungeon and finish the game.
+							</p>
+							</b2>
+							
+							<span class="image main"><img src="images/IndianaBonesPage02.jpg" alt="" /></span>
+
+							<font size="6">
+							<u><b>SaveGame/Progression</b></u>
+							</font>
+
+							<b2>
+							<p>
+							<br>The progression in the game is made semi linear.
+							The way I did this is by allowing the player to choose a path but forcing the door closed after they enter one of these paths.
+							If the player dies they will load the last saved state of the game which if they just started is the beginning of the game.
+							If the player reaches the end of one of the paths they will recieve a quest item which is saved as a boolean in a array of booleans.
+							After the player takes the quest item a door at the other end of the room opens which after entering triggers a Save Trigger.
+							This will use static variables representing the Players values like hp and coins that get updated when changed during the game, use them to fill the rest of the save template and then saves the template in binary.
+							The scene will be reloaded with the new savedata and because of a lack of player coordinates they will be placed in the beginning room.
+							When the SaveTrigger class loads and cannot confirm a filled save file it will make a private new instance of the save template to be filled at a save trigger.
+							When the SaveTrigger class loads and can confirm a filled save file it will make its template the same as the current save file and adjusts an array used to save quest items setting the already collected items to true.
+							When a doors class loads it checks if its part of a path (Only the doors that enter into pathways are classified as this)and if so checks for a filled save file, If this is also found it will check if its paths quest item has been picked up and close itself if this is true.
+							Besides checking if the player went down a certain path already the quest items also gets used to check if the game is complete and ifso the gate placed underneath the starting room will open and if passed will trigger the EndGame.
+							</p>
+							</b2>
+
+							<span class="image main"><img src="images/IndianaBonesPage03.jpg" alt="" /></span>
+
+							<font size="6">
+							<u><b>PuzzleElements & system</b></u>
+							</font>
+
+							<b2>
+							<p>
+							<br>The puzzle system works using the PuzzleManager.
+							The PuzzleManager was supposed to be used with the save system to save the progress made on puzzles so that at the end of a Path all the doors would still be open for the player, But after we made te dessision that the player could only move true one path at a time and couldnt return to a path after finishing it this part of the system was discarded.
+							The current use of the PuzzleManager is as a funnel.
+							All puzzle elements need to go true the PuzzleManager to trigger functionality in their puzzles using variables refrencing their puzzle and which part they are.
+							The PuzzleManager uses this information to pick the right puzzle out of a list and trigger the Puzzle Trigger function in the puzzle class which takes the information and uses it to perform the appropriate action.
+							</p>
+
+							<p>
+							<br>I personally made one of the puzzles and a puzzle element for the parkour path.
+							The puzzle I made was a Skyrim style Turn-Stone Puzzle.
+							This puzzle works by turning pillars with markings on each side and when you think you have the correct combination pull a lever.
+							The correct combination is hinted at true the entire path shown on gravestones placed in some rooms.
+							If you give the wrong input spikes will popup from the floor and kill the player.
+							If you give the correct input the door will open allowing you to proceed.
+							In the game itself this puzzle is placed at the end to give enough space to place these gravestones.
+							<br>
+							<br>The puzzle element I made was a wooden beam used as a platforming challenge or just as floor to stand on.
+							The beam has four states: Instant, Gradual, AfterTime and StayInPlace.
+							<li>Instant: Instantly retracts after being fully extended.
+							<li>Gradual: Gradual slows the animation making it take longer for the beam to retract.
+							<li>AfterTime: Instantly retracts after a certain amount of time passed.
+							<li>StayInPlace: The beam starts in the scene extended and stays like that.</li>
+							<br>The "Puzzle" i made whit this was the first parkour challenge you find whit this mechanic extending several beams as a jumping stairway which after some time would retract in again.
+							This puzzle was triggered by a button next to a pit of spikes.
+							</p>
+							</b2>
+
+							<span class="image main"><img src="images/IndianaBonesPage04.jpg" alt="" /></span>
+
+							<font size="6">
+							<u><b>Interactable Objects</b></u>
+							</font>
+
+							<b2>
+							<p>
+							
+							<br>The Interactable Objects system works using interactable objects and triggered Objects.
+							Interactable objects are all the Objects The player can interact with like Buttons and Levers.
+							Triggered objects are objects that react to the input of a interactable object like a door.
+							When a interactable object gets a input it will trigger its trigger objects and make the player interact appropriately (kicks the chest or pushes a button).
+							When a triggered object is triggered it will trigger it's Trigger Functionality.
+							Some objects are both a interactable object and a triggered object which both take the players input and react to it.
+							An example of this is a chest which the player kicks open making the chest open and shooting out its insides.
+
+							</p>
+							</b2>
+
+							<br>
+							<p><a class="link"href="https://github.com/PeterBosDeltion/IndianaBonesRepo" target="_blank"><b2><u> Click Here </u></b2> to go to the Github </a></p>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="mailto:kevin.otten@ziggo.nl" enctype="text/plain">
+									<div class="field half first">
+										<input type="text" name="name" id="name" placeholder="Name" />
+									</div>
+									<div class="field half">
+										<input type="email" name="email" id="email" placeholder="Email" />
+									</div>
+									<div class="field">
+										<textarea name="message" id="message" placeholder="Message"></textarea>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="special" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="https://github.com/GMD1A-KevinOtten" target="_blank" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="mailto:kevin.otten@ziggo.nl" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>
