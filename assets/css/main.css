@@ -2369,6 +2369,10 @@
 		border: solid 2px;
 	}
 	
+	.image2{
+		float: left;
+	}
+
 	.image {
 		border-radius: 4px;
 		border: 0;
