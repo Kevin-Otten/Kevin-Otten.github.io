@@ -93,19 +93,20 @@
 							</font>
 
 							<b2>
-							<p><img src="images/IndianaBonesPage02.gif" class="image2" alt="Gif missing" style="margin-top:65px; margin-right:15px;">
-							<br><img src="images/IndianaBonesPage03.gif" class="image2" alt="Gif missing" style="margin-top:0px; margin-right:15px;">
+							<p><img src="images/IndianaBonesPage02.gif" class="image2" alt="Gif missing" style="margin-top:42px; margin-right:15px;">
 							<br>The progression in the game is made semi linear.
 							The way I did this is by allowing the player to choose a path but forcing the door closed after they enter one of these paths.
 							If the player dies they will load the last saved state of the game which if they just started is the beginning of the game.
 							If the player reaches the end of one of the paths they will recieve a quest item which is saved as a boolean in a array of booleans.
 							After the player takes the quest item a door at the other end of the room opens which after entering triggers a Save Trigger.
 							This will use static variables representing the Players values like hp and coins that get updated when changed during the game, use them to fill the rest of the save template and then saves the template in binary.
+							<br><img src="images/IndianaBonesPage03.gif" class="image2" alt="Gif missing" style="margin-right:15px;">
 							The scene will be reloaded with the new savedata and because of a lack of player coordinates they will be placed in the beginning room.
 							When the SaveTrigger class loads and cannot confirm a filled save file it will make a private new instance of the save template to be filled at a save trigger.
 							When the SaveTrigger class loads and can confirm a filled save file it will make its template the same as the current save file and adjusts an array used to save quest items setting the already collected items to true.
 							When a doors class loads it checks if its part of a path (Only the doors that enter into pathways are classified as this)and if so checks for a filled save file, If this is also found it will check if its paths quest item has been picked up and close itself if this is true.
 							Besides checking if the player went down a certain path already the quest items also gets used to check if the game is complete and ifso the gate placed underneath the starting room will open and if passed will trigger the EndGame.
+
 							</p>
 							</b2>
 
