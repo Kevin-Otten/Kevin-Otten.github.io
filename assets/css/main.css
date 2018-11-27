@@ -2764,7 +2764,7 @@
 				}
 
 				.tiles article > a:hover {
-					color: #93A3B1 !important;
+					color: #F79945 !important;
 				}
 
 				.tiles article > a h2 {
@@ -2816,6 +2816,8 @@
 				-webkit-transform: scale(1.1);
 				-ms-transform: scale(1.1);
 				transform: scale(1.1);
+				filter: brightness(30%);
+
 			}
 
 				body:not(.is-touch) .tiles article:hover > .image:before {
