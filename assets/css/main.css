@@ -3417,3 +3417,14 @@
 			}
 
 		}
+
+/* Code Snipets */
+    code {
+	border: 3px solid #E8A56D;
+    transform: scale(0.9);
+	}
+
+	.prettyprint {
+	border: 0px solid;
+	transform: scale(0.9);
+	}

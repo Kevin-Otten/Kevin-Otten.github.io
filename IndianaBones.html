@@ -133,7 +133,56 @@
 							If you give the correct input the door will open allowing you to proceed.
 							In the game itself this puzzle is placed at the end to give enough space to place these gravestones.
 							<br>
+
+							<pre>
+							<code class="code">
+	public override void PuzzleTrigger(TriggerdObjects currentObject)
+	{
+        //If the part is specificly the part that has to trigger a completion check
+		if(currentObject.puzzlePart == 3)
+		{
+			PuzzleCheck();
+		}
+		else
+		{
+            //if the part is used to make the correct combination
+			if(finishedParts[currentObject.puzzlePart] != true)
+			{
+				finishedParts[currentObject.puzzlePart] = true;
+			}
+			else
+			{
+				finishedParts[currentObject.puzzlePart] = false;
+			}
+		}
+	}
+
+    //checks if puzzle is complete/correct
+	public void PuzzleCheck()
+	{
+		returnBool = true;
+		foreach (bool b in finishedParts)
+		{
+            //if any are incorrect it turns the bool false
+			if(b == false)
+			{
+				returnBool = false;
+                break;
+			}
+		}
+        //if the bool is false it triggers the trap otherwhise it send a message to the manager
+		if(returnBool == false)
+		{
+			trap.TriggerFunctionality();
+		}
+		print(returnBool);
+		puzzleManager.done = returnBool;
+	}
+							</code>
+							</pre>
+
 							<br><img src="images/IndianaBonesPage05.gif" class="image2" alt="Gif missing" style="margin-top:42px; margin-right:15px;">
+
 							<br>The puzzle element I made was a wooden beam used as a platforming challenge or just as floor to stand on.
 							The beam has four states: Instant, Gradual, AfterTime and StayInPlace.
 							<li>Instant: Instantly retracts after being fully extended.
@@ -164,7 +213,7 @@
 							</b2>
 
 							<br>
-							<p><a class="link"href="https://github.com/PeterBosDeltion/IndianaBonesRepo" target="_blank"><b2><u> Click Here </u></b2> to go to the Github </a></p>
+							<p><a class="link"href="https://github.com/PeterBosDeltion/IndianaBonesRepo/tree/master/IndianaBones/Assets/GameFiles/Scripts" target="_blank"><b2><u> Click Here </u></b2> to go to the Github </a></p>
 						</div>
 					</div>
 
@@ -201,6 +250,7 @@
 			</div>
 
 		<!-- Scripts -->
+			<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=Desert"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
