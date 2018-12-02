@@ -119,7 +119,52 @@
 							When the SaveTrigger class loads and can confirm a filled save file it will make its template the same as the current save file and adjusts an array used to save quest items setting the already collected items to true.
 							When a doors class loads it checks if its part of a path (Only the doors that enter into pathways are classified as this)and if so checks for a filled save file, if this is also found it will check if its paths quest item has been picked up and close itself if this is true.
 							Besides checking if the player went down a certain path already the quest items also gets used to check if the game is complete and if so the gate placed underneath the starting room will open and if passed will trigger the EndGame.
+							<pre>
+							<code class="code">
+	void Start()
+	{
+		if(GameManager.gm.currentData.finishedPath.Length != 0)
+		{
+			template = GameManager.gm.currentData;
+			finishedPathSave = template.finishedPath;
+		}
+		else
+		{
+			template = new ToSave();
+			finishedPathSave = new bool[2];
+		}
+		currentLivesSave = template.currentLives;
+		maxLivesSave = template.maxLives;
+		coinsSave = template.coins;
+		milkSave = template.milk;
+		bonesSave = template.bones;
+		hasKeySave = template.hasKey;
+		playerMovement = FindObjectOfType<PlayerMovement>();
+	}
 
+	void OnTriggerEnter(Collider other)
+	{
+		TriggerFunctionality();
+	}
+	public override void TriggerFunctionality()
+	{
+		playerMovement.enabled = false;
+		AssignVariables();
+		GameManager.gm.SaveGameState(template);
+		GameManager.gm.LoadGameState();
+	}
+	public void AssignVariables()
+	{
+		template.hasKey = hasKeySave;
+		template.currentLives = currentLivesSave;
+		template.maxLives = maxLivesSave;
+		template.coins = coinsSave;
+		template.milk = milkSave;
+		template.bones = bonesSave;
+		template.finishedPath = finishedPathSave;
+	}
+							</code>
+							</pre>
 							</p>
 							</b2>
 
@@ -201,6 +246,39 @@
 							<br>The "Puzzle" I made whit this was the first parkour challenge you find whit this mechanic extending several beams as a jumping stairway which after some time would retract in again.
 							This puzzle was triggered by a button next to a pit of spikes.
 							</p>
+
+							<pre>
+							<code class="code">
+	public override void TriggerFunctionality()
+	{
+		if(state == BeamAction.AfterTime)
+		{
+			beam.SetTrigger("Trigger");
+			StartCoroutine(BeamTimer(afterTime));
+            ExtendAudio();
+		}
+
+        if (state == BeamAction.Gradual)
+		{
+			beam.SetTrigger("Trigger");
+			StartCoroutine(BeamTimer(instant));
+            ExtendAudio();
+		}
+        if (state == BeamAction.Instant)
+		{
+			beam.SetTrigger("Trigger");
+			StartCoroutine(BeamTimer(instant));
+            ExtendAudio();
+		}
+        if (state == BeamAction.StayInPlace)
+		{
+			beam.SetTrigger("Trigger");
+            ExtendAudio();
+		}
+    }
+							</code>
+							</pre>
+
 							</b2>
 
 							<font size="6">

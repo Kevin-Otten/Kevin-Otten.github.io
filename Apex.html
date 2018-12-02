@@ -116,6 +116,53 @@
 							The Sound slider does pretty much the same thing as the Quality handel accept that it uses its local position with the distance to calculate the sound value.
 							All sound and quality settings give their values to the SettingsManager which then changes the actual values to those given by the individual sliders and handels.
 							</p>
+							<pre>
+							<code class="code">
+	public void Touching(bool b)
+	{
+		touched = b;
+		if(b == false)
+		{
+			ChangeQuality();
+		}
+	} 
+
+	public void MovingHandel()
+	{
+		if(touched)
+		{
+			float handelValue;
+			handelValue = Vector3.Distance(handelMin, transform.position);
+			qualitySlider.value = maxMovement - handelValue;
+			if(handelValue >= lastStep + resultStep)
+			{
+				lastStep += resultStep;
+				qualityIndex -= 1;
+			}
+			if(handelValue <= lastStep - resultStep)
+			{
+				lastStep -= resultStep;
+				qualityIndex += 1;
+			}
+			if(handelValue >= 0.39f && qualityIndex == 1)
+			{
+				lastStep += resultStep;
+				qualityIndex -= 1;
+			}
+			if(handelValue <= 0.01f && qualityIndex == 4)
+			{
+				lastStep -= resultStep;
+				qualityIndex += 1;
+			}
+		}
+	}
+
+	public void ChangeQuality()
+	{
+		SettingsManager.instance.ChangeQuality(qualityIndex);
+	}
+							</code>
+							</pre>
 							</b2>
 
 							<font size="6">
@@ -131,6 +178,28 @@
 							If it does not detect this the player will move towards the direction.
 							If a otherwise static object moves because of an animation the colider instead of being put in the main group of colliders is placed on the object so it moves whit the object and properly stops movement on its new posision.
 							</p>
+							<pre>
+							<code class="code">
+    if (!Physics.Raycast(newPos,Vector3.down,out hit, 25, moveDetectionLayerMask))
+    {
+        VRPlayerMovementManager.instance.cameraRigTransform.transform.position += nextPos;
+
+        // Lerp.
+        //Vector3 newValidPos = VRPlayerMovementManager.instance.cameraRigTransform.position + nextPos;
+        //VRPlayerMovementManager.instance.cameraRigTransform.position = Vector3.Lerp(VRPlayerMovementManager.instance.cameraRigTransform.position, newValidPos, Time.deltaTime);
+    }
+
+    #region OldTagMethod
+    //if (Physics.Raycast(newPos, Vector3.down, out hit))
+    //{
+    //    if (hit.transform.tag != "CantMove")
+    //    {
+    //        VRPlayerMovementManager.instance.cameraRigTransform.transform.position += nextPos;
+    //    }
+    //}
+    #endregion
+							</code>
+							</pre>
 							</b2>
 
 							<br>
