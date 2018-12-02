@@ -55,17 +55,31 @@
 							</b>
 							</font>
 							<b2>
-							<u>
 							<ul style="list-style-type:disc">
 									<li>ProgressionSystem & AudioSystem</li>
 									<li>Cockpit/Worldspace Menu & Options</li>
 									<li>FreeMovement restrictions</li>
 									<li>Overall VR testing</li>
 							</ul>
-							</u>
 							</b2>
 							</b>
 							</p>
+
+							<font size="6">
+							<u><b>Preface</b></u>
+							</font>
+							<b2>
+							<br>On this page ill explain how the following Systems work:
+							<ul style="list-style-type:disc">
+									<li><a class="link"href="https://github.com/WouterUjvari/y2p4/tree/master/APEX%20-%20Y2P4/Assets/Scripts/Kevin/Settings" target="_blank"><b2><u> WorldspaceUI & Options </u></b2></a></li>
+									What I did with the UI and how the options work with VR.
+									<li><a class="link"href="https://github.com/WouterUjvari/y2p4/blob/master/APEX%20-%20Y2P4/Assets/Scripts/Dominik/Player/VRWalk.cs" target="_blank"><b2><u> FreeMovement Restrictions </u></b2></a></li>
+									The restrictions I added to the already existing player movement.
+									Restricting the player from moving into walls and other big objects.
+							</ul>
+							</b2>
+							</b>
+							</font>
 
 							<span class="image main"><img src="images/ApexPage01.jpg" alt="" /></span>
 							
@@ -86,27 +100,12 @@
 							</b2>
 
 							<font size="6">
-							<u><b>ProgressionSystem</b></u>
-							</font>
-
-							<b2>
-							<p><img src="images/ApexPage02.gif" class="image2" alt="Gif missing" style="margin-top:42px; margin-right:15px;">
-							<br>The progression system pushes the player to progress in the game down a linear line.
-							This system uses voice lines combined with the unlocking of the next puzzle to inform the player of what to do next.
-							The audio works by playing the audio clips placed in order within a list, waiting for one voice line to finish before starting the next one.
-							These list are placed in scriptable objects which themselves are placed in a list whiting the FlowManager.
-							The Progression System works with start and end functions for all game steps making the game flow as intended but the code less than desirable.
-							In hindsight I would have made one or two functions that could have been called with the necessary information to properly move on to the next step in the games flow.
-							</p>
-							</b2>
-
-							<font size="6">
 							<u><b>WorldspaceUI & Options</b></u>
 							</font>
 
 							<b2>
 							<p><img src="images/ApexPage03.gif" class="image2" alt="Gif missing" style="margin-top:42px; margin-right:15px;">
-							<br>All worldspace UI in the scene Uses a shader I edited to make it have a oldTech feeling like in alien isolation.
+							<br>All worldspace UI in the scene Uses a shader I edited some values of to make it have a oldTech feeling like in alien isolation.
 							The UI I made shows the settings of the game.
 							These settings are: Sound, Graphics and movement type.
 							Besides this there is also a reset button, switch hands button and a hints screen.
@@ -135,7 +134,7 @@
 							</b2>
 
 							<br>
-							<p><a class="link"href="https://github.com/WouterUjvari/y2p4" target="_blank"><b><u> Click Here </u></b> to go to the Github </a></p>
+							<p><a class="link"href="https://github.com/WouterUjvari/y2p4/tree/master/APEX%20-%20Y2P4/Assets/Scripts/Kevin" target="_blank"><b><u> Click Here </u></b> to go to the Github </a></p>
 
 						</div>
 					</div>
