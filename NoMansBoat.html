@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <!--
 	Phantom by HTML5 UP
 	html5up.net | @ajlkn
@@ -64,23 +64,21 @@
 									<li>TimeScaleing</li>
 							</ul>
 							</b2>
-							</b>
 
 							<font size="6">
 							<u><b>Preface</b></u>
 							</font>
 							<b2>
 							<br>On this page I'll explain how the following Systems work:
-							<ul style="list-style-type:disc">
-									<li><a class="link"href="https://github.com/PeterBosDeltion/IndianaBonesRepo/blob/master/IndianaBones/Assets/GameFiles/Scripts/TriggerdObjects/SaveTrigger.cs" target="_blank"><b2><u> SaveGame/Progression system </u></b2></a></li>
-									A progression System that uses savestates and saved data to close of paths and Place the player back and the Hub/Start room.
-									<li><a class="link"href="https://github.com/PeterBosDeltion/IndianaBonesRepo/tree/master/IndianaBones/Assets/GameFiles/Scripts/Puzzles" target="_blank"><b2><u> Puzzle elements & system </u></b2></a></li>
-									The puzzle system itself, A puzzle that resembles the pillar puzzles from Skyrim and a puzzle element used in the TimeJumpPuzzle.
-									<li><a class="link"href="https://github.com/PeterBosDeltion/IndianaBonesRepo/blob/master/IndianaBones/Assets/GameFiles/Scripts/InteractableObject.cs" target="_blank"><b2><u> InteractableObjects </u></b2></a></li>
-									A system used to interact with objects and then Trigger its Triggered object.
-							</ul>
+                            <ul style="list-style-type:disc">
+                                <li><a class="link" href="https://github.com/HanHakkenberg/Project-3.2/tree/master/Project%203.2/Assets/%5BSource%5D/Scenes/Kevin/Work/Scripts" target="_blank"><b2><u> EventSystem </u></b2></a></li>
+                                The Event system which uses a combination of several event related systems to make event pop ups with a variety of effects.
+                                <li><a class="link" href="https://github.com/HanHakkenberg/Project-3.2/blob/master/Project%203.2/Assets/%5BSource%5D/Scenes/Kevin/Work/Scripts/CivManager.cs" target="_blank"><b2><u> Economy </u></b2></a></li>
+                                The system using GameTicks to consume resources over time using the CivManager and the GameManager.
+                                <li><a class="link" href="https://github.com/HanHakkenberg/Project-3.2/blob/master/Project%203.2/Assets/%5BSource%5D/Scenes/Kevin/Work/Scripts/IslandInteractionManager.cs" target="_blank"><b2><u> SiteInteraction & Diplomacy </u></b2></a></li>
+                                The system used to interact with islands and loot sites both in diplomacy and raiding.
+                            </ul>
 							</b2>
-							</b>
 							</font>
 
 							<span class="image main"><img src="images/NoMansBoat01.jpg" alt="" /></span>
@@ -90,9 +88,15 @@
 							</font>
 
 							<b2>
-							<p>
-							<br>
-							</p>
+                                <p>
+                                    <br>NoMansBoat is a Civilization Management game with a focus on trying to survive mainly using trade and other interactions on surrounding islands.
+                                    The game plays in a top down view both on your island and the world map.
+                                    Besides trade you can also pillage both inhabited and uninhabited islands or build buildings on your island to relieve part the inevitable resource deficit.
+                                    The biggest problem a player will have will be the influx of people arriving at their island, ever increasing the need for food.
+                                    The other factor which affects the game and the players actions are Events which can either give,take or both take and give at the same time.
+                                    <br>
+                                    <br>The goal of the game is to survive thru the main event chain without being banished by your people.
+                                </p>
 							</b2>
 							
 							
@@ -102,16 +106,155 @@
 							</font>
 
 							<b2>
-							<p><img src="images/NoMansBoat02.gif" class="image2" alt="Gif missing" style="margin-top:65px; margin-right:15px;">
-							<br>
-							<br><img src="images/NoMansBoat03.gif" class="image2" alt="Gif missing" style="margin-top:20px;margin-right:15px;">
-							
-							<pre>
-							<code class="code">
-	
-							</code>
-							</pre>
-							</p>
+                                <p>
+                                    <img src="images/NoMansBoat02.gif" class="image" alt="Gif missing" style="margin-top:0px; margin-right:0px;">
+                                    <br>The EventSystem uses The EventManager, ScriptableEvents,EventChain and the SpecialEvents scripts
+                                    The system works by creating an Event template.
+                                    These templates are scriptable objects deriving from the Scriptable Events class.
+                                    In these events you can add flavour text, the amount of options/buttons, the effects of every option and the flavour text for the option buttons.
+                                    Once created a scriptable event can be assigned to The EventManager.
+                                    <pre>
+                                    <code class="code">
+[CreateAssetMenu(fileName = "Event", menuName = "Event/ScriptableEvent", order = 1)]
+public class ScriptableEvent : ScriptableObject
+{
+    public List&lt;EventOptions> eventOptions = new List&lt;EventOptions>();
+    [Tooltip("Event titel text")]
+    public string Title;
+    [Tooltip("Event message text")]
+    [Multiline]
+    public string Message;
+}
+
+[System.Serializable]
+public class EventOptions
+{
+    [Tooltip("Text which will be shown on the button")]
+    public string buttonText;
+    [Tooltip("Keep it on 0 if you dont want to trigger a SpecialEventFunction")]
+    public int specialEvent;
+    public List&lt;EventOptionsEffects> eventOptionsEffects = new List&lt;EventOptionsEffects>();
+}
+
+[System.Serializable]
+public class EventOptionsEffects
+{
+    //This class contains all the effects a Events options performs
+
+    [Tooltip("Type of resource changed by event")]
+    public CivManager.Type resoureType;
+    [Tooltip("Value changed by event")]
+    public int Value;
+}
+							        </code>
+							        </pre>
+                                    <br>The EventManager uses the GameManagers daily tick To trigger a random event to popup.
+                                    This tick won't guarantee an event to popup as this is chance based.
+                                    The EventManager can instead of a normal event also trigger the next step of an event chain.
+                                    This will pop up as any normal event but will later pop up again with the next part of the story/chain.
+                                    By hovering over oné of the option buttons a popup window will appear with information about the effects of clicking the button.
+                                    This window will follow the mouse cursor as long as the cursor is above a button.
+                                    If the player clicks the button the shown effects will become active.
+                                    These effects can remove or add resources or stability.
+                                    It can also Trigger a function using a value and a switch case.
+                                    This is so that an event can trigger a specific action which can be translated to a basic value.
+                                    <pre>
+                                    <code class="code">
+public void TriggerEventRelatedFunctions()
+{
+    ProgressEventChain();
+    TriggerRandomEvent();
+}
+public void TriggerRandomEvent()
+    {
+        if (activeEvent == null)
+        {
+            // Using the Chance int combined with the if statement gives the random event a chance to trigger instead of a guarantee
+            int Chance = Random.Range(1,11);
+            
+            if (Chance > 5)
+            {
+                int eventIndex = Random.Range(0,randomEventsList.Count);
+                SetEvent(randomEventsList[eventIndex]);
+            }
+        }
+    }
+public void SetEvent(ScriptableEvent curentEvent)
+    {
+        if (activeEvent == null)
+        {
+            TimeManager.instance.PauseGameSpeed();
+            activeEvent = curentEvent;
+            //Setup pannel
+            eventPannel.SetActive(true);
+            eventText.text = curentEvent.Message;
+            eventTitle.text = curentEvent.Title;
+
+            //Create buttons
+            for (int i = 0; i < curentEvent.eventOptions.Count; i++)
+            {
+                int t;
+                GameObject newButton = Instantiate(button, buttonLocation.localPosition, Quaternion.identity, parent: buttonLocation);
+                //newButton.transform.SetParent(buttonLocation);
+                // newButton.transform.localScale = Vector3.one;
+                newButton.GetComponentInChildren&lt;TMP_Text>().text = curentEvent.eventOptions[i].buttonText;
+
+                if(curentEvent.eventOptions.Count != 0)
+                {
+                    List&lt;string> effectText = new List&lt;string>();
+                    foreach (EventOptionsEffects effect in curentEvent.eventOptions[i].eventOptionsEffects)
+                    {
+                        effectText.Add(effect.resoureType.ToString() + " " + effect.Value.ToString() + ". \n");
+                    }
+                    string formatedText = "";
+                    foreach (string text in effectText)
+                    {
+                        formatedText += text;
+                    }
+                    newButton.GetComponentInChildren&lt;ToolTipPopup>().toolTipString = formatedText;
+                }
+                if(curentEvent.eventOptions[i].specialEvent != 0)
+                {
+                    newButton.GetComponentInChildren&lt;ToolTipPopup&gt;().toolTipString = "This will activate a special event";
+                }
+                t = i;
+
+                newButton.GetComponent&lt;Button>().onClick.AddListener(() => {ResolveEvent(t,curentEvent);});
+            }
+        }
+    }
+
+    public void ResolveEvent(int optionInt, ScriptableEvent curentEvent) 
+    {
+        EventOptions option = curentEvent.eventOptions[optionInt];
+        
+        for (int i = 0; i < option.eventOptionsEffects.Count; i++)
+        {
+            EventOptionsEffects effects = option.eventOptionsEffects[i];
+            if (effects.Value > 0)
+            {
+                CivManager.instance.AddIncome(effects.Value,effects.resoureType);    
+            }
+            else
+            {
+                CivManager.instance.RemoveIncome(effects.Value,effects.resoureType);
+            }
+        }
+
+        if (option.specialEvent != 0)
+        {
+            SpecialEvents.SpecialEventsEffects(option.specialEvent);
+        }
+        eventPannel.SetActive(false);
+        eventText.text = "EventText";
+        eventTitle.text = "Titel";
+        activeEvent = null;
+        TimeManager.instance.PauseGameSpeed();
+        WipeButtons();
+    }
+							        </code>
+							        </pre>
+                                </p>
 							</b2>
 
 
@@ -119,32 +262,136 @@
 							<u><b>Economy</b></u>
 							</font>
 
-							<b2>
-							<br>
+                            <b2>
+                                <p>
+                                    <img src="images/NoMansBoat03.gif" class="image" alt="Gif missing" style="margin-top:20px;margin-right:15px;">
+                                    <br> The economy system uses the CivManager and the GameManagers Gameplay ticks.
+                                    The player has 4 types of resources and stability at their disposal.
+                                    The resources are: food, materials, money and people.
+                                    Events, options and other actions can subtract or increase resource values using the Add and RemoveIncome functions.
+                                    These functions require a Type(Enum) and a value(int) and use these to remove or add the given value to the selected type.
+                                    Every minute in realtime food will be subtracted from storage.
+                                    The amount is calculated by dividing the daily expenses by the amount of minutes in a day.
+                                    The amount of minutes in a day is calculated using the GameManagers LongGameplayTick(amount of seconds in a day) and dividing this by Sixty.
+                                    <pre>
+                                    <code class="code">
+public void AddIncome(int toAdd, Type type)
+{
+  if (toAdd != 0)
+  {
+     //makes sure all input is positive
+     toAdd = Mathf.Abs(toAdd);
+     switch (type)
+     {
+        case Type.Mats:
+           mats += toAdd;
+           matsIncome += toAdd;
+           if (mats > matsCap)
+           {
+              mats = matsCap; 
+           }
+           UIManager.instance.RecourceUIPopup(toAdd,Type.Mats);
+           break;
+        case Type.Money:
+           money += toAdd;
+           moneyIncome += toAdd;
+           if(money > moneyCap)
+           {
+              money = moneyCap;
+           }
+           UIManager.instance.RecourceUIPopup(toAdd,Type.Money);
+           break;
+        case Type.Food:
+           food += toAdd;
+           foodIncome += toAdd;
+           if(food > foodCap)
+           {
+              food = foodCap;
+           }
+           UIManager.instance.RecourceUIPopup(toAdd,Type.Food);            
+           break;
+        case Type.People:
+           people += toAdd;
+           peopleIncome += toAdd;
+           if(people > peopleCap)
+           {
+              people = peopleCap;
+           }
+           UIManager.instance.RecourceUIPopup(toAdd,Type.People);
+           break;       
+        case Type.Stability:
+           stability += toAdd;
+           stability = Mathf.Clamp(stability, -2 , 2);
+           UpdateStability();
+           UIManager.instance.RecourceUIPopup(toAdd,Type.Stability);
+           break;     
+     }
+     if (IslandInteractionManager.instance)
+     {
+        IslandInteractionManager.instance.UpdateTradeResourceUI();
+     }
+  }
+}
+							        </code>
+							        </pre>
 
-							<p><img src="images/NoMansBoat04.gif" class="image2" alt="Gif missing" style="margin-top:42px; margin-right:15px;">
-							<br>
-							<br>
+                                    <br>Stability works as a multiplier on island income.
+                                    When a building calculates its income it uses the stability modifier whose value is decided using a switch case in the UpdateStability function.
+                                    This modifier is not just positive as a level of stability under zero will cause negative effects.
+                                    Negative effects are stronger than the positive effects.
+                                    Stability as a value gets changed in the same way as the other resources but at the same time triggers the UpdateStability function.
+                                    You can only gain or lose stability thru events.
+                                    <br>
+                                    <br>When stability or food gets to low you get a few days to fix the problem or a gameover will be triggered.
+                                </p>
 
-							<pre>
-							<code class="code">
-	
-							</code>
-							</pre>
+                                <pre>
+                                <code class="code">
+void UpdateStability()
+{
+  switch (stability)
+  {
+     case 2:
+        stabilityModifier = 1.2f;
+     break;
+     case 1:
+        stabilityModifier = 1.1f;
+     break;
+     case -1:
+        stabilityModifier = 0.8f;
+     break;
+     case -2:
+        stabilityModifier = 0.5f;
+     break;
+     default:
+        stabilityModifier = 1;
+     break;
+  }
+}
 
-							<br><img src="images/NoMansBoat05.gif" class="image2" alt="Gif missing" style="margin-top:42px; margin-right:15px;">
+public void CheckGameover()
+{
+  if (stability <= -2 || food <= 0)
+  {
+     gameOverTick += 1;
+     if (gameOverTick == 3)
+     {
+        print("OmegaDed");
+        GameManager.instance.GameOver();
+     }
+  }
+  else
+  {
+     if (gameOverTick != 0)
+     {
+        gameOverTick = 0;
+     }
+  }
+}
+							    </code>
+							    </pre>
 
-							<br>
-							
-							</p>
-
-							<pre>
-							<code class="code">
-	
-							</code>
-							</pre>
-
-							</b2>
+                            </b2>
 
 							<font size="6">
 							<u><b>SiteInteraction & Diplomacy</b></u>
@@ -152,13 +399,16 @@
 
 							<b2>
 							<p><img src="images/NoMansBoat06.gif" class="image2" alt="Gif missing" style="margin-top:42px; margin-right:15px;">
+                                <img src="images/NoMansBoat04.gif" class="image2" alt="Gif missing" style="margin-top: 42px; margin-right: 15px;">
+                                <br><img src="images/NoMansBoat05.gif" class="image2" alt="Gif missing" style="margin-top: 42px; margin-right: 15px;">
+
 							
 							<br>
 							</p>
 							</b2>
 
 							<br>
-							<p><a class="link"href="https://github.com/HanHakkenberg/Project-3.2/tree/master/Project%203.2/Assets/%5BSource%5D" target="_blank"><b2><u> Click Here </u></b2> to go to the Github </a></p>
+							<p><a class="link"href="https://github.com/HanHakkenberg/Project-3.2/tree/master/Project%203.2/Assets/%5BSource%5D/Scenes/Kevin/Work/Scripts" target="_blank"><b2><u> Click Here </u></b2> to go to the Github </a></p>
 						</div>
 					</div>
 
