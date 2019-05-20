@@ -81,7 +81,7 @@
 							</b2>
 							</font>
 
-							<span class="image main"><img src="images/NoMansBoat01.jpg" alt="" /></span>
+							<span class="image main"><img src="images/NoMansBoat011.jpg" alt="" /></span>
 
 							<font size="6">
 							<u><b>The Game</b></u>
@@ -89,7 +89,8 @@
 
 							<b2>
                                 <p>
-                                    <br>NoMansBoat is a Civilization Management game with a focus on trying to survive mainly using trade and other interactions on surrounding islands.
+                                    <br>NoMansBoat is a Civilization Management game based in a island filled sea.
+                                    The focus of the game is set on trying to survive mainly using trade and other interactions on surrounding islands.
                                     The game plays in a top down view both on your island and the world map.
                                     Besides trade you can also pillage both inhabited and uninhabited islands or build buildings on your island to relieve part the inevitable resource deficit.
                                     The biggest problem a player will have will be the influx of people arriving at their island, ever increasing the need for food.
@@ -107,7 +108,7 @@
 
 							<b2>
                                 <p>
-                                    <img src="images/NoMansBoat02.gif" class="image" alt="Gif missing" style="margin-top:0px; margin-right:0px;">
+                                    <img src="images/NoMansBoat02.gif" class="image2" alt="Gif missing" style="margin-top:40px; margin-right:15px;">
                                     <br>The EventSystem uses The EventManager, ScriptableEvents,EventChain and the SpecialEvents scripts
                                     The system works by creating an Event template.
                                     These templates are scriptable objects deriving from the Scriptable Events class.
@@ -154,10 +155,9 @@ public class EventOptionsEffects
                                     This will pop up as any normal event but will later pop up again with the next part of the story/chain.
                                     By hovering over oné of the option buttons a popup window will appear with information about the effects of clicking the button.
                                     This window will follow the mouse cursor as long as the cursor is above a button.
-                                    If the player clicks the button the shown effects will become active.
-                                    These effects can remove or add resources or stability.
-                                    It can also Trigger a function using a value and a switch case.
-                                    This is so that an event can trigger a specific action which can be translated to a basic value.
+                                    If the player clicks the button the shown effects will be triggerd.
+                                    These effects can remove or add resources and stability.
+                                    It can also Trigger a function using a int value wich it gives to a switch case.
                                     <pre>
                                     <code class="code">
 public void TriggerEventRelatedFunctions()
@@ -264,7 +264,7 @@ public void SetEvent(ScriptableEvent curentEvent)
 
                             <b2>
                                 <p>
-                                    <img src="images/NoMansBoat03.gif" class="image" alt="Gif missing" style="margin-top:20px;margin-right:15px;">
+                                    <img src="images/NoMansBoat03.gif" class="image2" alt="Gif missing" style="margin-top:60px; margin-right:15px;">
                                     <br> The economy system uses the CivManager and the GameManagers Gameplay ticks.
                                     The player has 4 types of resources and stability at their disposal.
                                     The resources are: food, materials, money and people.
@@ -338,9 +338,9 @@ public void AddIncome(int toAdd, Type type)
                                     <br>Stability works as a multiplier on island income.
                                     When a building calculates its income it uses the stability modifier whose value is decided using a switch case in the UpdateStability function.
                                     This modifier is not just positive as a level of stability under zero will cause negative effects.
-                                    Negative effects are stronger than the positive effects.
+                                    Negative effects are stronger than positive effects and therefore should be avoided.
                                     Stability as a value gets changed in the same way as the other resources but at the same time triggers the UpdateStability function.
-                                    You can only gain or lose stability thru events.
+                                    You can only gain or lose stability through events.
                                     <br>
                                     <br>When stability or food gets to low you get a few days to fix the problem or a gameover will be triggered.
                                 </p>
@@ -376,7 +376,6 @@ public void CheckGameover()
      gameOverTick += 1;
      if (gameOverTick == 3)
      {
-        print("OmegaDed");
         GameManager.instance.GameOver();
      }
   }
@@ -395,20 +394,266 @@ public void CheckGameover()
 
 							<font size="6">
 							<u><b>SiteInteraction & Diplomacy</b></u>
-							</font>
+                        </font> 
+                        <b2>
+                            <p><img src="images/NoMansBoat04.gif" class="image2" alt="Gif missing" style="margin-top:60px; margin-right:15px;">
+                                <br>Island and lootsite interaction mainly works using the IslandInteractionManager and the Island script.
+                                By clicking on a island the islands information gets send to the IslandInteractionManager.
+                                Here a insert function sends the Interactableobject to a function called ToggleInteractionPannels.
+                                This function takes the type of Interactableobject and its current state and opens\unlocks the correct UI panels\Buttons.
+                                If the Interactableobject is a lootsite it will unlock the pillage button and allow the player to loot it.
+                                If the Interactableobject is a island it will first have to be explored and if it has it will either give to option to pillage it if uninhabited or both pillaging and trade.
+                            </p>
+                            <pre>
+                            <code class="code">
+/// &lt;summary>
+/// This function toggles buttons in interaction pannels acording to the state of the current active object
+/// &lt;/summary>
+/// &lt;param name="interactableObjects"> the interactable object being refrenced&lt;/param>
+public void ToggleInteractionPannels(InteractableObjects interactableObjects)
+{
+    InteractableObjects.InteractionState interactionState = interactableObjects.interactionState;
+    DisableAllButtons();
+    if(interactableObjects.interactionState != InteractableObjects.InteractionState.LootSite)
+    {
+        if (interactableObjects.explored)
+        {
+            switch (interactionState)
+            {
+                case InteractableObjects.InteractionState.Unsettled:
+                if(activeIsland.looted != true)
+                {
+                    pillageButton.SetActive(true);
+                    islandStatusText.text = "This island seems uninhabited you might have some use for its recoures though";
+                    if(activeIsland.canInteract)
+                    {
+                        tradeButton.GetComponent&lt;Button>().interactable = true;
+                        pillageButton.GetComponent&lt;Button>().interactable = true;
+                        confirmButton.GetComponent&lt;Button>().interactable = true;
+                    }
+                    else
+                    {
+                        tradeButton.GetComponent&lt;Button>().interactable = false;
+                        pillageButton.GetComponent&lt;Button>().interactable = false;
+                        confirmButton.GetComponent&lt;Button>().interactable = false;
+                    }
+                }
+                else
+                {
+                    islandStatusText.text = "This uninhabited Island has recently bin looted";
+                }
+                break;
 
-							<b2>
-							<p><img src="images/NoMansBoat06.gif" class="image2" alt="Gif missing" style="margin-top:42px; margin-right:15px;">
-                                <img src="images/NoMansBoat04.gif" class="image2" alt="Gif missing" style="margin-top: 42px; margin-right: 15px;">
-                                <br><img src="images/NoMansBoat05.gif" class="image2" alt="Gif missing" style="margin-top: 42px; margin-right: 15px;">
+                case InteractableObjects.InteractionState.Settled:
+                attitudeParent.SetActive(true);
+                if(activeIsland.looted != true)
+                {
+                    if(activeIsland.attitude >= -50)
+                    {
+                        tradeButton.SetActive(true);
+                        pillageButton.SetActive(true);
+                        pillageButton.GetComponent&lt;Button>().interactable = true;
+                        if(activeIsland.canInteract)
+                        {
+                            tradeButton.GetComponent&lt;Button>().interactable = true;
+                            pillageButton.GetComponent&lt;Button>().interactable = true;
+                        }
+                        else
+                        {
+                            tradeButton.GetComponent&lt;Button>().interactable = false;
+                            pillageButton.GetComponent&lt;Button>().interactable = false;
+                        }
+                        islandStatusText.text = "This island is inhabited and its poeple will talk to you and trade goods depending on your standing with them";
+                    }
+                    else
+                    {
+                        tradeButton.GetComponent&lt;Button>().interactable = false;
+                        if(activeIsland.canInteract)
+                        {
+                            pillageButton.GetComponent&lt;Button>().interactable = true;
+                        }
+                        else
+                        {
+                            pillageButton.GetComponent&lt;Button>().interactable = false;                  
+                        }
+                        islandStatusText.text = "Becouse of youre actions the people of this island wont talk to you";
+                    }
+                }
+                else
+                {
+                    islandStatusText.text = "This inhabited Island has recently been looted";
+                }
+                break;
+            }
+        }
+        else
+        {
+            exploreButton.SetActive(true);
+            if(activeIsland.canInteract)
+            {  
+                exploreButton.GetComponent&lt;Button>().interactable = true;
+            }
+            else
+            {
+                exploreButton.GetComponent&lt;Button>().interactable = false;
+            }
+            islandStatusText.text = "This island has yet to be explored";
+        }
+    }
+    else
+    {
+        pillageButton.SetActive(true);
+        if(activeLootSite.canInteract)
+        {
+            pillageButton.GetComponent&lt;Button>().interactable = true;
+        }
+        else
+        {
+            pillageButton.GetComponent&lt;Button>().interactable = false;
+        }
+        islandStatusText.text = "It looks like there might be valuables here";
+    }
+}
+                            </code>
+							</pre>
+                            </b2>
+                        
+                            <b2>
+                            <p><img src="images/NoMansBoat05.gif" class="image2" alt="Gif missing" style="margin-top:45px; margin-right:15px;">
+                            <br>When looted, in case of a uninhabited island or lootsite the player will get resources.
+                            A Island will give more of what it has excess of and gets locked from interaction for a few in game days.
+                            A lootsite will give a sizable amount of one type of resource and then self-destruct disappearing under the water.
+                            <br>
+                            <br>When looting a inhabited island you will get the same effects as a uninhabited island accept that after its locked state you won’t be able to trade with them.
+                            To interact diplomatically with a island you need at least -75 relations and pillaging lowers it by 200.
+                            </p>
+                            <p>
+                            <img src="images/NoMansBoat06.gif" class="image2" alt="Gif missing" style="margin-top:50px;margin-right:15px;">
+                            <br>Interacting with an inhabited island can also be done through trade.
+                            Trade has several aspects.
+                            You have Excess and demand, the amount of trade left and the islands attitude.
+                            </p>
+                            <p>
+                            <br>Excess is a random enum state in the Interactableobject which resembles both the cheapest resource and the resource the island will give the least for.
+                            Demand is the opposite of excess.
+                            If your offer matches their demand they will give more of what you demand.
+                            If you ask for their demand it will cost more.
+                            What the player demands and asks for can be changed.
+                            This is done using the arrow buttons.
+                            These change the resource for the players demand or request and then trigger the CheckRequest or CheckDemand functions which makes sure the correct values get set and displayed.
+                            <pre>
+                            <code class="code">
+public void CheckRequest(int value)
+{
+    requestTypeValue += value;
+    if(requestTypeValue < 0)
+    {
+        requestTypeValue = 2;
+    }
+    else if(requestTypeValue > 2)
+    {
+        requestTypeValue = 0;
+    }
 
-							
-							<br>
-							</p>
-							</b2>
+    switch (requestTypeValue)
+    {
+        case 0:
+        //mats
+        requestedType = CivManager.Type.Mats;
+        requestText.text = "Materials";
+        break;
 
-							<br>
-							<p><a class="link"href="https://github.com/HanHakkenberg/Project-3.2/tree/master/Project%203.2/Assets/%5BSource%5D/Scenes/Kevin/Work/Scripts" target="_blank"><b2><u> Click Here </u></b2> to go to the Github </a></p>
+        case 1:
+        //food
+        requestedType = CivManager.Type.Food;
+        requestText.text = "Food";
+        break;
+
+        case 2:
+        //money
+        requestedType = CivManager.Type.Money;
+        requestText.text = "Money";
+        break;
+    }
+    InputCheckOffer();
+}
+                            </code>
+							</pre>
+                            </p>
+                            <p>
+                            <br>The amount of tradeleft is related to the islands opinion towards the player.
+                            If the islands opinion gets higher the maxtrade also gets higher.
+                            Tradeleft is maxtrade minus the amount already traded.
+                            Trading itself improves the relations between the player and the island.
+                            <br>To actually trade the player has to click the confirm button.
+                            this triggers the Confirm function which checks if the players has the resources to pay for the transaction or if they aren’t trying to pay the same as they demand.
+                            If they can trade all values will be updated and the UI will refresh
+
+                            <pre>
+                            <code>
+public void Confirm()
+{
+    //Confirm deal
+    bool canTrade = true;
+    if(activeIsland.amountTraded != activeIsland.maxTrading)
+    {
+        if(paymentType != requestedType)
+        {
+            switch (paymentType)
+            {
+                case CivManager.Type.Food:
+                if(CivManager.instance.food < demandedValue)
+                {
+                    canTrade = false;
+                    islandStatusText.text = "You don't have the required resources";
+                }
+                break;
+
+                case CivManager.Type.Mats:
+                if(CivManager.instance.mats < demandedValue)
+                {
+                    canTrade = false;
+                    islandStatusText.text = "You don't have the required resources";
+                }
+                break;
+
+                case CivManager.Type.Money:
+                if(CivManager.instance.money < demandedValue)
+                {
+                    canTrade = false;
+                    islandStatusText.text = "You don't have the required resources";
+                }
+                break;
+            }
+        }
+        else
+        {
+            canTrade = false;
+            islandStatusText.text = "Cant trade the same resource";
+        }
+    }
+    else
+    {
+        canTrade = false;
+        islandStatusText.text = "This island wont trade anymore";
+    }
+
+    if(canTrade == true)
+    {
+        activeIsland.amountTraded += requestedValue;
+        CivManager.instance.AddIncome(requestedValue,requestedType);
+        CivManager.instance.RemoveIncome(demandedValue,paymentType);
+        activeIsland.UpdateAttitude(requestedValue / 2);
+        islandStatusText.text = "Transaction successful";
+    }
+    UpdateTradeResourceUI();
+    InputCheckOffer();
+}
+                            </code>
+                            </pre>
+                            </p>
+                            </b2>
+                            <p><a class="link"href="https://github.com/HanHakkenberg/Project-3.2/tree/master/Project%203.2/Assets/%5BSource%5D/Scenes/Kevin/Work/Scripts" target="_blank"><b2><u> Click Here </u></b2> to go to the Github </a></p>
 						</div>
 					</div>
 
