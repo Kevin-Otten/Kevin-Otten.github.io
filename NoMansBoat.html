@@ -40,7 +40,8 @@
 							<li><a href="IndianaBones.html">IndianaBones</a></li>
 							<li><a href="Apex.html">Apex</a></li>
 							<li><a href="HexBasedMovementSystem.html">MovementSystem: HexBased</a></li>
-							<li><a href="NoMansBoat.html">NoMansBoat</a></li>							
+							<li><a href="NoMansBoat.html">NoMansBoat</a></li>
+							<li><a href="ARBusinessCard.html">ARBusinessCard</a></li>				
 						</ul>
 					</nav>
 
@@ -58,7 +59,7 @@
 							<ul style="list-style-type:disc">
 									<li>EventSystem</li>
 									<li>Economy</li>
-									<li>SiteInteraction</li>
+									<li>Site Interaction</li>
 									<li>ToolTip</li>
 									<li>Diplomacy</li>
 									<li>TimeScaleing</li>
@@ -75,7 +76,7 @@
                                 The Event system which uses a combination of several event related systems to make event pop ups with a variety of effects.
                                 <li><a class="link" href="https://github.com/HanHakkenberg/Project-3.2/blob/master/Project%203.2/Assets/%5BSource%5D/Scenes/Kevin/Work/Scripts/CivManager.cs" target="_blank"><b2><u> Economy </u></b2></a></li>
                                 The system using GameTicks to consume resources over time using the CivManager and the GameManager.
-                                <li><a class="link" href="https://github.com/HanHakkenberg/Project-3.2/blob/master/Project%203.2/Assets/%5BSource%5D/Scenes/Kevin/Work/Scripts/IslandInteractionManager.cs" target="_blank"><b2><u> SiteInteraction & Diplomacy </u></b2></a></li>
+                                <li><a class="link" href="https://github.com/HanHakkenberg/Project-3.2/blob/master/Project%203.2/Assets/%5BSource%5D/Scenes/Kevin/Work/Scripts/IslandInteractionManager.cs" target="_blank"><b2><u> Site Interaction & Diplomacy </u></b2></a></li>
                                 The system used to interact with islands and loot sites both in diplomacy and raiding.
                             </ul>
 							</b2>
@@ -89,15 +90,15 @@
 
 							<b2>
                                 <p>
-                                    <br>NoMansBoat is a Civilization Management game Set in a large islands filled sea. The focus of the game lies on keeping your civilization alive.
+                                    <br>NoMansBoat is a civilization management game set in a large islands filled sea. The focus of the game lies on keeping your civilization alive.
                                     This is mainly done by using trade and other interactions with surrounding islands and loot sites. The game plays in a top down view both on the players island and the world map.
                                     <br>Besides trade you can also pillage both inhabited and uninhabited islands or build buildings on your island.
-                                    This helps in the short term to relieve the players deficit but it Won’t help the players civilization through the late game.
-                                    The biggest problem the player will have will be the large influx of people arriving at their island.
+                                    This helps in the short term to relieve the players deficits but it won’t help the players civilization through the late game.
+                                    The biggest problem the player will have is going to be the large influx of people arriving at their island.
                                     This causes an ever increasing need for food.
                                     <br>Another factor which affects both the game and the players actions are events.
                                     These events can either give, take or both take and give at the same time.
-                                    They mainly give or take resources but you can also lose or gain stability.
+                                    They mainly give or take resources, but you can also lose or gain stability to them.
                                     Some events also have special effects like ending the game.
                                     <br>
                                     <br>The goal of the game is to survive through the main event chain without being banished by your people.
@@ -111,15 +112,15 @@
 							</font>
 
 							<b2>
-                                <p>
-                                    <img src="images/NoMansBoat02.gif" class="image2" alt="Gif missing" style="margin-top:40px; margin-right:15px;">
-                                    <br>The EventSystem uses The EventManager, ScriptableEvents,EventChain and the SpecialEvents script.
-                                    The system Starts by creating an Event template.
-                                    These templates are scriptable objects derived from the ScriptableEvents class.
-                                    In these events you can add the main flavor text, the amount of options/buttons you want, the effects of every option and the flavor text for the different option buttons.
-                                    Once created a scriptable event can be assigned to The EventManager.
-                                    <pre>
-                                    <code class="code">
+                            <p>
+                            <img src="images/NoMansBoat02.gif" class="image2" alt="Gif missing" style="margin-top:40px; margin-right:15px;">
+                            <br>The EventSystem uses The EventManager, ScriptableEvents,EventChain and the SpecialEvents script.
+                            The system Starts by creating an Event template.
+                            These templates are scriptable objects derived from the ScriptableEvents class.
+                            In these events you can add the main flavor text, the amount of options/buttons you want, the effects of every option and the flavor text for the different option buttons.
+                            Once created, a scriptable event can be assigned to The EventManager.
+                            <pre>
+                            <code class="code" style="margin-top:40px;">
 [CreateAssetMenu(fileName = "Event", menuName = "Event/ScriptableEvent", order = 1)]
 public class ScriptableEvent : ScriptableObject
 {
@@ -151,22 +152,22 @@ public class EventOptionsEffects
     [Tooltip("Value changed by event")]
     public int Value;
 }
-							        </code>
-							        </pre>
-                                    <br>The EventManager uses the assigned events through the TriggerRandomEvent function.
-                                    This function is subscribed to a delegate which gets triggered every in game day.
-                                    The function itself uses an if statement with a randomized value to decide if an event actually gets triggered or not.
-                                    The EventManager can instead of a normal event also trigger the next step of an event chain.
-                                    This will pop up as any normal event but will later pop up again with the next part of the story/chain.
-                                    <br>By hovering over one of the events option buttons a popup window will appear with information about the effects of clicking the button.
-                                    This window will follow the mouse cursor as long as the cursor is above a button.
-                                    If the player clicks the button the shown effects will be triggered.
-                                    These effects can remove or add resources and stability.
-                                    The effects of an event button can also trigger a function.
-                                    This is simply done using a integer value on a switch case.
-                                    This switch has several cases which all trigger their related function.
-                                    <pre>
-                                    <code class="code">
+							</code>
+							</pre>
+                            <br>The EventManager uses the assigned events through the TriggerRandomEvent function.
+                            This function is subscribed to a delegate which gets triggered every in game day.
+                            The function itself uses an if statement with a randomized value to decide if an event actually gets triggered or not.
+                            The EventManager can instead of a normal event also trigger the next step of an event chain.
+                            This will pop up as any normal event but will later pop up again with the next part of the story/chain.
+                            <br>By hovering over one of the events option buttons a popup window will appear with information about the effects of clicking the button.
+                            This window will follow the mouse cursor as long as the cursor is above a button.
+                            If the player clicks the button the shown effects will be triggered.
+                            These effects can remove or add resources and stability.
+                            The effects of an event button can also trigger a function.
+                            This is simply done using a integer value on a switch case.
+                            This switch has several cases which all trigger their related function.
+                            <pre>
+                            <code class="code">
 public void TriggerEventRelatedFunctions()
 {
     ProgressEventChain();
@@ -357,8 +358,8 @@ public void AddIncome(int toAdd, Type type)
                                     Stability as a value gets changed in the same way as the other resources.
                                     The only difference is that changing stability triggers the UpdateStability function.
                                     <br>
-                                    <br>Stability can only be gained/lost through events.
-                                    <br>When stability or food drops below a certain value the player get a few days to fix the problem or a “game over” will be triggered.
+                                    <br>Stability can only be gained or lost through events.
+                                    <br>When stability or food drops below a certain value the player gets a few days to fix the problem or a “game over” will be triggered.
                                 </p>
 
                                 <pre>
@@ -409,7 +410,7 @@ public void CheckGameover()
                             </b2>
 
 							<font size="6">
-							<u><b>SiteInteraction & Diplomacy</b></u>
+							<u><b>Site Interaction & Diplomacy</b></u>
                         </font> 
                         <b2>
                             <p>
@@ -419,7 +420,8 @@ public void CheckGameover()
                                 Here an insert function sends the interactable object to a function called ToggleInteractionPannels.
                                 This function takes the type of interactable object and its current state, using it to open\unlock the correct UI panels\Buttons.
                                 For example if the interactable object is a loot site it will unlock the pillage button and allow the player to loot it.
-                                If the interactable object is an island it will first have to be explored and if it has it will either give the option to pillage it if uninhabited or both pillaging and trade if inhabited.
+                                If the interactable object is an island it will first have to be explored.
+								If it has been explored it will either give the option to pillage it if uninhabited or both pillaging and trade if inhabited.
                             </p>
                             <pre>
                             <code class="code">
@@ -541,7 +543,7 @@ public void ToggleInteractionPannels(InteractableObjects interactableObjects)
                             <br>When looting, in case of an uninhabited island or loot site the player will get resources.
                             Looting an islands will give more resources in the category it has excess of.
                             After looting an island it gets locked from interaction for a few in game days.
-                            Loot site will give a sizable amount of one type of resource and then self-destruct disappearing under the water.
+                            Loot sites will give a sizable amount of one type of resource and then self-destruct disappearing under the water.
                             <br>
                             <br>When looting an inhabited island you will get mostly the same effects as an uninhabited island.
                             The notable difference is that after the island gets unlocked for further interaction you won’t be able to trade with them.
@@ -564,7 +566,7 @@ public void ToggleInteractionPannels(InteractableObjects interactableObjects)
                                 If your request is of the same type as their demand it will cost more to get. 
                                 <br>What the player demands and asks for can be freely changed.
                                 This is done using the arrow buttons underneath the excess and demand input fields.
-                                These change the resource the players demands or request.
+                                This changes the resource the players demands or request.
                                 They also trigger the CheckRequest and CheckDemand functions.
                                 Those functions makes sure the correct values get set and displayed.
 
@@ -612,9 +614,9 @@ public void CheckRequest(int value)
                                 If the islands opinion gets higher the max trade also gets higher.
                                 Trade left equals the amount already traded deducted from max trade.
                                 <br>Trading itself improves the relations between the player and the island, therefore increasing the max trade value.
-                                <br>To actually trade the player has to click the confirm button.
-                                This triggers the Confirm function which checks two factors.
-                                These factors are: If the players has the resources to pay for the transaction and if the player isn’t trying to pay the same as they demand.
+                                <br>To actually trade, the player has to click the confirm button.
+                                This triggers the Confirm function which checks three factors.
+                                These factors are: If the players has the resources to pay for the transaction, if the player isn’t trying to pay the same as they demand and if the player still has some amount of trade left.
                                 If they can trade, all values will be updated and the UI will be refreshed.
                             </p>
                             <pre>
