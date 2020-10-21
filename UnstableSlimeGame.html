@@ -1,0 +1,256 @@
+﻿<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>PortfolioKevinOtten</title>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+								<h1>UnstableSlimeGame</h1>
+								<div class="line"></div>
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="IndianaBones.html">IndianaBones</a></li>
+							<li><a href="Apex.html">Apex</a></li>
+							<li><a href="HexBasedMovementSystem.html">MovementSystem: HexBased</a></li>
+							<li><a href="NoMansBoat.html">NoMansBoat</a></li>
+							<li><a href="ARBusinessCard.html">ARBusinessCard</a></li>
+							<li><a href="UnstableSlimeGame.html">UnstableSlimeGame</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<span class="image main"><img src="images/UnstableSlimeGamePage01.png" alt="" style="max-height:800px; max-width:800px; margin: 10px auto 20px; margin-top: 40px" /></span>
+
+
+
+							<font size="6">
+							<u><b>The Game</b></u>
+							</font>
+
+							<b2>
+                            <p>
+                            <br>This game was a Game Jam project made for the GMTK Game Jam 2020. 
+							I made this together with a friend of mine. 
+							I ended up making all the code besides a couple of effects that get applied onto the player.
+							<br>
+							<br>The theme of this game jam was "Out of controll". 
+							The way we implemented this theme is by applying random effects to the player. 
+							These can be things like forcing the players movement or inverting them, speeding the player up, increasing jump height, freezing the player, etc.
+							<br>
+							<br>A Link to the the game provided below
+							<p><a class="link"href="https://itch.io/jam/gmtk-2020/rate/699074" target="_blank"><b2><u> Click Here </u></b2> to go to the games page </a></p>
+							</p>
+							</b2>
+
+							<font size="6">
+							<u><b>The random effects system</b></u>
+							</font>
+
+							<b2>
+                            <p>
+							<br>The main gimmick of the game is the effects system. 
+							This is the system that keeps applying the random effects to the player.
+							Before an effect gets triggered a UI element will be seen on screen this element will move towards the designated end point.
+							When it reaches this point the effect gets triggered.
+							This gives the player an idea of when the effect is going to get triggered and what effect it is going to be.
+							It is also possible for a double effect to trigger which means that shortly after the first effect a second effect will follow up basically creating a combo of effects.
+							This can be seen in the UI by the second image closely following the first image.
+							<br>
+							<span class="image main"><img src="images/UnstableSlimeGamePage02.gif" alt="" style="max-height:800px; max-width:800px; margin: 10px auto 20px; margin-top: 40px" /></span>
+							<br>This system works by picking a random effect, taking this together with a semi randomized timeTillNextEffect variable and giving it to a coroutine. 
+							This coroutine will then trigger the effect after the given time has passed.
+							The effects themself work independently from this system in their own classes. 
+							<pre>
+                            <code class="code" style="margin-top:40px;">
+    public void CreateIcon(Sprite sprite, float TimeToTravel)
+    {
+        GameObject icon = Instantiate(imagePrefab, start.position, Quaternion.identity);
+        icon.transform.SetParent(parent);
+
+        Movingimage imageScript = icon.GetComponent<Movingimage>();
+        imageScript.target = target;
+        icon.GetComponent<Image>().sprite = sprite;
+        imageScript.StartMovement(TimeToTravel);
+    }
+
+    public void QueNextEffect()
+    {
+        float timeTillNextEffect = Random.Range(minBetweenTime, MaxBetweenTime);
+
+        int nexteffectIndex = Random.Range(0, allEffects.Count);
+
+        StartCoroutine(TriggerEffect(timeTillNextEffect,allEffects[nexteffectIndex]));
+
+        if(Random.Range(0, 100) <= dubbleChanceValue)
+        {
+            doubleEffect = true;
+            Debug.Log("DoubleTrouble");
+            int nextDubbleffectIndex = nexteffectIndex;
+
+            while(nextDubbleffectIndex == nexteffectIndex)
+            {
+                nextDubbleffectIndex = Random.Range(0, allEffects.Count - 1);
+            }
+
+            StartCoroutine(TriggerEffect(timeTillNextEffect + 1, allEffects[nextDubbleffectIndex]));
+        }
+    }
+
+    private IEnumerator TriggerEffect(float time, Effects effect)
+    {
+        CreateIcon(effect.myIcon, time);
+        yield return new WaitForSeconds(time);
+        effect.Triggereffect(effectDuration);
+        if (!doubleEffect)
+            QueNextEffect();
+        else
+            doubleEffect = false;
+    }
+							</code>
+							</pre>
+							</b2>
+                            </p>
+
+							<font size="6">
+							<u><b>The movement/Input system</b></u>
+							</font>
+
+							<b2>
+                            <p>
+							<br>The input in this project is centralized in a single InputManager class.
+							This class consists of three parts.
+							<ul style="list-style-type:disc">
+									<li>Delegates to call for any type of input.</li>
+									<li>Update functions to detect the input.</li>
+									<li>Functions to call the specific input delegates.</li>
+							</ul>
+							The reason I use this system is to keep all Input centralized to make input related bugs easier to find and solve.
+							<br>
+							<br>The movement system gets called by one of these delegates who also takes with it the axis value of the WASD input (mainly A & D as its a 2D sidescroller).
+							It then multiplies the axis value with several modifiers to end up with the value needed to move.
+							It also checks for specific modifiers like if the player is in the air, reducing the speed of midair movement and if certain effects are active like inverted controls. 
+							<br>
+							<br>
+							To make the player move I modify the players velocity instead of position to make sure that the movement does not interfere with the physics of the game by for example phasing through walls. 
+							I also switch out the physics material on the player to a material with less friction. 
+							By doing this the player character won't get stuck on small bumps or stick to walls which they will otherwise do. 
+							When the player stands still this material will be switched back to one with more friction.
+							By doing this the player wont slide off of slanted surfaces or slide as if the floor is ice.
+
+
+							<pre>
+                            <code class="code" style="margin-top:40px;">
+    public void Move(float xAxis)
+    {
+        if(!inactiveControls)
+        {
+            myRigidbody.sharedMaterial = withoutFriction;
+
+            float xMove = xAxis * movementSpeed * 100;
+            xMove *= Time.deltaTime;
+            xMove *= movementModifier;
+
+            if(!grounded)
+            {
+                xMove *= MidAirSpeedModifier;
+            }
+
+            Vector2 toMove = new Vector2(0, 0);
+
+            if(!inverseControls)
+            {
+                toMove = new Vector2(xMove, myRigidbody.velocity.y);
+            }
+            else
+            {
+                toMove = new Vector2(-xMove, myRigidbody.velocity.y);
+            }
+
+            myRigidbody.velocity = toMove;
+
+            ManageAnimations(xAxis);
+        }
+    }
+                            </code>
+							</pre>
+
+							</p>
+							</b2>
+
+							<p><a class="link"href="https://github.com/Kevin-Otten/GMTKGameJam2020/tree/develop/GMTKGameJam2020/Assets/Code" target="_blank"><b2><u> Click Here </u></b2> to go to the Github </a></p>
+
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="mailto:kevin.otten@ziggo.nl" enctype="text/plain">
+									<div class="field half first">
+										<input type="text" name="name" id="name" placeholder="Name" />
+									</div>
+									<div class="field half">
+										<input type="email" name="email" id="email" placeholder="Email" />
+									</div>
+									<div class="field">
+										<textarea name="message" id="message" placeholder="Message"></textarea>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="special" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="https://github.com/KevinOttenDeltion" target="_blank" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="mailto:kevin.otten@ziggo.nl" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=Desert"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>
