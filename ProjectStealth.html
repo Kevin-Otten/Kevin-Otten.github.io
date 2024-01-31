@@ -1,0 +1,207 @@
+﻿<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>PortfolioKevinOtten</title>
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+</head>
+
+<body>
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+				<!-- Nav -->
+				<nav>
+					<ul>
+						<li><a href="#menu">Menu</a></li>
+					</ul>
+				</nav>
+				<h1>Project Stealth</h1>
+				<div class="line"></div>
+			</div>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="Deltion2018-2020.html">Deltion 2018-2020</a></li>
+				<li><a href="BUAS2021-2024.html">BUAS 2021-2024</a></li>
+				<li><a href="GameJams.html">GameJams</a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+
+				<font size="5">
+					<b> Team: 8 programmers & 15 designers.
+						<b> The AI Team specifically: 3 programmers & 1 designer.
+							<br> My role: AI programmer / "Assisting" designer.
+							<br> My contribution:
+						</b>
+				</font>
+				<b2>
+					<ul style="list-style-type:disc">
+						<li>AI Architecture</li>
+						<li>AI behaviour, mainly the suspicious state (Investigation state)</li>
+						<li>AI Audio Detection including walls blocking sound</li>
+						<li>Unreal World Partitioning</li>
+					</ul>
+				</b2>
+				</b>
+
+				<font size="6">
+					<u><b>The Game</b></u>
+				</font>
+
+				<b2>
+					<p>
+						<br>This game is a third person stealth assassination game set in Antwerp during "The Spanish
+						Fury - 1576".
+						You play as an Inventor/Toymaker who fought in the war but lost their arm replacing it for a
+						mechanical one.
+						Your goal in the game is to reach and eliminate a specific target, taking out Spanish soldiers
+						on the way.
+						Todo this the player can use their mechanical arm and other gadgets they have to their disposal.
+						<br>
+						<br><a class="link" href="https://store.steampowered.com/app/2707390/Silhouette/"
+							target="_blank">
+							<b2><u> The game can be found on steam through this link. </u></b2>
+						</a>
+						<br> At the time of writing the video on steam page is out of date.
+					</p>
+				</b2>
+
+				<div class="item">
+					<p class="item-heading">
+						<u><b>AI Architecture</b></u>
+					</p>
+					<b2>
+						<img src="images/StealthPage_01.png" class="image2" alt="Immage missing"
+							style="margin-top:20px; margin-right:15px;">
+						<br>
+						I setup the foundations for the AI to be build upon.
+						This includes things like the flow of the behaviour tree, the state machine but also C++
+						structures like the State class used to call the entry and exit functions of specific states.
+						I made sure switching states happens in one single place and makes sure entry, exit and specific
+						transitional functions get called at the right time.
+						There is also the Conditional check that like the state switching happens in one place where its
+						easy to oversee the flow and figure out any bugs or issues.
+						The image shows the "on paper" design of this I made using the program Miro.
+					</b2>
+				</div>
+
+				<font size="6">
+					<u><b>AI behaviour / Suspicious State (WIP)</b></u>
+				</font>
+
+				<b2>
+					<p>
+						<video width="75%" height="75%" autoplay muted loop style="margin-top:65px; margin-right:15px;">
+							<source src="video/StealthProject/AISusState.webm" type="video/webm" />
+						</video>
+					</p>
+					<br>For the AI I mainly worked on the suspicious (investigation) state.
+					I both implemented it and did some of the design while keeping close communication with the AI
+					designer who at the time was busy with other aspects of our game.
+					The AI is somewhat inspired by the games "Dishonoured" and "Plague tale" which we used as reference
+					for its behaviour.
+					The suspicious state was meant as an investigation state where the AI is not yet aware of the player
+					but it did see or hear something.
+					When the AI sees or hears something it will move towards the source using Unreal‘s "Environmental
+					query system" to get a more natural destination.
+					From there it will do one last movement to investigate and then return to its patrol or stationary
+					guarding position.
+					The AI can
+					<br>
+					At the time of writing group behaviour, including for the suspicious state, is planned but was not
+					yet added.
+					<br>
+					<br>
+				</b2>
+
+				<font size="6">
+					<u><b>Audio perception (WIP)</b></u>
+				</font>
+
+				<b2>
+					<p>
+						<video width="75%" height="75%" autoplay muted loop style="margin-top:65px; margin-right:15px;">
+							<source src="video/StealthProject/AudioDetetionExample.webm" type="video/webm" />
+						</video>
+					</p>
+					<br>I implemented the audio perception for the AI where a wall, by default, will block noise that
+					the AI would otherwhise detect.
+					This is done with several checks.
+					<li>If there even is a wall.</li>
+					<li>If the wall allows for noise to pass through it (a plank wall for example)</li>
+					<li>If sound could go over the wall by checking for a roof and the size of the wall</li>
+					<li>If sound could go around the wall using pathfinding (not perfect but close neough for the AI
+						bechaviour we want so far)</li>
+					Based on the outcomes of these test I allow the AI to detect the noise.
+				</b2>
+
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<section>
+					<h2>Get in touch</h2>
+					<form method="post" action="mailto:kevin.otten@ziggo.nl" enctype="text/plain">
+						<div class="field half first">
+							<input type="text" name="name" id="name" placeholder="Name" />
+						</div>
+						<div class="field half">
+							<input type="email" name="email" id="email" placeholder="Email" />
+						</div>
+						<div class="field">
+							<textarea name="message" id="message" placeholder="Message"></textarea>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Send" class="special" /></li>
+						</ul>
+					</form>
+				</section>
+				<section>
+					<h2>Follow</h2>
+					<ul class="icons">
+						<li><a href="https://github.com/KevinOttenDeltion" target="_blank"
+								class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="mailto:kevin.otten@ziggo.nl" class="icon style2 fa-envelope-o"><span
+									class="label">Email</span></a></li>
+					</ul>
+				</section>
+			</div>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=Desert"></script>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="assets/js/main.js"></script>
+</body>
+
+</html>
