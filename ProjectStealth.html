@@ -40,8 +40,8 @@
 			<h2>Menu</h2>
 			<ul>
 				<li><a href="index.html">Home</a></li>
-				<li><a href="Deltion2018-2020.html">Deltion 2018-2020</a></li>
 				<li><a href="BUAS2021-2024.html">BUAS 2021-2024</a></li>
+				<li><a href="Deltion2018-2020.html">Deltion 2018-2020</a></li>
 				<li><a href="GameJams.html">GameJams</a></li>
 			</ul>
 		</nav>
@@ -67,27 +67,31 @@
 				</b2>
 				</b>
 
-				<font size="6">
-					<u><b>The Game</b></u>
-				</font>
-
-				<b2>
-					<p>
-						<br>This game is a third person stealth assassination game set in Antwerp during "The Spanish
-						Fury - 1576".
-						You play as an Inventor/Toymaker who fought in the war but lost their arm replacing it for a
-						mechanical one.
-						Your goal in the game is to reach and eliminate a specific target, taking out Spanish soldiers
-						on the way.
-						Todo this the player can use their mechanical arm and other gadgets they have to their disposal.
-						<br>
-						<br><a class="link" href="https://store.steampowered.com/app/2707390/Silhouette/"
-							target="_blank">
-							<b2><u> The game can be found on steam through this link. </u></b2>
-						</a>
-						<br> At the time of writing the video on steam page is out of date.
+				<div class="item">
+					<p class="item-heading">
+						<u><b>The Game</b></u>
 					</p>
-				</b2>
+					<b2>
+						<p>
+							<br>This game is a third person stealth assassination game set in Antwerp during "The
+							Spanish
+							Fury - 1576".
+							You play as an Inventor/Toymaker who fought in the war but lost their arm replacing it for a
+							mechanical one.
+							Your goal in the game is to reach and eliminate a specific target, taking out Spanish
+							soldiers
+							on the way.
+							Todo this the player can use their mechanical arm and other gadgets they have to their
+							disposal.
+							<br>
+							<br><a class="link" href="https://store.steampowered.com/app/2707390/Silhouette/"
+								target="_blank">
+								<b2><u> The game can be found on steam through this link. </u></b2>
+							</a>
+							<br> At the time of writing the video on steam page is out of date.
+						</p>
+					</b2>
+				</div>
 
 				<div class="item">
 					<p class="item-heading">
@@ -108,55 +112,67 @@
 					</b2>
 				</div>
 
-				<font size="6">
-					<u><b>AI behaviour / Suspicious State (WIP)</b></u>
-				</font>
-
-				<b2>
-					<p>
-						<video width="75%" height="75%" autoplay muted loop style="margin-top:65px; margin-right:15px;">
-							<source src="video/StealthProject/AISusState.webm" type="video/webm" />
-						</video>
+				<div class="item">
+					<p class="item-heading">
+						<u><b>AI behaviour / Suspicious State (WIP)</b></u>
 					</p>
-					<br>For the AI I mainly worked on the suspicious (investigation) state.
-					I both implemented it and did some of the design while keeping close communication with the AI
-					designer who at the time was busy with other aspects of our game.
-					The AI is somewhat inspired by the games "Dishonoured" and "Plague tale" which we used as reference
-					for its behaviour.
-					The suspicious state was meant as an investigation state where the AI is not yet aware of the player
-					but it did see or hear something.
-					When the AI sees or hears something it will move towards the source using Unreal‘s "Environmental
-					query system" to get a more natural destination.
-					From there it will do one last movement to investigate and then return to its patrol or stationary
-					guarding position.
-					The AI can
-					<br>
-					At the time of writing group behaviour, including for the suspicious state, is planned but was not
-					yet added.
-					<br>
-					<br>
-				</b2>
 
-				<font size="6">
-					<u><b>Audio perception (WIP)</b></u>
-				</font>
+					<b2>
+						<p>
+							<video width="75%" height="75%" autoplay muted loop
+								style="margin-top:65px; margin-right:15px;">
+								<source src="video/StealthProject/AISusState.webm" type="video/webm" />
+							</video>
+						</p>
+						<br>For the AI I mainly worked on the suspicious (investigation) state.
+						I both implemented it and did some of the design while keeping close communication with the AI
+						designer who at the time was busy with other aspects of our game.
+						The AI is somewhat inspired by the games "Dishonoured" and "Plague tale" which we used as
+						reference
+						for its behaviour.
+						The suspicious state was meant as an investigation state where the AI is not yet aware of the
+						player
+						but it did see or hear something.
+						When the AI sees or hears something it will move towards the source using Unreal‘s
+						"Environmental
+						query system" to get a more natural destination.
+						From there it will do one last movement to investigate and then return to its patrol or
+						stationary
+						guarding position.
+						The AI can
+						<br>
+						At the time of writing group behaviour, including for the suspicious state, is planned but was
+						not
+						yet added.
+						<br>
+						<br>
+					</b2>
+				</div>
 
-				<b2>
-					<p>
-						<video width="75%" height="75%" autoplay muted loop style="margin-top:65px; margin-right:15px;">
-							<source src="video/StealthProject/AudioDetetionExample.webm" type="video/webm" />
-						</video>
+				<div class="item">
+					<p class="item-heading">
+						<u><b>Audio perception (WIP)</b></u>
 					</p>
-					<br>I implemented the audio perception for the AI where a wall, by default, will block noise that
-					the AI would otherwhise detect.
-					This is done with several checks.
-					<li>If there even is a wall.</li>
-					<li>If the wall allows for noise to pass through it (a plank wall for example)</li>
-					<li>If sound could go over the wall by checking for a roof and the size of the wall</li>
-					<li>If sound could go around the wall using pathfinding (not perfect but close neough for the AI
-						bechaviour we want so far)</li>
-					Based on the outcomes of these test I allow the AI to detect the noise.
-				</b2>
+
+					<b2>
+						<p>
+							<video width="75%" height="75%" autoplay muted loop
+								style="margin-top:65px; margin-right:15px;">
+								<source src="video/StealthProject/AudioDetetionExample.webm" type="video/webm" />
+							</video>
+						</p>
+						<br>I implemented the audio perception for the AI where a wall, by default, will block noise
+						that
+						the AI would otherwhise detect.
+						This is done with several checks.
+						<li>If there even is a wall.</li>
+						<li>If the wall allows for noise to pass through it (a plank wall for example)</li>
+						<li>If sound could go over the wall by checking for a roof and the size of the wall</li>
+						<li>If sound could go around the wall using pathfinding (not perfect but close neough for the AI
+							bechaviour we want so far)</li>
+						Based on the outcomes of these test I allow the AI to detect the noise.
+					</b2>
+				</div>
 
 			</div>
 		</div>
