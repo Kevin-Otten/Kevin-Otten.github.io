@@ -2852,18 +2852,25 @@ button:disabled,
 }
 
 /* Tiles */
+.tiles-section-title {
+	font-size: 48px;
+	font-weight: bold;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	text-align: center;
+}
+
 
 .tiles {
-	display: -moz-flex;
-	display: -webkit-flex;
-	display: -ms-flex;
 	display: flex;
+  	justify-content: center;
+  	align-items: flex-start;
 	-moz-flex-wrap: wrap;
 	-webkit-flex-wrap: wrap;
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 	postiion: relative;
-	margin: -2.5em 0 0 -2.5em;
+	margin: 0em 0 0 -2.5em;
 }
 
 .tiles article {
@@ -3803,4 +3810,45 @@ code {
 .item-heading {
 	font-size: 2rem;
 	margin-bottom: 0;
+}
+
+.tag {
+    display: inline;
+    padding: 0.2em 0.6em 0.3em;
+    font-size: 85%;
+    font-weight: 400;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25em;
+    margin: 4em 1em 4em 0 !important;
+}
+.tag-default {
+    background-color: #777;
+}
+
+.tag-important {
+    background-color: #da1818;
+}
+
+.tag-topic {
+    background-color: #de7614;
+}
+
+.tag-method {
+    background-color: #30c503;
+}
+
+.tag-method-engine {
+    background-color: #1e7f00;
+}
+
+.mb-2 {
+    margin-bottom: .5rem !important;
+}
+
+.l-1 {
+    line-height: 2
 }

@@ -21,7 +21,11 @@
 	<!-- Wrapper -->
 	<div id="wrapper">
 		<!-- Video -->
-
+		<!-- <header id="header">
+			<video width="100%" height="100%" autoplay muted loop style="margin-bottom: 50px;">
+				<source src="video/Index/AI_Investigating&Death.webm" type="video/webm" />
+			</video>
+		</header> -->
 		<!-- Header -->
 		<header id="header">
 			<div class="inner">
@@ -31,15 +35,10 @@
 						<li><a href="#menu">Menu</a></li>
 					</ul>
 				</nav>
-				<header>
-					<h1>
-						About me
-						<div class="line"></div>
-						<img class="avatarimage" src="images/ProfilePick.jpg" alt="ProfilePicture"
-							style="background-size: cover">
-					</h1>
-				</header>
 				<b>
+					<h1>
+					<img class="avatarimage" src="images/ProfilePick.png" alt="ProfilePicture" style="background-size: cover">
+					</h1>
 					<font size="6">
 						<p><u><b>My name is Kevin Otten</b></u>
 					</font>
@@ -47,10 +46,9 @@
 				<b2>
 					<br>
 					<br>I am a Gameplay/AI programmer with an interest in Tech Design.
-					<br>I have about 4 years of experience with Unity C# development and 2-3 years of C++ with rougly a
-					year and a half of Unreal development.
-					<br>
-					<br>PORTFOLIO IS WIP
+					<br>I have about 4 years of experience with Unity C# development and 2-3 years of C++ with roughly a
+					year and a half of Unreal development. I also have some limited experiecne with Rust.
+					<br>Besides AI and general game development I also have experience developing for VR and AR.
 				</b2>
 			</div>
 		</header>
@@ -65,44 +63,226 @@
 			</ul>
 		</nav>
 		<!-- About Me -->
-
+		<div id="AboutMeSection">
+			<div class="inner">
+				<section>
+					<h2>languages</h2>
+						<ul style="list-style-type:disc">
+							<li>C++</li>
+							<li>C#</li>
+							<li>Some Rust</li>
+							<li>HTML & CSS Edeting</li>
+						</ul>
+				</section>
+				<section>
+					<h2>Engines</h2>
+					<ul style="list-style-type:disc">
+						<li>Unreal</li>
+						<li>Unity</li>
+					</ul>
+				</section>
+			</div>
+		</div>
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
+				<h2 class="tiles-section-title"> AI Projects </h2>
+				<div class="line"></div>
 				<section class="tiles">
-					<article class="style3">
+					<article class="style1">
 						<span class="image">
-							<img src="images/MainPageIndianaBones.jpg" alt="" />
+							<img src="images/MainPageStealth.jpg" alt="" />
 						</span>
-						<a href="BUAS2021-2024.html">
-							<h2>2021 - 2024 (and upcoming 2025) WIP</h2>
+						<a href="ProjectStealth.html">
+							<h2>Stealth AI</h2>
+							<div class="mb-2 l-1">
+								<span class="tag tag-important">WIP</span>
+								<span class="tag tag-topic">AI</span>
+								<span class="tag tag-method">C/C++</span>
+								<span class="tag tag-method">Blueprint</span>
+								<span class="tag tag-method">Behaviour Tree & EQS</span>
+								<span class="tag tag-method-engine">Unreal</span>
+							</div>
 							<div class="content">
-								<p>My projects from the above mentioned period. I was studying Game programming at BUAS
-									(Breda University Of Aplied Sciences)</p>
+								<p>This page shows of the current progress on the stealth AI for my BUAS year 3 school project "Sicaria" currently available on steam</p>
 							</div>
 						</a>
 					</article>
-					<article class="style3">
+					<article class="style1">
 						<span class="image">
-							<img src="images/MainPageIndianaBones.jpg" alt="" />
+							<img src="images/MainPageCleansing.png" alt="" />
 						</span>
-						<a href="Deltion2018-2020.html">
-							<h2>2018 - 2020</h2>
+						<a href="TheCleansing.html">
+							<h2>Flying AI height handling</h2>
+							<div class="mb-2 l-1">
+								<span class="tag tag-topic">AI</span>
+								<span class="tag tag-method">Blueprint</span>
+								<span class="tag tag-method-engine">Unreal</span>
+							</div>
 							<div class="content">
-								<p>My projects from the above mentioned period. I was studying a general course for
-									gamdevelopment at Deltion College in Zwolle, Netherlands</p>
+								<p>This page shows some of my contributions for my year 2 school project "The Cleansing" a PVE first person shooter</p>
 							</div>
 						</a>
 					</article>
-					<article class="style3">
+					<article class="style1">
+						<span class="image">
+							<img src="images/MainPagePharadroid.png" alt="" />
+						</span>
+						<a href="Pharadroid.html">
+							<h2>Topdown combat AI</h2>
+							<div class="mb-2 l-1">
+								<span class="tag tag-topic">AI</span>
+								<span class="tag tag-method">Blueprint</span>
+								<span class="tag tag-method">Behaviour Tree & EQS</span>
+								<span class="tag tag-method-engine">Unreal</span>
+							</div>
+							<div class="content">
+								<p>This page shows some of my contribution for my year 1 school project "Pharadroid" a PVE topdown shooter where you can take over your enemy</p>
+							</div>
+						</a>
+					</article>
+				</section>
+				<h2 class="tiles-section-title"> VR and AR </h2>
+				<div class="line"></div>
+				<section class="tiles">
+					<article class="style1">
+						<span class="image">
+							<img src="images/MainPageApex.jpg" alt="" />
+						</span>
+						<a href="Apex.html">
+							<h2>ApeX</h2>
+							<div class="mb-2 l-1">
+								<span class="tag tag-topic">VR Menu & Movement</span>
+								<span class="tag tag-method">C#</span>
+								<span class="tag tag-method-engine">Unity</span>
+							</div>
+							<div class="content">
+								<p>Some of my work on this VR escape room</p>
+							</div>
+						</a>
+					</article>
+					<article class="style1">
+						<span class="image">
+							<img src="images/ARBusinessCardPage01.png" alt="" />
+						</span>
+						<a href="ARBusinessCard.html">
+							<h2>AR Business Card</h2>
+							<div class="mb-2 l-1">
+								<span class="tag tag-topic">AR</span>
+								<span class="tag tag-method">C#</span>
+								<span class="tag tag-method-engine">Unity</span>
+							</div>
+							<div class="content">
+								<p>An AR business card application made together with another intern</p>
+							</div>
+						</a>
+					</article>
+				</section>
+				<h2 class="tiles-section-title"> Tech Projects </h2>
+				<div class="line"></div>
+				<section class="tiles">
+					<article class="style1">
+						<span class="image">
+							<img src="images/Cog.png" alt="" />
+						</span>
+						<a href="FPSEngine.html">
+							<h2>FPS Engine</h2>
+							<div class="mb-2 l-1">
+								<span class="tag tag-topic">Engine Input & Player Controller</span>
+								<span class="tag tag-method">C/C++</span>
+								<span class="tag tag-method-engine">Custom Engine</span>
+							</div>
+							<div class="content">
+								<p>This page shows my contributions to the year 2 engine project where we made a game engine for FPS genre games</p>
+							</div>
+						</a>
+					</article>
+					<article class="style1">
+						<span class="image">
+							<img src="images/Raytracer/ShowcaseScene.PNG" alt="" />
+						</span>
+						<a href="Raytracer.html">
+							<h2>Raytracer</h2>
+							<div class="mb-2 l-1">
+								<span class="tag tag-topic">RayTracer</span>
+								<span class="tag tag-topic">Whitted-style</span>
+								<span class="tag tag-method">C/C++</span>
+								<span class="tag tag-method-engine">Visual Studio</span>
+							</div>
+							<div class="content">
+								<p>This page shows the raytracer I made in my first year at BUAS</p>
+							</div>
+						</a>
+					</article>
+				</section>
+				<h2 class="tiles-section-title"> GameJams and personal projects</h2>
+				<div class="line"></div>
+				<section class="tiles">
+					<article class="style1">
 						<span class="image">
 							<img src="images/MainPageUnstableSlimeGame.png" alt="" />
 						</span>
-						<a href="GameJams.html">
-							<h2>GameJams</h2>
+						<a href="UnstableSlimeGame.html">
+							<h2>GMTK 2020</h2>
+							<div class="mb-2 l-1">
+								<span class="tag tag-topic">GameJam: Platformer</span>
+								<span class="tag tag-method">C#</span>
+								<span class="tag tag-method-engine">Unity</span>
+							</div>
 							<div class="content">
-								<p>Some of the GameJams I worked on that I found to be fun and sucessfull. Feel free to
-									ignore them.</p>
+								<p>GMTK 2020 entry for the theme "Out Of Controll". Its A 2D platformer where the players controlls get affected by special effects</p>
+							</div>
+						</a>
+					</article>
+					<article class="style1">
+						<span class="image">
+							<img src="images/MainPageHex.jpg" alt="" />
+						</span>
+						<a href="HexBasedMovementSystem.html">
+							<h2>HexBased movement system</h2>
+							<div class="mb-2 l-1">
+								<span class="tag tag-topic">Pathfinding</span>
+								<span class="tag tag-method">C#</span>
+								<span class="tag tag-method-engine">Unity</span>
+							</div>
+							<div class="content">
+								<p>My first attempt at implementing A*. In the context of a hex based stratagy game</p>
+							</div>
+						</a>
+					</article>
+				</section>
+				<h2 class="tiles-section-title"> Other Projects </h2>
+				<div class="line"></div>
+				<section class="tiles">
+					<article class="style1">
+						<span class="image">
+							<img src="images/MainPageIndianaBones.jpg" alt="" />
+						</span>
+						<a href="IndianaBones.html">
+							<h2>Misc mechanics and systems</h2>
+							<div class="mb-2 l-1">
+								<span class="tag tag-topic">General Purpose Development</span>
+								<span class="tag tag-method">C#</span>
+								<span class="tag tag-method-engine">Unity</span>
+							</div>
+							<div class="content">
+								<p>One of my first group projects where I primaraly worked on puzzle elements, level ingriedients and progression/save system</p>
+							</div>
+						</a>
+					</article>
+					<article class="style1">
+						<span class="image">
+							<img src="images/MainPageNoMansBoat01.jpg" alt="" />
+						</span>
+						<a href="NoMansBoat.html">
+							<h2>Trade and quest system</h2>
+							<div class="mb-2 l-1">
+								<span class="tag tag-topic">Economy, Events, Diplomacy & UI</span>
+								<span class="tag tag-method">C#</span>
+								<span class="tag tag-method-engine">Unity</span>
+							</div>
+							<div class="content">
+								<p>A civilization management and survival game</p>
 							</div>
 						</a>
 					</article>
