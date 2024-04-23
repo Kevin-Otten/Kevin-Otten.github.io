@@ -3474,14 +3474,10 @@ body.is-menu-visible #menu .close {
 }
 
 .about-me-section {
+	flex-basis: 0;
+	flex: 1 1 0px;
     align-items: center;
 	text-align: center;
-    margin: 0px 100px;
-}
-
-.section-content {
-    text-align: left;
-    display: inline-block;
 }
 
 .about-me-section ul {
