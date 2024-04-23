@@ -3477,6 +3477,7 @@ body.is-menu-visible #menu .close {
 .about-me-section {
 	flex-basis: 0;
 	flex: 1 1 0px;
+	margin-top: 40px;
     align-items: center;
 	text-align: center;
 }
