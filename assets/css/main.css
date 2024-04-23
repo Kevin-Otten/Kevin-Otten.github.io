@@ -3471,6 +3471,7 @@ body.is-menu-visible #menu .close {
     box-sizing: border-box;
     display: flex;
     justify-content: center;
+
 }
 
 .about-me-section {
@@ -3724,4 +3725,9 @@ code {
 
 .l-1 {
     line-height: 2
+}
+
+.higlight-text{
+	color: #E77728;
+	font-weight: bolder;
 }
