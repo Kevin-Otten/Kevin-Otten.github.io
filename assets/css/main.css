@@ -2114,7 +2114,7 @@ header p {
 	-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 	background-color: transparent;
-	border: solid 1px #E77728;
+	border: solid 1px #f79945;
 	border-radius: 4px;
 	width: 2.65em;
 	height: 2.65em;
@@ -2129,8 +2129,8 @@ header p {
 }
 
 .icon.style2:hover {
-	color: #E77728;
-	border-color: #E77728;
+	color: #f79945;
+	border-color: #f79945;
 }
 
 .icon.style2:active {
@@ -2386,7 +2386,7 @@ textarea {
 	background-color: transparent;
 	border: none;
 	border-radius: 0;
-	border-bottom: solid 1px #E77728;
+	border-bottom: solid 1px #f79945;
 	color: inherit;
 	display: block;
 	outline: 0;
@@ -2539,7 +2539,7 @@ input[type="radio"]+label:before {
 	margin: auto;
 	width: 50%;
 	height: inherit;
-	border-bottom: 2px solid #E77728;
+	border-bottom: 2px solid #f79945;
 	position: relative;
 }
 
@@ -2547,7 +2547,7 @@ input[type="radio"]+label:before {
 	margin: left;
 	width: 15%;
 	height: inherit;
-	border-bottom: 2px solid #E77728;
+	border-bottom: 2px solid #f79945;
 	position: relative;
 }
 
@@ -2814,10 +2814,10 @@ button.special,
 .button.special {
 	box-shadow: none;
 	background-color: #2D3047;
-	color: #E77728 !important;
+	color: #f79945 !important;
 	border-radius: 4px;
 	border: 0;
-	border: 1px solid #E77728;
+	border: 1px solid #f79945;
 }
 
 input[type="submit"].special:hover,
@@ -2974,7 +2974,7 @@ button:disabled,
 	padding: 1em;
 	border-radius: 4px;
 	border-bottom: 0;
-	color: #E77728;
+	color: #f79945;
 	text-align: center;
 	text-decoration: none;
 	z-index: 3;
@@ -3204,7 +3204,7 @@ body.is-touch .tiles article .content {
 	text-transform: uppercase;
 	border-radius: 4px;
 	border: 0;
-	border: 1px solid #E77728;
+	border: 1px solid #f79945;
 }
 
 #header nav ul li a[href="#menu"] {
@@ -3654,7 +3654,7 @@ body.is-menu-visible #menu .close {
 
 #wrapper>*>.inner {
 	width: 100%;
-	max-width: 68em;
+	max-width: 80%;
 	margin: 0 auto;
 	padding: 0 2.5em;
 }
@@ -3685,6 +3685,15 @@ code {
 .item-heading {
 	font-size: 2rem;
 	margin-bottom: 0;
+	font-weight: bold;
+	color: #f79945;
+}
+
+.heading{
+	font-size: 2rem;
+	margin-bottom: 0;
+	font-weight: bold;
+	color: #f79945;
 }
 
 .tag {
@@ -3729,6 +3738,24 @@ code {
 }
 
 .higlight-text{
-	color: #E77728;
+	color: #f79945;
 	font-weight: bolder;
 }
+
+.home-btn {
+	position: fixed;
+	top: 40px;
+	right: 40px;
+	padding: 10px 20px;
+	border: 2px solid #f79945;
+	border-radius: 5px;
+	color: #f79945;
+	background-color: transparent;
+	text-decoration: none;
+	transition: color 0.3s, border-color 0.3s;
+  }
+  
+  .home-btn:hover {
+	color: #2d3047;
+	border: 2px solid #2d3047;
+  }

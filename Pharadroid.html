@@ -20,87 +20,122 @@
 <body>
 	<!-- Wrapper -->
 	<div id="wrapper">
-
+		<a href="index.html" class="home-btn">Home</a>
 		<!-- Header -->
 		<header id="header">
 			<div class="inner">
-				<!-- Nav -->
-				<nav>
-					<ul>
-						<li><a href="#menu">Menu</a></li>
-					</ul>
-				</nav>
-				<h1>Pharadroid (Page=WIP)</h1>
+				<h1>Pharadroid</h1>
 				<div class="line"></div>
 			</div>
 		</header>
-
-		<!-- Menu -->
-		<nav id="menu">
-			<h2>Menu</h2>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="BUAS2021-2024.html">BUAS 2021-2024</a></li>
-				<li><a href="Deltion2018-2020.html">Deltion 2018-2020</a></li>
-				<li><a href="GameJams.html">GameJams</a></li>
-			</ul>
-		</nav>
-
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
 
-				<font size="5">
-					<b> Team: 4 programmers, 5 designers & 5 artists.
-						<br> My role: AI/Gamepaly Programmer.
-						<br> My contribution:
-					</b>
-				</font>
+				<!-- Heading -->
 				<b2>
-					<ul style="list-style-type:disc">
-						<li>All of the AI</li>
+				<span class="heading">Team:</span>
+					4 programmers, 5 designers & 5 artists.<br>
+				<span class="heading">Project period:</span>
+					 2022, for an 8 weeks period.<br>
+				<span class="heading">My role:</span>
+					 AI/Gamepaly Programmer.<br>
+				<span class="heading">My contribution:</span>
+					<ul>
+						<li>AI Behaviour</li>
 						<li>Skillshot transfer mechanic</li>
 						<li>Assisting development where I could</li>
 					</ul>
 				</b2>
-				</b>
 
+				<!-- Work Items -->
 				<div class="item">
-					<p class="item-heading">
-						<u><b>The Game</b></u>
-					</p>
+					<div class="item-heading">
+						<u>The Game</u>
+					</div>
 					<b2>
 						<p>
-							<br>The game is a 2.5D shooter where you can transfer to an enemy’s body.
-							While the enemies themselves are all the same in behaviour they have a rock paper scissors weakness system based on their colour.
-							As already mentioned you can switch bodies with enemies leaving your own to be taken over by the AI.
-							This is useful to pick a healthier and potentially stronger body for taking out the remaining enemies.
-							<br>
+							The game is a 2.5D shooter where you can transfer to an enemies body. 
+							While the enemies themselves are all the same in behavior, they have a rock-paper-scissors weakness system based on their color.
+							As already mentioned, you can switch bodies with the enemies, leaving your own to be turned into an enemy.
+							This is used to pick a healthier and potentially stronger body to clear the level. <br>
 							<br><a class="link" href="https://buas.itch.io/2122-y1d-team-9" target="_blank">
 								<b2><u> The game can be found on Itch.io through this link. </u></b2>
 							</a>
 						</p>
 					</b2>
 				</div>
-
 				<div class="item">
-					<p class="item-heading">
-						<u><b>My contributions</b></u>
-					</p>
+					<div class="item-heading">
+						<u>The AI</u>
+					</div>
 					<b2>
-						<video width="75%" height="75%" autoplay muted loop style="margin-top:65px; margin-right:15px;">
-							<source src="video/PharaDroid/AI_Placeholder.webm" type="video/webm" />
+						<p>
+							<span class="higlight-text">Process:</span>
+							I worked on all of the AI behavior for the game alongside one of our designers.
+							My main task here was implementing the behavior based on design and communicating actively with him to make sure everything stays on track and to promote continuous iteration. 
+							Since I was learning how to use Unreal, how to use behavior trees, and how to use EQS, a lot of the work was also learning all of these systems. 
+							During development, as I mentioned before, I kept showing the progress to my designer, giving my opinion on the current behavior and getting his.
+							From there on, I iterated and expanded on the AI.
+						</p>
+						<video width="75%" height="75%" autoplay muted loop style="margin-bottom:30px;">
+							<source src="video/PharaDroid/Pharadroid_AIBehavhiour.webm" type="video/webm">
 						</video>
-						<video width="75%" height="75%" autoplay muted loop style="margin-top:65px; margin-right:15px;">
-							<source src="video/PharaDroid/Transfer_Palceholder.webm" type="video/webm" />
-						</video>
-						<br> The current videos are placeholders, they show the mechanics mid development although already mostly developed. 
-						Will be replaced with final versions soon.
-						They show some of the AI behaviour which uses unreal’s EQS (Environmental query system) for positioning.
-						The other video shows the transfer mechanic in action plus the associated semi homing skill shot.
+						<p>
+							<span class="higlight-text">Implementation:</span>
+							The main goal was to get an AI that would strafe around the player stopping and shooting bursts of projectiles while giving the player enough time to react and dodge.
+							I managed this using EQS (Environmental Query System), which allows for taking information from the environment and using it to decide on the AI's actions.
+							This is primarily used by our AI to decide where it should move to by doing checks like Line Of Sight, closest point at a minimum distance, etc.
+							By using this system instead of doing things manually, we could get a lot of detailed behavior done quickly.
+						</p>
 					</b2>
 				</div>
-
+				<div class="item">
+					<div class="item-heading">
+						<u>The Transfer Mechanic</u>
+					</div>
+					<b2>
+						<p>
+							<span class="higlight-text">Process:</span>
+							Besides the AI, I also worked on the mechanic that allows the player to transfer bodies.
+							The team wanted an ability to switch bodies that required some skill to perform, nothing too difficult though.
+							It started as a straight-shooting bullet which was then changed by a designer, without communicating, to a "hold to transfer" mechanic because it was too hard to hit using a controller.
+							After some complaints of all skill expression being removed due to these sudden changes, 
+							we turned it into a semi-homing bullet which addresses both the difficulty of hitting the target and the skill requirement of needing to aim while also unintentionally adding more interesting and overall fun scenarios since the bullet could now curve around the original target and hit another AI instead.
+							Like with the AI behavior, I periodically asked for feedback to keep the iterative workflow going.
+						</p>
+						<video width="75%" height="75%" autoplay muted loop style="margin-bottom:30px;">
+							<source src="video/PharaDroid/Pharadroid_Transfer.webm" type="video/webm" />
+						</video>
+						<p>
+							<span class="higlight-text">Implementation:</span>
+							The implementation of the homing bullet was relatively simple since we could use Unreal's built-in projectile system.
+							Swapping bodies was done by unpossessing the AI controller from the actor and transferring the controls to the player.
+							The AI stayed focused on the old body until it was repossessed by a new AI controller.
+							Since the body is the same for both the AI and the player, they share everything from 'Ammo' to HP (AI, however, does not use the ammo since this could cause a soft lock or just unfun situations where you run out of ammo almost immediately on transfer). 
+							While AI does look for line of sight, they will shoot after moving and can, therefore, perform friendly fire.
+							This was intentional behavior the player could abuse by transferring at the right time to kill their old body or to line AI up to shoot each other.
+						</p>
+					</b2>
+				</div>
+				<div class="item">
+					<div class="item-heading">
+						<u>My Reflection</u>
+					</div>
+					<b2>
+						<p>
+							This project was the first time I touched Unreal, behavior trees, and EQS (Environmental Query System), but the results were quite good given the context and the time we had.
+							The AI behavior went well with me getting a good bit of help understanding the behavior trees and EQS from someone in our team who already had some experience with this.
+							The only 'negative' point would be the communication issues we had with the transfer mechanic and how to implement it, but we resolved this with a short discussion.
+							Overall, the project didn't really have any conflicts or particularly challenging issues that took a lot to overcome.
+							<br>
+							<br>
+							I learned the importance of keeping up direct communication with the team, working closely with my designers and iterating on work frequently while developing a feature.
+							Besides this, the project also showed the importance of communicating potential changes instead of forcing them through without mentioning it.
+							The transfer ability being an example of a mechanic that could have gone a lot smoother if all invlolved parties discussed the issues and the options to fix it instead of acting too quickly.
+						</p>
+					</b2>
+				</div>
 			</div>
 		</div>
 
