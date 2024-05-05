@@ -31,57 +31,55 @@
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
-
-				<font size="5">
-					<b> Team: 2 Programmers & 2 artists.
-						<br> My role: Lead Programmer.
-						<br> My contribution:
-					</b>
-				</font>
+				<!-- Heading -->
 				<b2>
-					<ul style="list-style-type:disc">
-						<li>SaveGame/Progression system</li>
-						<li>UI logic & UI relevant animations</li>
-						<li>Puzzle elements & system</li>
-						<li>Shop system</li>
-						<li>Movement: jumping</li>
-						<li>InteractableObjects</li>
-						<li>Options/Sound & Quality settings</li>
-					</ul>
-				</b2>
-				</b>
-
-				<font size="6">
-					<u><b>Preface</b></u>
-				</font>
-				<b2>
-					<br>On this page I'll explain how the following Systems work:
-					<ul style="list-style-type:disc">
-						<li><a class="link"
-								href="https://github.com/PeterBosDeltion/IndianaBonesRepo/blob/master/IndianaBones/Assets/GameFiles/Scripts/TriggerdObjects/SaveTrigger.cs"
-								target="_blank">
-								<b2><u> SaveGame/Progression system </u></b2>
-							</a></li>
-						A progression System that uses savestates and saved data to close of paths and Place the player
-						back and the Hub/Start room.
-						<li><a class="link"
-								href="https://github.com/PeterBosDeltion/IndianaBonesRepo/tree/master/IndianaBones/Assets/GameFiles/Scripts/Puzzles"
-								target="_blank">
-								<b2><u> Puzzle elements & system </u></b2>
-							</a></li>
-						The puzzle system itself, A puzzle that resembles the pillar puzzles from Skyrim and a puzzle
-						element used in the TimeJumpPuzzle.
-						<li><a class="link"
-								href="https://github.com/PeterBosDeltion/IndianaBonesRepo/blob/master/IndianaBones/Assets/GameFiles/Scripts/InteractableObject.cs"
-								target="_blank">
-								<b2><u> InteractableObjects </u></b2>
-							</a></li>
-						A system used to interact with objects and then Trigger its Triggered object.
-					</ul>
-				</b2>
-				</b>
-				</font>
-
+					<span class="heading">Team:</span>
+						2 programmers, 2 artists.<br>
+					<span class="heading">Project period:</span>
+						2018, for roughly a 8-10 week period.<br>
+					<span class="heading">My role:</span>
+						Gameplay Programmer and PR Lead.<br>
+					<span class="heading">My contribution:</span>
+						<ul>
+							<li>SaveGame/Progression system</li>
+							<li>UI logic & UI relevant animations</li>
+							<li>Puzzle elements & system</li>
+							<li>Shop system</li>
+							<li>Movement: jumping</li>
+							<li>InteractableObjects</li>
+							<li>Options/Sound & Quality settings</li>
+						</ul>
+					</b2>
+				<!-- Work Items -->
+				<div class="item">
+					<div class="item-heading">
+						<u>Preface</u>
+					</div>
+					<b2>
+						<br>On this page I'll explain how the following Systems work:
+						<ul style="list-style-type:disc">
+							<li><a class="link"
+									href="https://github.com/PeterBosDeltion/IndianaBonesRepo/blob/master/IndianaBones/Assets/GameFiles/Scripts/TriggerdObjects/SaveTrigger.cs"
+									target="_blank">
+									<b2><u> SaveGame/Progression system </u></b2>
+								</a></li>
+							A progression System that uses savestates and saved data to close of paths and Place the player
+							back and the Hub/Start room.
+							<li><a class="link"
+									href="https://github.com/PeterBosDeltion/IndianaBonesRepo/tree/master/IndianaBones/Assets/GameFiles/Scripts/Puzzles"
+									target="_blank">
+									<b2><u> Puzzle elements & system </u></b2>
+								</a></li>
+							The puzzle system itself, A puzzle that resembles the pillar puzzles from Skyrim and a puzzle
+							element used in the TimeJumpPuzzle.
+							<li><a class="link"
+									href="https://github.com/PeterBosDeltion/IndianaBonesRepo/blob/master/IndianaBones/Assets/GameFiles/Scripts/InteractableObject.cs"
+									target="_blank">
+									<b2><u> InteractableObjects </u></b2>
+								</a></li>
+							A system used to interact with objects and then Trigger its Triggered object.
+						</ul>
+					</b2>
 				<span class="image main"><img src="images/IndianaBonesPage01.jpg" alt="" /></span>
 
 				<font size="6">
@@ -109,8 +107,7 @@
 				</font>
 
 				<b2>
-					<p><img src="images/IndianaBonesPage02.gif" class="image2" alt="Gif missing"
-							style="margin-top:65px; margin-right:15px;">
+					<p><img src="images/IndianaBonesPage02.gif" alt="Gif missing" style="max-width: 100%; display: block;">
 						<br>The progression in the game is semi linear.
 						The way I did this is by allowing the player to choose a path and then forcing the door closed
 						after they enter one of these paths.
@@ -124,8 +121,7 @@
 						This will use static variables representing the Players values like hp and coins that get
 						updated when changed during the game.
 						These are used to fill the rest of the save template and that will save the template in binary.
-						<br><img src="images/IndianaBonesPage03.gif" class="image2" alt="Gif missing"
-							style="margin-top:20px;margin-right:15px;">
+						<br><img src="images/IndianaBonesPage03.gif" alt="Gif missing" style="max-width: 100%; display: block;">
 						The scene will be reloaded with the new savedata and because of a lack of player coordinates
 						they will be placed in the start room.
 						When the SaveTrigger class loads and cannot confirm a filled save file, it will make a private
@@ -206,8 +202,7 @@
 					Puzzle Trigger function in the puzzle class.
 					This takes the information and uses it to perform the appropriate action.
 
-					<p><img src="images/IndianaBonesPage04.gif" class="image2" alt="Gif missing"
-							style="margin-top:42px; margin-right:15px;">
+					<p><img src="images/IndianaBonesPage04.gif" alt="Gif missing" style="max-width: 100%; display: block;">
 						<br>I personally made one of the puzzles and a puzzle element for the parkour path.
 						The puzzle I made was a Skyrim style Turn-Stone Puzzle.
 						This puzzle works by turning pillars with markings on each side.
@@ -267,8 +262,7 @@
 							</code>
 							</pre>
 
-					<br><img src="images/IndianaBonesPage05.gif" class="image2" alt="Gif missing"
-						style="margin-top:42px; margin-right:15px;">
+					<br><img src="images/IndianaBonesPage05.gif" alt="Gif missing" style="max-width: 100%; display: block;">
 
 					<br>The puzzle element I made was a wooden beam used as a platforming challenge or just as floor to
 					stand on.
@@ -322,8 +316,7 @@
 				</font>
 
 				<b2>
-					<p><img src="images/IndianaBonesPage06.gif" class="image2" alt="Gif missing"
-							style="margin-top:42px; margin-right:15px;">
+					<p><img src="images/IndianaBonesPage06.gif" alt="Gif missing" style="max-width: 100%; display: block;">
 
 						<br>The Interactable Objects system works by using interactable objects and triggered Objects.
 						Interactable objects are all the Objects The player can interact with like buttons and levers.

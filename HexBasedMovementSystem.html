@@ -31,61 +31,54 @@
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
-
-				<b>
-					<font size="6">
-						<u>What I made</u>
-					</font>
-				</b>
-
+				<!-- Heading -->
 				<b2>
-					<p>
-						<br>I made a hex based movement system using AStar.
-						I made this because of my interest in stratagy games.
+					<span class="heading">Team:</span>
+						Personal Project<br>
+					<span class="heading">Project period:</span>
+						2018, for a short period of time.<br>
+					<span class="heading">My contribution:</span>
+						I made a hex based movement system using AStar for pathfinding.
+				</b2>
+				<!-- Work Items -->
+				<div class="item">
+					<p class="item-heading">
+						<u><b>Preface</b></u>
 					</p>
-				</b2>
-
-				<font size="6">
-					<u><b>Preface</b></u>
-				</font>
-				<b2>
-					<br>On this page I'll explain how the following Systems work:
-					<ul style="list-style-type:disc">
-						<li><a class="link"
-								href="https://github.com/KevinOttenDeltion/HexBasedStratagyProject/blob/master/HexBasedPrototype/Assets/Scripts/HexBased/HexInfo.cs"
-								target="_blank">
-								<b2><u> Hex connection </u></b2>
-							</a></li>
-						The system I made that assigns a tiles neighbours using raycasts in the Start function.
-						<li><a class="link"
-								href="https://github.com/KevinOttenDeltion/HexBasedStratagyProject/blob/master/HexBasedPrototype/Assets/Scripts/HexBased/HexInfo.cs"
-								target="_blank">
-								<b2><u> Astar system </u></b2>
-							</a></li>
-						The System I made using the A* Algorithm which determines the hexes a unit can move towards and
-						what the cheapest cost is to move there. This uses the ProcesAStarPathfinding function and the
-						AStarStep function.
-						<li><a class="link"
-								href="https://github.com/KevinOttenDeltion/HexBasedStratagyProject/blob/master/HexBasedPrototype/Assets/Scripts/HexBased/HexInfo.cs"
-								target="_blank">
-								<b2><u> Movement </u></b2>
-							</a></li>
-						This system checks if a tile can be accessed by a unit and if so goes through the needed steps
-						to move a unit there. This uses the ProcesUnit function.
-					</ul>
-				</b2>
-				</b>
-				</font>
-
-				<b>
-					<font size="6">
-						<u>Hex connection</u>
-					</font>
-					</b2>
-
 					<b2>
-						<p><img src="images/HexBasedPage01.gif" class="image2" alt="Gif missing"
-								style="margin-top:42px; margin-right:15px;" />
+						<br>On this page I'll explain how the following Systems work:
+						<ul style="list-style-type:disc">
+							<li><a class="link"
+									href="https://github.com/KevinOttenDeltion/HexBasedStratagyProject/blob/master/HexBasedPrototype/Assets/Scripts/HexBased/HexInfo.cs"
+									target="_blank">
+									<b2><u> Hex connection </u></b2>
+								</a></li>
+							The system I made that assigns a tiles neighbours using raycasts in the Start function.
+							<li><a class="link"
+									href="https://github.com/KevinOttenDeltion/HexBasedStratagyProject/blob/master/HexBasedPrototype/Assets/Scripts/HexBased/HexInfo.cs"
+									target="_blank">
+									<b2><u> Astar system </u></b2>
+								</a></li>
+							The System I made using the A* Algorithm which determines the hexes a unit can move towards and
+							what the cheapest cost is to move there. This uses the ProcesAStarPathfinding function and the
+							AStarStep function.
+							<li><a class="link"
+									href="https://github.com/KevinOttenDeltion/HexBasedStratagyProject/blob/master/HexBasedPrototype/Assets/Scripts/HexBased/HexInfo.cs"
+									target="_blank">
+									<b2><u> Movement </u></b2>
+								</a></li>
+							This system checks if a tile can be accessed by a unit and if so goes through the needed steps
+							to move a unit there. This uses the ProcesUnit function.
+						</ul>
+					</b2>
+				</div>
+				<div class="item">
+					<p class="item-heading">
+						<u><b>Hex connection</b></u>
+					</p>
+					<b2>
+						<img src="images/HexBasedPage01.gif" alt="Your Image" style="max-width: 100%; display: block;">
+						<p>
 							<br>I didn't want to make a system that forces a map to be a certain form, because of
 							something like a grid system.
 							Instead I decided to make a system that would allow any combination of hex placements both
@@ -102,33 +95,15 @@
 							hexes sides.
 							This adds the first thing they hit (Neighbouring tiles) to the list.
 						</p>
-						<pre>
-							<code class="code">
-	//Casts raycasts out from all sides of the hex.
-        //All hexes it hits get add to the neighbouringtiles list.
-        RaycastHit hit;
-        for(int i = 0; i < 6; i++)
-        {
-            rayCast = Quaternion.AngleAxis(rayPos, transform.forward) * transform.up;
-            if (Physics.Raycast(transform.position, rayCast, out hit,2))
-            {
-                neighbourTiles.Add(hit.collider.gameObject);
-            }
-            rayPos += 60;
-        }
-							</code>
-							</pre>
 					</b2>
-
-					<b>
-						<font size="6">
-							<u>Astar system</u>
-						</font>
-					</b>
-
+				</div>
+				<div class="item">
+					<p class="item-heading">
+						<u><b>Astar system</b></u>
+					</p>
+					<img src="images/HexBasedPage02.gif" alt="Gif missing" style="max-width: 100%; display: block;">
 					<b2>
-						<p><img src="images/HexBasedPage02.gif" class="image2" alt="Gif missing"
-								style="margin-top:50px; margin-right:15px;" />
+						<p>
 							<br>After selecting a unit the Astar system goes into effect.
 							It will first ask the units tile to ask the surrounding tiles what the cost is.
 							If this cost is lower than the amount of movement points on the unit, it will ask the same
@@ -173,72 +148,15 @@
 							This is used later to reset the pointcost and color changes made to the tiles.
 							<br>
 						</p>
-						<pre>
-							<code class="code">
-    public void ProcesAStarPathfinding(int movementPoints)
-    { 
-        foreach (GameObject tile in neighbourTiles)
-        {
-            print("Start");
-            tile.GetComponent<HexInfo>().AStarStep(movementPoints,0);
-        }
-    }
-
-    public void AStarStep(int movementPoints, int cost)
-    {
-        if(canPass == true && myUnit == null)
-        {
-            int newPointCost = cost + movementCost;
-            if(pointCost != 0)
-            {
-                if(pointCost > newPointCost)
-                {
-                    pointCost = newPointCost;
-                }
-            }
-            else
-            {
-                 pointCost = newPointCost;
-            }
-            MovementManager.resetTiles += AStarReset;
-            if(newPointCost == movementPoints)
-            {
-                rend.material.SetColor("_Color",Color.gray);
-                canMoveTo = true;
-            }
-            else if(newPointCost < movementPoints)
-            {
-                rend.material.SetColor("_Color",Color.gray);
-                canMoveTo = true;
-                foreach (GameObject tile in neighbourTiles)
-                {
-                    print(pointCost + "cost");
-                    tile.GetComponent<HexInfo>().AStarStep(movementPoints,pointCost);
-                }
-            }
-        }
-    }
-
-    public void AStarReset()
-    {
-        MovementManager.resetTiles -= AStarReset;
-        canMoveTo = false;
-        pointCost = 0;
-        rend.material.SetColor("_Color",baseColor);
-    }
-							</code>
-							</pre>
 					</b2>
-
-					<b>
-						<font size="6">
-							<u>Movement</u>
-						</font>
-					</b>
-
+				</div>
+				<div class="item">
+					<p class="item-heading">
+						<u><b>Movement</b></u>
+					</p>
+					<img src="images/HexBasedPage03.gif" alt="Gif missing" style="max-width: 100%; display: block;">
 					<b2>
-						<p><img src="images/HexBasedPage03.gif" class="image2" alt="Gif missing"
-								style="margin-top:45px; margin-right:15px;" />
+						<p>
 							<br>The movement system is located in the HexInfo class.
 							It uses 2 functions: The OnMouseOver function to interact with the tile and The ProcesUnit
 							function, which requires a reference to a gameobject (in this case a unit).
@@ -263,51 +181,19 @@
 							function ends.
 							<br>
 							<br>
-
-						<ol>The steps it preforms When boolean is true:
-							<li>Retract the pointcost from the units movementpoints.</li>
-							<li>Change the units tile refrence from the tile it was on to the current tile.</li>
-							<li>Adds the unit to the current tile.</li>
-							<li>Moves the unit to the current tile.</li>
-							<li>Uses the event in the MovementManager reseting all color and cost values from the
-								subscribed tiles.
-								This removes the tiles from the event afterwards.</li>
-						</ol>
-
+							<ol>The steps it preforms When boolean is true:
+								<li>Retract the pointcost from the units movementpoints.</li>
+								<li>Change the units tile refrence from the tile it was on to the current tile.</li>
+								<li>Adds the unit to the current tile.</li>
+								<li>Moves the unit to the current tile.</li>
+								<li>Uses the event in the MovementManager reseting all color and cost values from the
+									subscribed tiles.
+									This removes the tiles from the event afterwards.</li>
+							</ol>
 						</p>
-						<pre>
-							<code class="code">
-    public void ProcesUnit(GameObject newUnit)
-    {
-        if(mm.movingUnit != null)
-        {
-            if(canPass == true)
-            {
-                if(canMoveTo)
-                {
-                    myUnit = newUnit;
-                    myUnit.GetComponent<UnitInfo>().tile.GetComponent<HexInfo>().myUnit = null;
-                    myUnit.GetComponent<UnitInfo>().toMove -= pointCost;
-                    myUnit.GetComponent<UnitInfo>().tile = this.gameObject;
-                    myUnit.transform.position = this.gameObject.transform.position;
-                    ui.UpdateMovementLeft();
-                    mm.movingUnit = null;
-                    ui.TurnOffUIInfo();
-                    MovementManager.instance.ResetTiles();
-                }
-            }
-        }
-        else
-        {
-            myUnit = newUnit;
-            myUnit.GetComponent<UnitInfo>().tile = this.gameObject;
-        }
-    }
-							</code>
-							</pre>
 					</b2>
 
-				</b>
+				</div>
 				<br>
 				<p><a class="link"
 						href="https://github.com/KevinOttenDeltion/HexBasedStratagyProject/tree/master/HexBasedPrototype/Assets/Scripts"
@@ -315,7 +201,6 @@
 
 			</div>
 		</div>
-
 		<!-- Footer -->
 		<footer id="footer">
 			<div class="inner">

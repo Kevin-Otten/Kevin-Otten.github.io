@@ -24,39 +24,39 @@
 		<!-- Header -->
 		<header id="header">
 			<div class="inner">
-				<h1>TheCleansing (Page=WIP)</h1>
+				<h1>TheCleansing</h1>
 				<div class="line"></div>
 			</div>
 		</header>
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
-
-				<font size="5">
-					<b> Team: 4 programmers, 6 designers & 8 artists.
-						<br> My role: AI/Gamepaly Programmer and PR Lead.
-						<br> My contribution:
-					</b>
-				</font>
+				<!-- Heading -->
 				<b2>
-					<ul style="list-style-type:disc">
-						<li>Air based AI pathfinding prototype (didnt make it into the final game)</li>
+				<span class="heading">Team:</span>
+					4 programmers, 6 designers & 8 artists.<br>
+				<span class="heading">Project period:</span>
+					2023, for roughly half a year.<br>
+				<span class="heading">My role:</span>
+					AI/Gameplay Programmer and PR Lead.<br>
+				<span class="heading">My contribution:</span>
+					<ul>
+						<li>Airborne pathfinding prototype (didnt make it into the final game)</li>
+						<li>Weapon disarming prototype</li>
 						<li>Lead related work</li>
 						<li>Assisting development and fixing issues</li>
 					</ul>
 				</b2>
-				</b>
-
+				<!-- Work Items -->
 				<div class="item">
 					<p class="item-heading">
 						<u><b>The Game</b></u>
 					</p>
 					<b2>
 						<p>
-							<br>The game is a ability based shooter with a grapple hook where the goal is to clear the
-							levels and the boss that resides in them.
-							The basic story is that you are a reaper who's job it is to end the demonic incursion into
-							the world of the living.
+							<br>The game is an ability based shooter with a grapple hook you can use to swing around the level.
+							The goal is to clear the levels and the "boss" enemy that resides in them using your repeating scrossbow and abilities.
+							The backstorry for the game is that you are a reaper who's job it is to end the demonic incursion into the world of the living.
 							<br>
 							<br><a class="link" href="https://buas.itch.io/the-cleansing" target="_blank">
 								<b2><u> The game can be found on Itch.io through this link. </u></b2>
@@ -64,27 +64,82 @@
 						</p>
 					</b2>
 				</div>
-
 				<div class="item">
-					<p class="item-heading">
-						<u><b>My contributions</b></u>
-					</p>
+					<div class="item-heading">
+						<u>Airborne pathfinding</u>
+					</div>
 					<b2>
-						<video width="75%" height="75%" autoplay muted loop style="margin-top:65px; margin-right:15px;">
+						<p>
+							<span class="higlight-text">Process:</span>
+							I made this prototype during the concept period; 
+							it was the last prototype I worked on and had limited time to make it with the concepting and prototyping period nearly ending.
+							The process was relatively simple. 
+							We wanted the option for implementing air AI and had a couple of methods for handling the pathfinding that we were looking at.
+							Our AI designer was looking into a 3D grid tool he found,
+							while I looked into a height map-based system which someone found a presentation on from the game: Horizon Zero Dawn. 
+							The team wanted to try a simplified version of this out because it would likely allow for the minimal type of behavior we wanted (an AI that goes straight for the player and shoots when in range) without much complexity in the system itelf.
+							I took the presentation as inspiration for my own height map generation and vertical pathfinding and itterated on it a couple of times. 
+							My way of generating and handling the height map was both different and with less detail compared to Horizon since we only needed simple behavior from our AI and didnt have much time to develop it.
+							I kept in contact with our AI designer during the process to show the progress and results while he was looking into the other method.
+							In the end, we summed up the positives and negatives of both methods to decide on the best option. 
+							If we had the time to add airborne AI, we would have likely used my method since it did what we needed, was simple to set up, and had no real performance hit.
+						</p>
+						<video width="75%" height="75%" autoplay muted loop style="margin-bottom:30px;">
 							<source src="video/Cleansing/HeightMapGeneration.webm" type="video/webm" />
 						</video>
-						<video width="75%" height="75%" autoplay muted loop style="margin-top:65px; margin-right:15px;">
+						<p>
+							<span class="higlight-text">Implementation:</span>
+							To start off, I had to generate the height map.
+							I looked into how Horizon Zero Dawn did their generation but realized quickly that it was not worth it becasue what we needed didnt require the detail and the time we had was limited.
+							Instead, I made up a simpler version using raycasts/linetraces.
+							I created a game object with several adjustable variables that specified the size of the area and grid resolution for the height map.
+							This could be placed down anywhere in a level and would generate the grid in construction script (before begin play). 
+							When the game starts, it creates an array based on the size of the grid with its values set to the height of the raycast hits.
+							This only has to be done once so it had no real impact on performance.
+							The video above the text shows the heighmap generation in action.
+							It shows the raycasts in the editor and a debug visualization of the grid in-game with the printed value representing the height from the map at the player's position on the heighmap.
+							<br>
+							<br>
+							The AI itself checks the array about three times: once for the player's height, once for the height just in front of it, and once a bit ahead of it.
+							The player check is the dominant one; if it is higher than the other checks, it will be used to decide the AI's height.
+							The other two checks combined ensure that the AI flies over obstacles and doesn't run into walls when the player isn't the highest point.
+							The AI obtains the height value by first projecting the location it needs to check to the heightmap grid.
+							It does this using the heightmap's position, grid extents, and size to decided if the location fits within the grid and within which exact tile it finds itself.
+							By doing this, it can then determine the exect index of the array that holds the height value. 
+							The video below this text shows the prototype, featuring an AI that can navigate over the objects in our mockup level.
+						</p>
+						<video width="75%" height="75%" autoplay muted loop style="margin-bottom:30px;">
 							<source src="video/Cleansing/EnemyAIrAI_FinalItteration.webm" type="video/webm" />
 						</video>
-						<br> Videos showing my prototyped height map generations that happens on construction (before play).
-						Inspiration of this comes from a presentation I found on how horizon zero dawn handled its air-based enemy.
-						Its a simplified version but it works.
-						The AI itself has a few checks to decide on what height to fly.
-						Mainly the players height, a check close in front of it and a check further away from it.
-						Combined these checks should stop it from running into walls and other objects while staying at the preferred distance and height from the player.
 					</b2>
 				</div>
-
+				<div class="item">
+					<div class="item-heading">
+						<u>My Reflection</u>
+					</div>
+					<b2>
+						<p>
+							When it comes to the prototype I showed on this page,
+							I think the solution I had worked quite well. 
+							If I was able to move it into production, I would have made the movement smoother and maybe grouped some grid cells giving the AI an overall smoother height adjustment.
+							In general, the solution could have used some more feedback and iteration, particularly when it comes to the detail in the height on sloped surfaces,
+							which wasn't perfect with it taking the height from the center of a tile, not the highest point within the tile, but as a whole, it worked quite well. 
+							I wish I had the time to go into more depth like with the pathfinding details Horizon had, but for a quick prototype, I am quite happy with it.
+							The only real pitfall I did run into was my tendency to look into the details too much when I should be iterating more quickly instead.
+							<br>
+							<br>
+							The project itself had its ups and downs.
+							The first 8 weeks of concepting and prototyping went quite well.
+							A lot of good ideas were generated, and we settled on a concept everyone liked.
+							While it was one of the stronger concepts of our year, it went downhill during development.
+							Our lack of a proper producer and suitable individuals to fill in for this definitely didn't help.
+							Our team likely needed a clear production plan with frequent progress checkups to keep us on track,
+							but it remained a bit too chaotic.
+							We didn't quite reach our goals and had some tension between level design and art,
+							but this did lead to some good learning opportunities with how to manage a team and how to handle multiple people working on the same level.
+						</p>
+					</b2>
+				</div>
 			</div>
 		</div>
 
