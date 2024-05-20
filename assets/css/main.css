@@ -1888,7 +1888,6 @@ a {
 }
 
 a:hover {
-	border-bottom-color: transparent;
 	color: #93A3B1 !important;
 }
 
@@ -3464,14 +3463,17 @@ body.is-menu-visible #menu .close {
 }
 
 /* About Me Section */
+.about{
+	background-color: #2D3047;
+    padding: 20px;
+	margin-top: 40px;
+}
 
 .about-me {
-    background-color: #2D3047;
-    padding: 20px;
+    
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-
 }
 
 .about-me-section {
@@ -3740,6 +3742,21 @@ code {
 .higlight-text{
 	color: #f79945;
 	font-weight: bolder;
+}
+
+.btn {
+	padding: 10px 20px;
+	border: 2px solid #f79945;
+	border-radius: 5px;
+	color: #f79945;
+	background-color: transparent;
+	text-decoration: none;
+	transition: color 0.3s, border-color 0.3s;
+}
+  
+.btn:hover 
+{
+	color: #2d3047;
 }
 
 .home-btn {
