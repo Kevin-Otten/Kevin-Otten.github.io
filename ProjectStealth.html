@@ -25,7 +25,14 @@
 		<header id="header">
 			<div class="inner">
 				<h1>Sicaria</h1>
-				<img src="images/StealthExcellenceAward.png" alt="Image missing" style="max-width: 100%; height: auto; max-height: 256px; display: block; margin: 50px auto;">
+
+				<div class="award-container">
+					<img src="images/StealthExcellenceAward.png" alt="Image missing"
+						style="max-width: 100%; height: auto; max-height: 256px; margin-bottom: 20px;">
+					<img src="images/Stealth_GDWC_2024_Winter_badge-Hobby-Top5-color.png" alt="Image missing"
+						style="max-width: 100%; height: auto; max-height: 256px; margin-bottom: 20px;">
+				</div>
+
 				<div class="line"></div>
 			</div>
 		</header>
@@ -34,13 +41,13 @@
 			<div class="inner">
 				<!-- Heading -->
 				<b2>
-				<span class="heading">Team:</span>
+					<span class="heading">Team:</span>
 					1 Producer, 8 programmers, 11 designers. 15 Artist<br>
-				<span class="heading">Project period:</span>
+					<span class="heading">Project period:</span>
 					2023 - 2024, for an entire school year.<br>
-				<span class="heading">My role:</span>
+					<span class="heading">My role:</span>
 					AI Programmer & assisting AI designer.<br>
-				<span class="heading">My contribution:</span>
+					<span class="heading">My contribution:</span>
 					<ul>
 						<li>AI Architecture</li>
 						<li>AI Investigation state</li>
@@ -56,10 +63,14 @@
 					</div>
 					<b2>
 						<p>
-							Sicaria is a stealth assasination game that does not include combat outside of stealth assasinations.
-							You play as an assasin/partizan sabotaging the spanish effort in Antwerp during the 80 year in the 17th century.
-							The goal of the game is to kill a high ranking Spanish officer and sabotage their warship<br>
-							<br><a class="link" href="https://store.steampowered.com/app/2707390/Sicaria/"target="_blank">
+							Sicaria is a stealth assasination game that does not include combat outside of stealth
+							assasinations.
+							You play as an assasin/partizan sabotaging the spanish effort in Antwerp during the 80 year
+							in the 17th century.
+							The goal of the game is to kill a high ranking Spanish officer and sabotage their
+							warship<br>
+							<br><a class="link" href="https://store.steampowered.com/app/2707390/Sicaria/"
+								target="_blank">
 								<b2><u> The game can be found on steam through this link. </u></b2>
 							</a>
 						</p>
@@ -73,22 +84,31 @@
 						<p>
 							<span class="higlight-text">Process:</span>
 							I created a technical design of the required system using Miro to visually represent it.
-							To verify that this design would work for the team I passed it by those who would interact with it,
+							To verify that this design would work for the team I passed it by those who would interact
+							with it,
 							and after ironing out some potential kinks, I started implement it based on the design.
 							The Image below shows part of the design in the program Miro.
 						</p>
-						<img src="images/StealthPage_01.png" alt="Iamge missing" style="max-width: 100%; display: block;margin-bottom: 30px;">
+						<img src="images/StealthPage_01.png" alt="Iamge missing"
+							style="max-width: 100%; display: block;margin-bottom: 30px;">
 						<p>
 							<span class="higlight-text">Implementation:</span>
-							The goal for setting up the architecture was to create a robust foundation for the AI, 
-							centralizing functionality to a set number of functions to make debugging and adjusting the behavior easier.
-							To-do this, I set up the following: states and state flow in a "root" behavior tree from which other trees branch off,
+							The goal for setting up the architecture was to create a robust foundation for the AI,
+							centralizing functionality to a set number of functions to make debugging and adjusting the
+							behavior easier.
+							To-do this, I set up the following: states and state flow in a "root" behavior tree from
+							which other trees branch off,
 							state classes used to abstract away entry and exit functions,
-							a function that handles all the steps of switching states from entry and exit functions to specific transitions between states,
-							and lastly, a specific function that handles the conditions for and timing of switching states.<br>
+							a function that handles all the steps of switching states from entry and exit functions to
+							specific transitions between states,
+							and lastly, a specific function that handles the conditions for and timing of switching
+							states.<br>
 							<br>
-							The functions that leave nothing to the imagination, such as setting the state, are handled in C++. 
-							The rest was developed in Blueprint to ensure that our AI designer and other that would need to look into it could figure everything out on their own without having to diving into the code.
+							The functions that leave nothing to the imagination, such as setting the state, are handled
+							in C++.
+							The rest was developed in Blueprint to ensure that our AI designer and other that would need
+							to look into it could figure everything out on their own without having to diving into the
+							code.
 						</p>
 					</b2>
 				</div>
@@ -99,20 +119,28 @@
 					<b2>
 						<p>
 							<span class="higlight-text">Process:</span>
-							For the group behavior in our game, I implemented a token system where an AI can only perform an action if it possesses the relevant token for that action.
-							I referenced a token system that was introduced to us by a lecturer. 
-							I built the foundation of our system based on his explanation of the concept and made adjustments where necessary for our project.
-							I received feedback from him on the functioning of the system and from the team on its clarity, specifically the level designers, since they would be placing "groups" in the level.
+							For the group behavior in our game, I implemented a token system where an AI can only
+							perform an action if it possesses the relevant token for that action.
+							I referenced a token system that was introduced to us by a lecturer.
+							I built the foundation of our system based on his explanation of the concept and made
+							adjustments where necessary for our project.
+							I received feedback from him on the functioning of the system and from the team on its
+							clarity, specifically the level designers, since they would be placing "groups" in the
+							level.
 						</p>
-						<img src="images/TokenSystemDesign.PNG" alt="Iamge missing" style="max-width: 100%; display: block;margin-bottom: 30px;">
+						<img src="images/TokenSystemDesign.PNG" alt="Iamge missing"
+							style="max-width: 100%; display: block;margin-bottom: 30px;">
 						<p>
 							<span class="higlight-text">Implementation:</span>
 							The design, as seen above, has evolved over time but remains fundamentally the same.
 							There are token maps on individual AI and on the Group class they belong to.
-							Certain events during the game, such as making noise that an AI hears, triggers the group to release an investigation token to a specific AI based on a set of checks.
-							The group manages the releasing, returning, and general group-controlled behaviors, like triggering aggression in all AI in the group if one of them spots the player.<br>
+							Certain events during the game, such as making noise that an AI hears, triggers the group to
+							release an investigation token to a specific AI based on a set of checks.
+							The group manages the releasing, returning, and general group-controlled behaviors, like
+							triggering aggression in all AI in the group if one of them spots the player.<br>
 							<br>
-							The core of this system was implemented in C++, with more specific checks, like determining who receives a token, 
+							The core of this system was implemented in C++, with more specific checks, like determining
+							who receives a token,
 							handled in Blueprint for easy accessibility by designers incase it needed changes.
 						</p>
 					</b2>
@@ -128,8 +156,9 @@
 							where we were not 100% sure of everything we would need.
 							I ensured the AI could only hear the player when it made sense,
 							and I made it easy for developers to add an audio event to anything they were working on,
-							such as the gadgets in our game. 
-							I passed my work by the AI designer but also double-checked with Level Design to verify that I wasn't missing anything in the context of the level,
+							such as the gadgets in our game.
+							I passed my work by the AI designer but also double-checked with Level Design to verify that
+							I wasn't missing anything in the context of the level,
 							as some areas might require more thorough checks that I may not have take into acount yet.
 						</p>
 						<video width="75%" height="75%" autoplay muted loop style="margin-bottom:30px;">
@@ -137,8 +166,10 @@
 						</video>
 						<p>
 							<span class="higlight-text">Implementation:</span>
-							The video above shows an early version of the system where the wall and roof block the noise, and the path around it is too long.
-							For a more recent example, refer to the video shown in the upcoming suspicious state section.
+							The video above shows an early version of the system where the wall and roof block the
+							noise, and the path around it is too long.
+							For a more recent example, refer to the video shown in the upcoming suspicious state
+							section.
 							The audio perception system I developed for this has the following checks:
 							<li>Is there a wall that could block the audio?</li>
 							<li>Does the wall allow for noise to pass through?</li>
@@ -147,10 +178,13 @@
 							<br>
 							Based on the outcomes of these tests,
 							I allowed the AI to detect the noise and react to it.
-							I also made a component that allowed for a simple function call to make noise at a given position.
-							This way, any developer could easely add the component and call the function if their feature needed to alert AI when used, like shown before with the thrown bottle.<br>
+							I also made a component that allowed for a simple function call to make noise at a given
+							position.
+							This way, any developer could easely add the component and call the function if their
+							feature needed to alert AI when used, like shown before with the thrown bottle.<br>
 							<br>
-							The core of this system was built in C++, with the flow of the checks handled in Blueprint to ensure clarity for designers who might have a hard time reading the code.
+							The core of this system was built in C++, with the flow of the checks handled in Blueprint
+							to ensure clarity for designers who might have a hard time reading the code.
 						</p>
 					</b2>
 				</div>
@@ -162,21 +196,30 @@
 						<p>
 							<span class="higlight-text">Process:</span>
 							I worked on all of the suspicious/investigation state behavior with our AI designer.
-							I created all of the functionality and some of the design for this while staying in close contact with the designer during development, they were busy working on another aspect of the AI at the time.
-							I went through several iterations by going back and forth with my designer and also by applying feedback based on playtesting data. 
+							I created all of the functionality and some of the design for this while staying in close
+							contact with the designer during development, they were busy working on another aspect of
+							the AI at the time.
+							I went through several iterations by going back and forth with my designer and also by
+							applying feedback based on playtesting data.
 						</p>
 						<video width="75%" height="75%" autoplay muted loop style="margin-bottom:30px;">
 							<source src="video/StealthProject/SusState.mp4" type="video/webm">
 						</video>
 						<p>
 							<span class="higlight-text">Implementation:</span>
-							The result, as seen in the video above, was an AI that turns towards a sound or something it saw, performs a voiceline, and then moves in to investigate the source. 
-							To get the point it needed to walk towards, 
-							I used Unreal's EQS (Environmental Query System) to get a point in visual range that is close to the AI and the source but not right on top of the source since that looked weird.
-							For group behavior, we added an extra voiceline that nearby AI would use as a response and implemented a token system to ensure only one AI investigates. 
-							When the AI with the token starts investigating, the other AI that heard the noise will return to their normal patrol routes (might still change, WIP).
-							In the video, there was a "scripted event" which got broken up by the thrown bottle, after which they went to their predefined stationary guard spots, hence why one of them moved away from the noise.
-							
+							The result, as seen in the video above, was an AI that turns towards a sound or something it
+							saw, performs a voiceline, and then moves in to investigate the source.
+							To get the point it needed to walk towards,
+							I used Unreal's EQS (Environmental Query System) to get a point in visual range that is
+							close to the AI and the source but not right on top of the source since that looked weird.
+							For group behavior, we added an extra voiceline that nearby AI would use as a response and
+							implemented a token system to ensure only one AI investigates.
+							When the AI with the token starts investigating, the other AI that heard the noise will
+							return to their normal patrol routes (might still change, WIP).
+							In the video, there was a "scripted event" which got broken up by the thrown bottle, after
+							which they went to their predefined stationary guard spots, hence why one of them moved away
+							from the noise.
+
 						</p>
 					</b2>
 				</div>
@@ -187,28 +230,37 @@
 					<b2>
 						<p>
 							<span class="higlight-text">Process:</span>
-							Since the AI designer was busy with other tasks and I wanted to delve into design, I first began by researching how other games managed multiple AI in combat.
-							I referenced games similar to ours such as Assassin's Creed Black Flag and Dishonored 2. 
-							I took note of aspects like how their AI surrounds the player and the timing of their attacks,
+							Since the AI designer was busy with other tasks and I wanted to delve into design, I first
+							began by researching how other games managed multiple AI in combat.
+							I referenced games similar to ours such as Assassin's Creed Black Flag and Dishonored 2.
+							I took note of aspects like how their AI surrounds the player and the timing of their
+							attacks,
 							evaluated why they implemented these mechanics in their respective games,
 							and assessed their suitability for our game, making adjustments to the design as necessary.
-							Finally, I compiled my findings into a visual representation wit text explaining the behaviour on Miro.
-							After running it by our AI designer (since she had the final say) who agreed with the design,
+							Finally, I compiled my findings into a visual representation wit text explaining the
+							behaviour on Miro.
+							After running it by our AI designer (since she had the final say) who agreed with the
+							design,
 							I also created a flow diagram for the required behavior tree.
 							This help me implement it faster and with less problems along the way <br>
 							<br>
-							The image below shows a segment of the design I created on Miro as a visual aid for explaining it to others. 
-							The second image depicts the flow of the behavior, which, aside from some additional checks, remained consistent in the final implementation.
+							The image below shows a segment of the design I created on Miro as a visual aid for
+							explaining it to others.
+							The second image depicts the flow of the behavior, which, aside from some additional checks,
+							remained consistent in the final implementation.
 						</p>
-						<img src="images/AgroGroupBehaviourDesign.PNG" alt="Iamge missing" style="max-width: 100%; display: block;margin-bottom: 30px;">
-						<img src="images/GroupAgroFlow.PNG" alt="Iamge missing" style="max-width: 100%; display: block;margin-bottom: 30px;">
+						<img src="images/AgroGroupBehaviourDesign.PNG" alt="Iamge missing"
+							style="max-width: 100%; display: block;margin-bottom: 30px;">
+						<img src="images/GroupAgroFlow.PNG" alt="Iamge missing"
+							style="max-width: 100%; display: block;margin-bottom: 30px;">
 						<p>
 							<span class="higlight-text">Implementation:</span>
 							<br>
 							WIP
 							<br>
-							The video below shows the current version of the Group Agro Behaviour in action. 
-							It still needs some itterating at this point to feel good but it still represents the design I made for it.
+							The video below shows the current version of the Group Agro Behaviour in action.
+							It still needs some itterating at this point to feel good but it still represents the design
+							I made for it.
 							The main points being:
 							<li>The AI stays at a specified range from the player</li>
 							<li>The AI keeps some distance between eachother if possible</li>
@@ -216,7 +268,8 @@
 							<li>The ranged AI can attack seperate from the melee AI</li>
 							<li>The ranged AI stays at a slightly longer distance from the player than the melee AI</li>
 							<br>
-							This is made using the previously mentioned Tokens and uses EQS to find a position near the player, away form other AI if possible and in line of sight of the player.
+							This is made using the previously mentioned Tokens and uses EQS to find a position near the
+							player, away form other AI if possible and in line of sight of the player.
 						</p>
 						<video width="75%" height="75%" autoplay muted loop style="margin-bottom:30px;">
 							<source src="video/StealthProject/AgroGroupBehaviour.webm" type="video/webm">
