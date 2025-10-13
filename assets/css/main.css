@@ -1848,8 +1848,8 @@ body,
 input,
 select,
 textarea {
-	color: #f79945;
-	font-family: "Source Sans Pro", Helvetica, sans-serif;
+	color: #2d3047;
+	font-family: sans-serif;
 	font-size: 16pt;
 	font-weight: 300;
 	line-height: 1.75;
@@ -1912,6 +1912,7 @@ h1 {
 	margin: 0 0 1em 0;
 	letter-spacing: -0.035em;
 	text-align: center;
+	color: #f79945;
 }
 
 h1 a {
@@ -1957,6 +1958,7 @@ h6 a {
 
 h2 {
 	font-size: 1.1em;
+	color: #f79945;
 }
 
 h3 {
@@ -2120,7 +2122,7 @@ header p {
 	display: inline-block;
 	text-align: center;
 	line-height: 2.65em;
-	color: inherit;
+	color: #f79945;
 }
 
 .icon.style2:before {
@@ -3036,8 +3038,7 @@ body:not(.is-touch) .tiles article:hover>.image {
 	-webkit-transform: scale(1.1);
 	-ms-transform: scale(1.1);
 	transform: scale(1.1);
-	filter: brightness(30%);
-
+	filter: brightness(100%);
 }
 
 body:not(.is-touch) .tiles article:hover>.image:before {
@@ -3470,7 +3471,7 @@ body.is-menu-visible #menu .close {
 }
 
 .about-me {
-
+	color: #f79945;
 	box-sizing: border-box;
 	display: flex;
 	justify-content: center;
