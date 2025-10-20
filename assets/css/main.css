@@ -1,4 +1,4 @@
-@import url(font-awesome.min.css);
+smaller@import url(font-awesome.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900");
 
 /*
@@ -102,6 +102,17 @@ video {
 b2 {
 	font-weight: 700;
 	color: #2d3047;
+}
+
+hi {
+	font-weight: 700;
+	color: #2d3047;
+	font-style: italic;
+}
+
+smaller {
+	font-size: smaller;
+	font-style: italic;
 }
 
 article,

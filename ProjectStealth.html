@@ -62,12 +62,9 @@
 						<u>The Game</u>
 					</div>
 					<p>
-						Sicaria is a stealth assasination game that does not include combat outside of stealth
-						assasinations.
+						Sicaria is a pure stealth game where you use stealth takedowns and gadgets to finish objectives.
 						You play as an assasin/partizan sabotaging the spanish effort in Antwerp during the 80 year
 						in the 17th century.
-						The goal of the game is to kill a high ranking Spanish officer and sabotage their
-						warship<br>
 						<br><a class="link" href="https://store.steampowered.com/app/2707390/Sicaria/" target="_blank">
 							<b2><u> The game can be found on steam through this link. </u></b2>
 						</a>
@@ -78,34 +75,30 @@
 						<u>AI Architecture</u>
 					</div>
 					<p>
-						<span class="higlight-text">Process:</span>
-						I created a technical design of the required system using Miro to visually represent it.
-						To verify that this design would work for the team I passed it by those who would interact
-						with it,
-						and after ironing out some potential kinks, I started implement it based on the design.
-						The Image below shows part of the design in the program Miro.
+						<span class="higlight-text">My Contribution:</span>
+						<ul>
+							<li><hi>Technical design</hi> documented in Miro.</li>
+							<li><hi>Implemented</hi> the whole design</li>
+								<ul>
+									<li><hi>Robust</hi> and <hi>easy to adjust</hi></li>
+									<li><hi>Centralised</hi> functions for <hi>easy debugging</hi></li>
+									<li><hi>Low level</hi> components in <hi>C++</hi> (Only programmers touch this)</li>
+									<li><hi>High level</hi> components in <hi>Blueprints</hi> (Programmers and designers touch this)</li>
+								</ul>
+						</ul>
+						To <hi>verify the technical design</hi> I passed it by the AI team and communicated with level desing regarding their needs for the AI.
+						The system was made using a <hi>core behaviour tree</hi> that used a state machine to control which <hi>sub tree</hi> to run.
+						<br>
+						<br>
+						<hi>After the project I learned</hi> that while a state machine does work,
+                        part of benefit of <hi>using a behaviour tree</hi> is <hi>no longer needing to not maintain a state machine</hi>.
+                        I used a behaviour tree, as intended, in a later project and <hi>through this experience I learned</hi> to-do a bit <hi>more research into systems</hi> before using them,
+                        even if you think you know how they work.
+						<br>
 					</p>
+					<smaller>The design as documented in Miro.</smaller>
 					<img src="images/StealthPage_01.png" alt="Iamge missing"
 						style="max-width: 100%; display: block;margin-bottom: 30px;">
-					<p>
-						<span class="higlight-text">Implementation:</span>
-						The goal for setting up the architecture was to create a robust foundation for the AI,
-						centralizing functionality to a set number of functions to make debugging and adjusting the
-						behavior easier.
-						To-do this, I set up the following: states and state flow in a "root" behavior tree from
-						which other trees branch off,
-						state classes used to abstract away entry and exit functions,
-						a function that handles all the steps of switching states from entry and exit functions to
-						specific transitions between states,
-						and lastly, a specific function that handles the conditions for and timing of switching
-						states.<br>
-						<br>
-						The functions that leave nothing to the imagination, such as setting the state, are handled
-						in C++.
-						The rest was developed in Blueprint to ensure that our AI designer and other that would need
-						to look into it could figure everything out on their own without having to diving into the
-						code.
-					</p>
 				</div>
 				<div class="item">
 					<div class="item-heading">
