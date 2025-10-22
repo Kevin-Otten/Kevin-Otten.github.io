@@ -58,10 +58,10 @@
 				</b2>
 				<!-- Work Items -->
 				<div class="item">
-					<div class="item-heading">
-						<u>The Game</u>
-					</div>
 					<p>
+						<div class="item-heading">
+							<u>The Game</u>
+						</div>
 						Sicaria is a pure stealth game where you use stealth takedowns and gadgets to finish objectives.
 						You play as an assasin/partizan sabotaging the spanish effort in Antwerp during the 80 year
 						in the 17th century.
@@ -71,20 +71,20 @@
 					</p>
 				</div>
 				<div class="item">
-					<div class="item-heading">
-						<u>AI Architecture</u>
-					</div>
 					<p>
-						<span class="higlight-text">My Contribution:</span>
+						<div class="item-heading">
+							<u>AI Architecture</u>
+						</div>
+						<span class="higlight-text">My Contributions:</span>
 						<ul>
-							<li><hi>Technical design</hi> documented in Miro.</li>
-							<li><hi>Implemented</hi> the whole design</li>
-								<ul>
-									<li><hi>Robust</hi> and <hi>easy to adjust</hi></li>
-									<li><hi>Centralised</hi> functions for <hi>easy debugging</hi></li>
-									<li><hi>Low level</hi> components in <hi>C++</hi> (Only programmers touch this)</li>
-									<li><hi>High level</hi> components in <hi>Blueprints</hi> (Programmers and designers touch this)</li>
-								</ul>
+							<li><hi>Technical design</hi> documented in Miro</li>
+							<li><hi>Implemented</hi> the whole system</li>
+							<ul style="list-style-type: circle;">
+								<li><hi>Robust</hi> and <hi>easy to adjust</hi></li>
+								<li><hi>Centralised</hi> functions for <hi>easy debugging</hi></li>
+								<li><hi>Low level</hi> components in <hi>C++</hi> (Only programmers touch this)</li>
+								<li><hi>High level</hi> components in <hi>Blueprints</hi> (Programmers and designers touch this)</li>
+							</ul>
 						</ul>
 						To <hi>verify the technical design</hi> I passed it by the AI team and communicated with level desing regarding their needs for the AI.
 						The system was made using a <hi>core behaviour tree</hi> that used a state machine to control which <hi>sub tree</hi> to run.
@@ -96,40 +96,36 @@
                         even if you think you know how they work.
 						<br>
 					</p>
-					<smaller>The design as documented in Miro.</smaller>
+					<smaller>The technical design as documented in Miro.</smaller>
 					<img src="images/StealthPage_01.png" alt="Iamge missing"
 						style="max-width: 100%; display: block;margin-bottom: 30px;">
 				</div>
 				<div class="item">
-					<div class="item-heading">
-						<u>GroupBehaviour / Token System Architecture</u>
-					</div>
 					<p>
-						<span class="higlight-text">Process:</span>
-						For the group behavior in our game, I implemented a token system where an AI can only
-						perform an action if it possesses the relevant token for that action.
-						I referenced a token system that was introduced to us by a lecturer.
-						I built the foundation of our system based on his explanation of the concept and made
-						adjustments where necessary for our project.
-						I received feedback from him on the functioning of the system and from the team on its
-						clarity, specifically the level designers, since they would be placing "groups" in the
-						level.
+						<div class="item-heading">
+							<u>GroupBehaviour / Token System Architecture</u>
+						</div>
+						<span class="higlight-text">My Contributions:</span>
+						<ul>
+							<li><hi>Technical design</hi> documented in Miro</li>
+							<li><hi>Implemented</hi> the whole system</li>
+							<ul style="list-style-type: circle;">
+								<li><hi>Groups</hi> that <hi>manages actors and tokens</hi></li>
+								<li><hi>Tokens</hi> used that <hi>allow AI to act</hi></li>
+								<li>Releasing and returning tokens in C++ (Only minor adjustments needed)</li>
+								<li>Specific checks for releasing tokens in blueprint (Allot of smaller adjustments made by programmers and designers)</li>
+							</ul>
+						</ul>
+						In short, the system works by <hi>handing out "tokens" to AI actors</hi> based on specific variables <hi>to allow them to peform specific actions</hi>,
+						this way you can for example have one or more enemy’s attack at a time or have only one enemy in a group investigate some sound they heard. 
+						The core of the group behaviour was based on a simple token system as explained by one of our lecturers.
+						<br>
+						<hi>To verify the system</hi> I made was clear and easy to use <hi>I passed it primarily by level design</hi> since they would be adjusting it the most.
+
 					</p>
+					<smaller>The technical design as documented in Miro.</smaller>
 					<img src="images/TokenSystemDesign.PNG" alt="Iamge missing"
 						style="max-width: 100%; display: block;margin-bottom: 30px;">
-					<p>
-						<span class="higlight-text">Implementation:</span>
-						The design, as seen above, has evolved over time but remains fundamentally the same.
-						There are token maps on individual AI and on the Group class they belong to.
-						Certain events during the game, such as making noise that an AI hears, triggers the group to
-						release an investigation token to a specific AI based on a set of checks.
-						The group manages the releasing, returning, and general group-controlled behaviors, like
-						triggering aggression in all AI in the group if one of them spots the player.<br>
-						<br>
-						The core of this system was implemented in C++, with more specific checks, like determining
-						who receives a token,
-						handled in Blueprint for easy accessibility by designers incase it needed changes.
-					</p>
 				</div>
 				<div class="item">
 					<div class="item-heading">
