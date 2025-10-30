@@ -132,6 +132,9 @@ section {
 
 body {
 	line-height: 1;
+	margin: 0;
+ 	padding: 0;
+  	width: 100%;
 }
 
 ol,
@@ -3479,6 +3482,8 @@ body.is-menu-visible #menu .close {
 	background-color: #2D3047;
 	padding: 20px;
 	margin-top: 40px;
+	width: 100%;
+	max-width: 100%;
 }
 
 .about-me {
@@ -3668,7 +3673,7 @@ body.is-menu-visible #menu .close {
 
 #wrapper>*>.inner {
 	width: 100%;
-	max-width: 80%;
+	max-width: 90%;
 	margin: 0 auto;
 	padding: 0 2.5em;
 }

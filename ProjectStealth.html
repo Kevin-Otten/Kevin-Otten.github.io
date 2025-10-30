@@ -51,8 +51,9 @@
 				<ul>
 					<li>AI Architecture</li>
 					<li>AI Investigation state</li>
-					<li>AI GroupBehaviour</li>
+					<li>AI Group Behaviour</li>
 					<li>AI Audio detection & detection rules</li>
+					<li>Some AI design</li>
 					<li>Unreal World Partitioning</li>
 				</ul>
 				</b2>
@@ -75,7 +76,6 @@
 						<div class="item-heading">
 							<u>AI Architecture</u>
 						</div>
-						<span class="higlight-text">My Contributions:</span>
 						<ul>
 							<li><hi>Technical design</hi> documented in Miro</li>
 							<li><hi>Implemented</hi> the whole system</li>
@@ -86,168 +86,152 @@
 								<li><hi>High level</hi> components in <hi>Blueprints</hi> (Programmers and designers touch this)</li>
 							</ul>
 						</ul>
-						To <hi>verify the technical design</hi> I passed it by the AI team and communicated with level desing regarding their needs for the AI.
-						The system was made using a <hi>core behaviour tree</hi> that used a state machine to control which <hi>sub tree</hi> to run.
+						The system was made using a <hi>core behaviour tree that used a state machine to control which sub tree to run</hi>.
+						<br>
+						To get <hi>feedback</hi> on the <hi>technical design</hi> I <hi>passed it by</hi> the <hi>AI team</hi> and communicated with <hi>level desing</hi> regarding their needs for the AI.
 						<br>
 						<br>
 						<hi>After the project I learned</hi> that while a state machine does work,
-                        part of benefit of <hi>using a behaviour tree</hi> is <hi>no longer needing to not maintain a state machine</hi>.
+                        part of <hi>benefit of using a behaviour tree is no longer needing to not maintain a state machine</hi>.
                         I used a behaviour tree, as intended, in a later project and <hi>through this experience I learned</hi> to-do a bit <hi>more research into systems</hi> before using them,
-                        even if you think you know how they work.
+                        <hi>even if you think you know how they work</hi>.
 						<br>
 					</p>
-					<smaller>The technical design as documented in Miro.</smaller>
+					<smaller>The <hi>technical design</hi> as documented in Miro.</smaller>
 					<img src="images/StealthPage_01.png" alt="Iamge missing"
 						style="max-width: 100%; display: block;margin-bottom: 30px;">
 				</div>
 				<div class="item">
 					<p>
 						<div class="item-heading">
-							<u>GroupBehaviour / Token System Architecture</u>
+							<u>Group Behaviour / Token System Architecture</u>
 						</div>
-						<span class="higlight-text">My Contributions:</span>
 						<ul>
 							<li><hi>Technical design</hi> documented in Miro</li>
 							<li><hi>Implemented</hi> the whole system</li>
 							<ul style="list-style-type: circle;">
 								<li><hi>Groups</hi> that <hi>manages actors and tokens</hi></li>
 								<li><hi>Tokens</hi> used that <hi>allow AI to act</hi></li>
-								<li>Releasing and returning tokens in C++ (Only minor adjustments needed)</li>
-								<li>Specific checks for releasing tokens in blueprint (Allot of smaller adjustments made by programmers and designers)</li>
+								<li><hi>Releasing and returning tokens in C++</hi> (Only minor adjustments needed)</li>
+								<li><hi>Specific checks</hi> for releasing tokens <hi>in blueprint</hi> (Allot of smaller adjustments made by programmers and designers)</li>
 							</ul>
 						</ul>
 						In short, the system works by <hi>handing out "tokens" to AI actors</hi> based on specific variables <hi>to allow them to peform specific actions</hi>,
 						this way you can for example have one or more enemy’s attack at a time or have only one enemy in a group investigate some sound they heard. 
 						The core of the group behaviour was based on a simple token system as explained by one of our lecturers.
 						<br>
-						<hi>To verify the system</hi> I made was clear and easy to use <hi>I passed it primarily by level design</hi> since they would be adjusting it the most.
+						To <hi>verify</hi> the system was <hi>clear and easy to use</hi> I <hi>passed it by level design</hi> since they would be <hi>adjusting it the most</hi>.
 
 					</p>
-					<smaller>The technical design as documented in Miro.</smaller>
+					<smaller>The <hi>technical design</hi> as documented in Miro.</smaller>
 					<img src="images/TokenSystemDesign.PNG" alt="Iamge missing"
 						style="max-width: 100%; display: block;margin-bottom: 30px;">
 				</div>
 				<div class="item">
-					<div class="item-heading">
-						<u>Audio Perception</u>
-					</div>
 					<p>
-						<span class="higlight-text">Process:</span>
-						The audio perception was mostly developed during the prototyping and preproduction phase,
-						where we were not 100% sure of everything we would need.
-						I ensured the AI could only hear the player when it made sense,
-						and I made it easy for developers to add an audio event to anything they were working on,
-						such as the gadgets in our game.
-						I passed my work by the AI designer but also double-checked with Level Design to verify that
-						I wasn't missing anything in the context of the level,
-						as some areas might require more thorough checks that I may not have take into acount yet.
+						<div class="item-heading">
+							<u>Audio Perception</u>
+						</div>
+						<ul>
+							<li><hi>Custom noise component</hi> for trigger an audio signal on any object</li>
+							<li><hi>Line trace</hi> and <hi>pathfinding</hi> checks</li>
+							<ul style="list-style-type: circle;">
+								<li><hi>Check</hi> if <hi>walls block audio</hi></li>
+								<li><hi>Check</hi> if audio can <hi>pass through</hi> the wall</li>
+								<li><hi>Check</hi> if audio can <hi>pass over</hi> the wall</li>
+								<li><hi>Check</hi> if audio can <hi>pass around</hi> the wall (pathfinding)</li>
+							</ul>
+						</ul>
+						The audio perception was developed during the <hi>prototyping</hi> and preproduction phase.
+						<hi>Using the existing unreal perception component</hi> as a basis, we wanted to test how we could handle audio perception,
+						if we needed to make something new for it and to what detail we should make perception checks.
+						The perception stayed mostly the same as the prototype with the <hi>core of the system in C++</hi> and a <hi>modular structure in blueprint for the specific checks</hi>.
+						This way design could <hi>easily add on to and adjust</hi> the flow of the checks <hi>without having to dive into the code</hi>.
+						<br>
+						I passed my work by the AI team but <hi>primarily checked in with Level Design to address the needs of the level</hi>.
 					</p>
+					<smaller>Example of <hi>audio perception</hi> in action. The <hi>debug lines represent some of the checks</hi> described above.</smaller>
 					<video width="75%" height="75%" autoplay muted loop style="margin-bottom:30px;">
 						<source src="video/StealthProject/AudioDetetionExample.webm" type="video/webm">
 					</video>
-					<p>
-						<span class="higlight-text">Implementation:</span>
-						The video above shows an early version of the system where the wall and roof block the
-						noise, and the path around it is too long.
-						For a more recent example, refer to the video shown in the upcoming suspicious state
-						section.
-						The audio perception system I developed for this has the following checks:
-						<li>Is there a wall that could block the audio?</li>
-						<li>Does the wall allow for noise to pass through?</li>
-						<li>Can sound pass over the wall?</li>
-						<li>Can sound pass around the wall using pathfinding to determine the range?</li>
-						<br>
-						Based on the outcomes of these tests,
-						I allowed the AI to detect the noise and react to it.
-						I also made a component that allowed for a simple function call to make noise at a given
-						position.
-						This way, any developer could easely add the component and call the function if their
-						feature needed to alert AI when used, like shown before with the thrown bottle.<br>
-						<br>
-						The core of this system was built in C++, with the flow of the checks handled in Blueprint
-						to ensure clarity for designers who might have a hard time reading the code.
-					</p>
 				</div>
 				<div class="item">
-					<div class="item-heading">
-						<u>Suspicious behaviour for single & group AI</u>
-					</div>
 					<p>
-						<span class="higlight-text">Process:</span>
-						I worked on all of the suspicious/investigation state behavior with our AI designer.
-						I created all of the functionality and some of the design for this while staying in close
-						contact with the designer during development, they were busy working on another aspect of
-						the AI at the time.
-						I went through several iterations by going back and forth with my designer and also by
-						applying feedback based on playtesting data.
+						<div class="item-heading">
+							<u>Investigation for single & group AI</u>
+						</div>
+						<ul>
+							<li>Both <hi>implementation and design work</hi></li>
+							<ul style="list-style-type: circle;">
+								<li><hi>Designed and implemented</hi> the flow of the <hi>behaviour tree</hi></li>
+								<li><hi>Implemented audio cues</hi> and <hi>animations</hi></li>
+								<li><hi>EQS</hi> (Environmental query system) tests <hi>to find valid positions</hi></li>
+							</ul>
+						</ul>
+						The <hi>Implementation</hi> was done <hi>in</hi> its dedicated <hi>investigation sub behaviour tree</hi>.
+						Any AI can respond to a noise or something it saw with a group related voice line but only the closest AI investigates, both <hi>actions are determined using the token system</hi>.
+						<hi>To find a point</hi> that is <hi>at a valid distance</hi> and <hi>in line of sight</hi> of what triggered the behaviour <hi>we use EQS</hi>.
+						<br>
+						I also <hi>took on part of the design</hi> since the person assigned to this was already busy with other aspects of the AI.
+                        <hi>To verify the quality and direction</hi> of the work I did, 
+                        <hi>and to learn</hi> a bit <hi>about designing AI</hi> in the process,
+                        <hi>I passed my work by the AI designer for feedback and iteration</hi>.
 					</p>
+					<smaller>Example of <hi>AI reacting to sound</hi> and only <hi>one of them investigating</hi> (breaks up a scripted event made by another designer)</smaller>
 					<video width="75%" height="75%" autoplay muted loop style="margin-bottom:30px;">
 						<source src="video/StealthProject/SusState.mp4" type="video/webm">
 					</video>
-					<p>
-						<span class="higlight-text">Implementation:</span>
-						The result, as seen in the video above, was an AI that turns towards a sound or something it
-						saw, performs a voiceline, and then moves in to investigate the source.
-						To get the point it needed to walk towards,
-						I used Unreal's EQS (Environmental Query System) to get a point in visual range that is
-						close to the AI and the source but not right on top of the source since that looked weird.
-						For group behavior, we added an extra voiceline that nearby AI would use as a response and
-						implemented a token system to ensure only one AI investigates.
-						When the AI with the token starts investigating, the other AI that heard the noise will
-						return to their normal patrol routes (might still change, WIP).
-						In the video, there was a "scripted event" which got broken up by the thrown bottle, after
-						which they went to their predefined stationary guard spots, hence why one of them moved away
-						from the noise.
-
-					</p>
 				</div>
 				<div class="item">
-					<div class="item-heading">
-						<u>Agro Group Behaviour</u>
-					</div>
 					<p>
-						<span class="higlight-text">Process:</span>
-						Since the AI designer was busy with other tasks and I wanted to delve into design, I first
-						began by researching how other games managed multiple AI in combat.
-						I referenced games similar to ours such as Assassin's Creed Black Flag and Dishonored 2.
-						I took note of aspects like how their AI surrounds the player and the timing of their
-						attacks,
-						evaluated why they implemented these mechanics in their respective games,
-						and assessed their suitability for our game, making adjustments to the design as necessary.
-						Finally, I compiled my findings into a visual representation wit text explaining the
-						behaviour on Miro.
-						After running it by our AI designer (since she had the final say) who agreed with the
-						design,
-						I also created a flow diagram for the required behavior tree.
-						This help me implement it faster and with less problems along the way <br>
+						<div class="item-heading">
+							<u>Agro Group Behaviour - Design</u>
+						</div>
+						<ul>
+							<li><hi>Researched group behaviour</hi> in other games</li>
+							<li><hi>Evaluated</hi> aspects of <hi>the behaviour and how it would fit in our game</hi></li>
+							<li>Made a <hi>visual representation</hi> in Miro <hi>to support the design</hi></li>
+						</ul>
+						I picked this task up because the other designers and specifically the AI designer was still too busy with the other aspects of the AI,
+                        and I was interested in practising some design anyway.
+                        I <hi>researched similar games</hi> to ours like Assassin's Creed Black Flag and Dishonored 2 to see <hi>how they handled group behaviour</hi>, 
+                        took notes and <hi>evaluated why and how</hi> they implemented certain aspects of the group behaviour,
+                        and <hi>assessed their suitability in the context of our game and the "feel" we wanted for our AI</hi>.
+                        I <hi>compiled</hi> these findings <hi>in a document</hi> and <hi>passed it by our AI designer</hi>.
+                        <hi>After iterating on the feedback and making a visualization</hi> of the design I got a <hi>final pass by the designer</hi> since they still had the final say on the details.
 						<br>
-						The image below shows a segment of the design I created on Miro as a visual aid for
-						explaining it to others.
-						The second image depicts the flow of the behavior, which, aside from some additional checks,
-						remained consistent in the final implementation.
+						To make implementation easier and with less issues I also created a flow diagram for the structure of the behaviour tree.
 					</p>
+					<smaller><hi>Visualized design</hi> of the group behaviour for both melee and ranged enemies (does not include some of the reasonings that would be described in the research document)</smaller>
 					<img src="images/AgroGroupBehaviourDesign.PNG" alt="Iamge missing"
 						style="max-width: 100%; display: block;margin-bottom: 30px;">
+					<smaller>The <hi>technical design</hi> for the <hi>behaviour tree</hi> and its <hi>flow</hi> (besides minor adjustments in variables and decorators its mostly still accurate)</smaller>
 					<img src="images/GroupAgroFlow.PNG" alt="Iamge missing"
 						style="max-width: 100%; display: block;margin-bottom: 30px;">
+				</div>
+				<div class="item">
 					<p>
-						<span class="higlight-text">Implementation:</span>
+						<div class="item-heading">
+							<u>Agro Group Behaviour - Implementation</u>
+						</div>
+						<ul>
+							<li><hi>Implemented the token-based combat loop</hi> as defined by the design</li>
+							<ul>
+								<li><hi>AI surrounds target</hi></li>
+								<li><hi>One melee AI attacks</hi> at a time <hi>with cooldown</hi></li>
+								<li><hi>One ranged AI attacks</hi> at a time <hi>with cooldown</hi></li>
+								<li><hi>Other details defined by the design</hi> that I implemented</li>
+							</ul>
+						</ul>
+						The flow in <hi>the behaviour tree makes active use of the Token system</hi> I made <hi>and Unreal's EQS</hi> (Enviormental query system).
+						Melee and ranged <hi>AI uses EQS to decide where to move</hi> to at specified ranges around the player, 
+						<hi>keeping some distance</hi> from eachother and the player <hi>to not overwhelm the player</hi> and allow them to try and run.
+						By only assigning one melee and ranged attack token to a group,
+						<hi>the token system is used to avoid overwhelming the player</hi> by only <hi>allowing one enemy to attack at a time</hi>.
 						<br>
-						WIP
-						<br>
-						The video below shows the current version of the Group Agro Behaviour in action.
-						It still needs some itterating at this point to feel good but it still represents the design
-						I made for it.
-						The main points being:
-						<li>The AI stays at a specified range from the player</li>
-						<li>The AI keeps some distance between eachother if possible</li>
-						<li>Only 1 AI attacks at a time</li>
-						<li>The ranged AI can attack seperate from the melee AI</li>
-						<li>The ranged AI stays at a slightly longer distance from the player than the melee AI</li>
-						<br>
-						This is made using the previously mentioned Tokens and uses EQS to find a position near the
-						player, away form other AI if possible and in line of sight of the player.
+						This was all <hi>done acording to the design</hi> I made but it was still <hi>passed by our AI designer to verify</hi> it worked and <hi>fit the game in the way they expected from my design</hi>.
 					</p>
+					<smaller>The <hi>AI behaviour showcased</hi> in my test world using geometry from the main level</smaller>
 					<video width="75%" height="75%" autoplay muted loop style="margin-bottom:30px;">
 						<source src="video/StealthProject/AgroGroupBehaviour.webm" type="video/webm">
 					</video>
