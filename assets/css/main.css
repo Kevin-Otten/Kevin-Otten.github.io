@@ -111,8 +111,12 @@ hi {
 }
 
 smaller {
-	font-size: smaller;
+	font-size: 70%;
 	font-style: italic;
+}
+
+summary {
+	font-size: 70%;
 }
 
 article,

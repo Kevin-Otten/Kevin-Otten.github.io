@@ -61,11 +61,10 @@
 				<div class="item">
 					<p>
 						<div class="item-heading">
-							<u>The Game</u>
+						<u>The Game</u>
 						</div>
-						Sicaria is a pure stealth game where you use stealth takedowns and gadgets to finish objectives.
-						You play as an assasin/partizan sabotaging the spanish effort in Antwerp during the 80 year
-						in the 17th century.
+						Sicaria is a stealth game where you use takedowns and gadgets to navigate through the levels and complete objectives.
+						You play as an assasin/partizan sabotaging the spanish effort in Antwerp during the 80 years war.
 						<br><a class="link" href="https://store.steampowered.com/app/2707390/Sicaria/" target="_blank">
 							<b2><u> The game can be found on steam through this link. </u></b2>
 						</a>
@@ -86,6 +85,8 @@
 								<li><hi>High level</hi> components in <hi>Blueprints</hi> (Programmers and designers touch this)</li>
 							</ul>
 						</ul>
+						<summary>
+						<hi>Summary:</hi><br>
 						The system was made using a <hi>core behaviour tree that used a state machine to control which sub tree to run</hi>.
 						<br>
 						To get <hi>feedback</hi> on the <hi>technical design</hi> I <hi>passed it by</hi> the <hi>AI team</hi> and communicated with <hi>level desing</hi> regarding their needs for the AI.
@@ -96,6 +97,7 @@
                         I used a behaviour tree, as intended, in a later project and <hi>through this experience I learned</hi> to-do a bit <hi>more research into systems</hi> before using them,
                         <hi>even if you think you know how they work</hi>.
 						<br>
+						</summary>
 					</p>
 					<smaller>The <hi>technical design</hi> as documented in Miro.</smaller>
 					<img src="images/StealthPage_01.png" alt="Iamge missing"
@@ -116,14 +118,16 @@
 								<li><hi>Specific checks</hi> for releasing tokens <hi>in blueprint</hi> (Allot of smaller adjustments made by programmers and designers)</li>
 							</ul>
 						</ul>
-						In short, the system works by <hi>handing out "tokens" to AI actors</hi> based on specific variables <hi>to allow them to peform specific actions</hi>,
+						<summary>
+						<hi>Summary:</hi><br>
+						The system works by <hi>handing out "tokens" to AI actors</hi> based on specific variables <hi>to allow the actor to peform specific actions</hi>,
 						this way you can for example have one or more enemy’s attack at a time or have only one enemy in a group investigate some sound they heard. 
 						The core of the group behaviour was based on a simple token system as explained by one of our lecturers.
 						<br>
-						To <hi>verify</hi> the system was <hi>clear and easy to use</hi> I <hi>passed it by level design</hi> since they would be <hi>adjusting it the most</hi>.
-
+						<hi>To verify</hi> the system was <hi>clear and easy to use I passed it by level design</hi> since they would be <hi>adjusting it the most</hi>.
+						</summary>
 					</p>
-					<smaller>The <hi>technical design</hi> as documented in Miro.</smaller>
+					<smaller>The <hi>technical design</hi> as documented in Miro:</smaller>
 					<img src="images/TokenSystemDesign.PNG" alt="Iamge missing"
 						style="max-width: 100%; display: block;margin-bottom: 30px;">
 				</div>
@@ -142,6 +146,8 @@
 								<li><hi>Check</hi> if audio can <hi>pass around</hi> the wall (pathfinding)</li>
 							</ul>
 						</ul>
+						<summary>
+						<hi>Summary:</hi><br>
 						The audio perception was developed during the <hi>prototyping</hi> and preproduction phase.
 						<hi>Using the existing unreal perception component</hi> as a basis, we wanted to test how we could handle audio perception,
 						if we needed to make something new for it and to what detail we should make perception checks.
@@ -149,8 +155,9 @@
 						This way design could <hi>easily add on to and adjust</hi> the flow of the checks <hi>without having to dive into the code</hi>.
 						<br>
 						I passed my work by the AI team but <hi>primarily checked in with Level Design to address the needs of the level</hi>.
+						</summary>
 					</p>
-					<smaller>Example of <hi>audio perception</hi> in action. The <hi>debug lines represent some of the checks</hi> described above.</smaller>
+					<smaller>Example of <hi>audio perception</hi> in action. The <hi>debug lines represent some of the checks</hi> described above:</smaller>
 					<video width="75%" height="75%" autoplay muted loop style="margin-bottom:30px;">
 						<source src="video/StealthProject/AudioDetetionExample.webm" type="video/webm">
 					</video>
@@ -168,6 +175,8 @@
 								<li><hi>EQS</hi> (Environmental query system) tests <hi>to find valid positions</hi></li>
 							</ul>
 						</ul>
+						<summary>
+						<hi>Summary:</hi><br>
 						The <hi>Implementation</hi> was done <hi>in</hi> its dedicated <hi>investigation sub behaviour tree</hi>.
 						Any AI can respond to a noise or something it saw with a group related voice line but only the closest AI investigates, both <hi>actions are determined using the token system</hi>.
 						<hi>To find a point</hi> that is <hi>at a valid distance</hi> and <hi>in line of sight</hi> of what triggered the behaviour <hi>we use EQS</hi>.
@@ -176,6 +185,7 @@
                         <hi>To verify the quality and direction</hi> of the work I did, 
                         <hi>and to learn</hi> a bit <hi>about designing AI</hi> in the process,
                         <hi>I passed my work by the AI designer for feedback and iteration</hi>.
+						</summary>
 					</p>
 					<smaller>Example of <hi>AI reacting to sound</hi> and only <hi>one of them investigating</hi> (breaks up a scripted event made by another designer)</smaller>
 					<video width="75%" height="75%" autoplay muted loop style="margin-bottom:30px;">
@@ -192,6 +202,8 @@
 							<li><hi>Evaluated</hi> aspects of <hi>the behaviour and how it would fit in our game</hi></li>
 							<li>Made a <hi>visual representation</hi> in Miro <hi>to support the design</hi></li>
 						</ul>
+						<summary>
+						<hi>Summary:</hi><br>
 						I picked this task up because the other designers and specifically the AI designer was still too busy with the other aspects of the AI,
                         and I was interested in practising some design anyway.
                         I <hi>researched similar games</hi> to ours like Assassin's Creed Black Flag and Dishonored 2 to see <hi>how they handled group behaviour</hi>, 
@@ -201,6 +213,7 @@
                         <hi>After iterating on the feedback and making a visualization</hi> of the design I got a <hi>final pass by the designer</hi> since they still had the final say on the details.
 						<br>
 						To make implementation easier and with less issues I also created a flow diagram for the structure of the behaviour tree.
+						</summary>
 					</p>
 					<smaller><hi>Visualized design</hi> of the group behaviour for both melee and ranged enemies (does not include some of the reasonings that would be described in the research document)</smaller>
 					<img src="images/AgroGroupBehaviourDesign.PNG" alt="Iamge missing"
@@ -223,6 +236,8 @@
 								<li><hi>Other details defined by the design</hi> that I implemented</li>
 							</ul>
 						</ul>
+						<summary>
+						<hi>Summary:</hi><br>
 						The flow in <hi>the behaviour tree makes active use of the Token system</hi> I made <hi>and Unreal's EQS</hi> (Enviormental query system).
 						Melee and ranged <hi>AI uses EQS to decide where to move</hi> to at specified ranges around the player, 
 						<hi>keeping some distance</hi> from eachother and the player <hi>to not overwhelm the player</hi> and allow them to try and run.
@@ -230,6 +245,7 @@
 						<hi>the token system is used to avoid overwhelming the player</hi> by only <hi>allowing one enemy to attack at a time</hi>.
 						<br>
 						This was all <hi>done acording to the design</hi> I made but it was still <hi>passed by our AI designer to verify</hi> it worked and <hi>fit the game in the way they expected from my design</hi>.
+						</summary>
 					</p>
 					<smaller>The <hi>AI behaviour showcased</hi> in my test world using geometry from the main level</smaller>
 					<video width="75%" height="75%" autoplay muted loop style="margin-bottom:30px;">
