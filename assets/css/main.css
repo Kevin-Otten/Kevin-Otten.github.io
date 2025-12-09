@@ -113,6 +113,7 @@ hi {
 smaller {
 	font-size: 70%;
 	font-style: italic;
+	display: block;
 }
 
 summary {
