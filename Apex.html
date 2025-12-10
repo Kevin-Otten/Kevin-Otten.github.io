@@ -69,68 +69,54 @@
 							Restricting the player from moving into walls and other big objects.
 						</ul>
 				</div>
-				<span class="image main"><img src="images/ApexPage01.jpg" alt="" /></span>
 				<div class="item">
-					<p class="item-heading">
-						<u><b>The Game</b></u>
-					</p>
+					<div class="item-heading">
+						<u>The Game</u>
+					</div>
 						<p>
-							<br>Apex is supposed to be a linear Virtual Reality escape room.
-							The idea of the assignment was to make a Virtual Reality escape room with Professor Layton
-							difficulty puzzles.
-							We decided to make it a Space theme where you play as a test monkey on a space ship and you
-							needed to get to an escape pod.
-							Because of distractions making the game, testing puzzle ideas and vr related things we put less
-							time in the escape room feeling.
-							The game ended up being more of a puzzle room than an escape room.
-							Other requirements that we had to put in for the assignment was that the player could not die or
-							lose to a timer.
-							We did decide to add a count up timer to keep track of how long the player was playing for.
-							In the end the game became a pretty fun Virtual Reality puzzle room experience in a decent
-							looking Space setting.
+							Apex is a Virtual Reality escape room.
+							Your a monkey in space solving puzzles to get acces to the escape pod.
 						</p>
 				</div>
 				<div class="item">
-					<p class="item-heading">
-						<u><b>WorldspaceUI & Options</b></u>
+					<p>
+						<div class="item-heading">
+							<u>Interactive menu</u>
+						</div>
+						<ul>
+							<li><hi>Shader editing</hi></li>
+							<li>VR <hi>interactive menu</hi></li>
+						</ul>
+						<summary>
+						<hi>Summary:</hi><br>
+							All worldspace UI in the scene uses a shader.
+							<hi>I edited some values of the shader</hi> to make it <hi>have an old tech feeling</hi> akin to alien isolation.
+							The <hi>interactive UI</hi> is made <hi>using a variety of buttons switches, adjustable handles / sliders and levers.</hi>
+							It <hi>affects a variety of settings</hi> visible on the cockpit's screens (menu).
+						</summary>
 					</p>
+					<smaller>Few <hi>example of interective menu elements</hi> like sliders, buttons and switches</smaller>
 					<img src="images/ApexPage03.gif" alt="Gif missing" style="max-width: 100%; display: block;">
-						<p>
-							<br>All worldspace UI in the scene uses a shader.
-							I edited some values of the shader to make it have a oldTech feeling like in alien isolation.
-							The UI I made shows the settings of the game.
-							These settings are: Sound, Graphics and movement type.
-							Besides this there is also a reset button, switch hands button and a hints screen.
-							The options are controlled by buttons for the reset, switch hand and movement type options, A
-							handle for the Quality options and a slider for the Sound.
-							The movement switch switches between teleportation and free movement.
-							The reset button resets the scene in case the player want to start over.
-							The Quality handel rotates between a minimum and maximum distance and uses a vector3.distance to
-							check how far along it is.
-							From there it checks what quality setting it should be on.
-							The Sound slider does pretty much the same thing as the Quality handel, accept that it uses its
-							local position with the distance to calculate the sound value.
-							All sound and quality settings give their values to the SettingsManager, which then changes the
-							actual values to those given by the individual sliders and handels.
-						</p>
 				</div>
 				<div class="item">
-					<p class="item-heading">
-						<u><b>FreeMovement Restrictions</b></u>
+					<p>
+						<div class="item-heading">
+							<u>FreeMovement Restrictions</u>
+						</div>
+						<ul>
+							<li><hi>Restrictions on existing movement system</hi></li>
+						</ul>
+						<summary>
+						<hi>Summary:</hi><br>
+							The movement system was already made by our lead developer before the start of the project.
+                            <hi>I had to add some of the logic that restricts the player form moving into the walls or larger objects like tables.</hi>
+                            It restricted the player by checking if the position it was trying to move to was free of specific objects,
+                            like some low hitboxes in the walls or tables.
+                            When nothing is detected, the player will move in the input direction.
+						</summary>
 					</p>
+					<smaller>Top down <hi>view of some of the hit boxes used to restrict movement</hi></smaller>
 					<img src="images/ApexPage04.jpg" alt="Gif missing" style="max-width: 100%; display: block;">
-						<p>
-							<br>The Free Movement Restrictions use the VR movement system made before the project by our
-							lead developer.
-							It restricts The free movement stopping the player from moving into a big object like a table.
-							It does this by shooting a raycast towards the ground from the next position of your VR goggles.
-							If it hits one of the colliders setup in the walls and static big objects in the scene, the
-							player wont move.
-							When this is not detected the player will move towards the direction.
-							If a otherwise static object moves because of an animation, the collider instead of being put in
-							the main group of colliders is placed on the object.
-							This is done so that it moves with the object and properly stops movement on its new position.
-						</p>
 				</div>
 				<br>
 				<p><a class="link" href="https://github.com/WouterUjvari/y2p4/tree/master/APEX%20-%20Y2P4/Assets/Scripts/Kevin" target="_blank"><b2><u> Click Here </u></b2> to go to the Github </a></p>
