@@ -35,7 +35,7 @@
 				<!-- Heading -->
 				<b2>
 					<span class="heading">Team:</span>
-						1 programmers, 1 assisting developer.<br>
+						1 programmer, 1 assisting developer.<br>
 					<span class="heading">Project period:</span>
 						2020, Weekend GameJam.<br>
 					<span class="heading">My role:</span>
@@ -48,76 +48,80 @@
 					</b2>
 				<!-- Work Items -->
 				<div class="item">
-					<p class="item-heading">
-						<u><b>The Game</b></u>
-					</p>					
-						<p>
-							<br>This game was a Game Jam project made for the GMTK Game Jam 2020.
-							I made this together with a friend of mine.
-							I ended up making all the code besides a couple of effects that get applied onto the player.
-							<br>
-							<br>The theme of this game jam was "Out of controll".
-							The way we implemented this theme is by applying random effects to the player.
-							These can be things like forcing the players movement or inverting them, speeding the player up,
-							increasing jump height, freezing the player, etc.
+					<p>
+					<div class="item-heading">
+						<u>The Game</u>
+						</div>					
+							This game was a Game Jam project made for the GMTK Game Jam 2020.
+                            I made this together with a friend of mine who wanted to get into game development.
+                            I ended up making all the code besides a couple of the effects that get applied onto the player.
+                            <br>The theme of this game jam was "Out of control".
+                            The way we implemented this theme is by applying random effects to the player.
 							<br>
 							<p><a class="link" href="https://itch.io/jam/gmtk-2020/rate/699074" target="_blank"><b2><u> Click Here </u></b2>to go to the games page</a></p>
-						</p>
+					</p>
 				</div>
 				<div class="item">
-					<p class="item-heading">
-						<u><b>Random Effects System</b></u>
-					</p>
-						<p>
-							<br>The main gimmick of the game is the effects system.
-							This is the system that keeps applying the random effects to the player.
-							Before an effect gets triggered a UI element will be seen on screen this element will move
-							towards the designated end point.
-							When it reaches this point the effect gets triggered.
-							This gives the player an idea of when the effect is going to get triggered and what effect it is
-							going to be.
-							It is also possible for a double effect to trigger which means that shortly after the first
-							effect a second effect will follow up basically creating a combo of effects.
-							This can be seen in the UI by the second image closely following the first image.
-							<br>
-							<br>
-							This system works by picking a random effect, taking this together with a semi randomized "timeTillNextEffect" variable and giving it to a coroutine.
-							This coroutine will then trigger the effect after the given time has passed.
-							The effects themself work independently from this system in their own classes and the UI is purely visual feedback based on the timer length.
-							<span class="image main"><img src="images/UnstableSlimeGamePage02.gif" alt="" style="max-height:800px; max-width:800px; margin: 10px auto 20px; margin-top: 40px" /></span>
-							
-						</p>
-				</div>
-				<div class="item">
-					<p class="item-heading">
-						<u><b>Movement/Input System</b></u>
-					</p>
-						<p>
-							<br>The input in this project is centralized in a single InputManager class.
-							This class consists of three parts.
-						<ul style="list-style-type:disc">
-							<li>Delegates to call for any type of input.</li>
-							<li>Update functions to detect the input.</li>
-							<li>Functions to call the specific input delegates.</li>
+					<p>
+						<div class="item-heading">
+							<u>Random Effects System</u>
+						</div>
+						<ul>
+							<li><hi>UI track</hi> to inform the player <hi>of upcoming effects</hi></li>
+							<li><hi>List and timer system</hi> in the background <hi>that queue's  and triggers the effects</hi></li>
 						</ul>
-						The reason I use this system is to keep all Input centralized to make input related bugs easier to
-						find and solve.
+						<summary>
+						<hi>Summary:</hi><br>
+						The main gimmick of the game is the effects system.
+						<hi>It picks random effect from a list and puts them on a track at the top of the screen.</hi>
+						<hi>When it reaches the end of the tract the effect will be applied on the player.</hi>
+						It is also possible for a double effect to trigger, 
+						visualized by a second elements following closely behind the first.
+						<hi>The UI elements are purely visual, in the background a timer / coroutine is used to trigger the actual effect.</hi>
+						</summary>
+					</p>
+					<smaller><hi>Random effects in action</hi>, starting with a double effect being applied and another one being queued up</smaller>
+					<img src="images/UnstableSlimeGamePage02.gif"alt="Gif missing" style="max-width: 100%; display: block;">
+				</div>
+				<div class="item">
+					<p>
+						<div class="item-heading">
+							<u>Movement/Input System</u>
+						</div>
+						<ul>
+							<li><hi><hi>Input manager</hi></hi></li>
+							<ul style="list-style-type: circle;">
+								<li><hi>All input detection</hi></li>
+								<li><hi>Delegates for each input</hi> event</li>
+								<li><hi>Centralised, making debugging easier</hi></li>
+								<li>(While it is a game jam, which is normally less complex, I wanted to try out a system like this so took the opportunity)</li>
+							</ul>
+							<li><hi><hi>Player controller / movement system</hi></hi></li>
+								<ul style="list-style-type: circle;">
+									<li>Improvement from previous attempts (verry little experience at the time)</li>
+									<li><hi>Physics based movement to avoid issues like phasing through objects</hi></li>
+									<li><hi>Physics materials to improve the feel</hi>of the controls</li>
+										<ul style="list-style-type: circle;">
+										<li><hi>While standing still, add more friction to avoid sliding</hi></li>
+										<li><hi>While moving, add less friction to avoid sticking to walls and getting stuck on bumps</hi></li>
+									</ul>
+							</ul>
+						</ul>
+						<summary>
+						<hi>Summary:</hi><br>
+						<hi>The input</hi> in this project <hi>is centralized</hi> in a single InputManager class.
+						The benefit of a centralised system like this is <hi>to make input related bugs easier to find and solve</hi>.
 						<br>
-						<br>The movement system gets called by one of these delegates who also takes with it the axis value
-						of the WASD input (mainly A & D as its a 2D sidescroller).
-						It then multiplies the axis value with several modifiers to end up with the value needed to move.
-						It also checks for specific modifiers like if the player is in the air, reducing the speed of midair
-						movement and if certain effects are active like inverted controls.
-						<br>
-						<br>
-						To make the player move I modify the players velocity instead of position to make sure that the
-						movement does not interfere with the physics of the game by for example phasing through walls.
-						I also switch out the physics material on the player to a material with less friction.
-						By doing this the player character won't get stuck on small bumps or stick to walls which they will
-						otherwise do.
-						When the player stands still this material will be switched back to one with more friction.
-						By doing this the player wont slide off of slanted surfaces or slide as if the floor is ice.
-						</p>
+						<br>This was also <hi>one of the first player movement systems I made</hi>, 
+						Previous attempt had several issues with physics and smooth movement which I intended to address in this one.
+						To make the player move <hi>I modify the players velocity instead of position</hi> which I had done in previous projects.
+						This was <hi>to make sure movement takes better account of the physics of the game and avoid things like phasing through walls.</hi>
+						I also <hi>switch out the physics material on the player to a material with less friction</hi>.
+						This makes sure that they <hi>won't get stuck on small bumps or stick to walls</hi>.
+						<hi>When the player stands still this material switches back to one with more friction.</hi>
+						By doing this <hi>the player won't slide off slanted surfaces or slide as if the floor is ice.</hi>
+						</summary>
+					</p>
 				</div>
 				<p><a class="link"href="https://github.com/Kevin-Otten/GMTKGameJam2020/tree/develop/GMTKGameJam2020/Assets/Code"target="_blank"><b2><u> Click Here </u></b2> to go to the Github</a></p>
 			</div>
