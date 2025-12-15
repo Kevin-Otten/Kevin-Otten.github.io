@@ -60,9 +60,9 @@
 								<li><a class="link"
 										href="https://github.com/PeterBosDeltion/IndianaBonesRepo/blob/master/IndianaBones/Assets/GameFiles/Scripts/TriggerdObjects/SaveTrigger.cs"
 										target="_blank">
-										<b2><u> SaveGame/Progression system </u></b2>
+										<b2><u> Save game / Progression system </u></b2>
 									</a></li>
-								A progression System that uses savestates and saved data to close of paths and Place the player
+								A progression System that uses save states and saved data to close of paths and place the player
 								back and the Hub/Start room.
 								<li><a class="link"
 										href="https://github.com/PeterBosDeltion/IndianaBonesRepo/tree/master/IndianaBones/Assets/GameFiles/Scripts/Puzzles"
@@ -70,130 +70,109 @@
 										<b2><u> Puzzle elements & system </u></b2>
 									</a></li>
 								The puzzle system itself, A puzzle that resembles the pillar puzzles from Skyrim and a puzzle
-								element used in the TimeJumpPuzzle.
+								element used in the timed jump puzzle.
 								<li><a class="link"
 										href="https://github.com/PeterBosDeltion/IndianaBonesRepo/blob/master/IndianaBones/Assets/GameFiles/Scripts/InteractableObject.cs"
 										target="_blank">
-										<b2><u> InteractableObjects </u></b2>
+										<b2><u> Interactable objects </u></b2>
 									</a></li>
-								A system used to interact with objects and then Trigger its Triggered object.
+								A system used to interact with specific objects and then Trigger effects on other object.
 							</ul>
 					</div>
-					<span class="image main"><img src="images/IndianaBonesPage01.jpg" alt="" /></span>
 					<div class="item">
 						<p class="item-heading">
-							<u><b>The Game</b></u>
+							<b>The Game</b>
 						</p>
 							<p>
-								<br>IndianaBones is a 2.5D game with the camera positioned in a side view.
-								The basic idea of the game was to make a puzzle/parkour based adventure game, placed in a
-								stylized dungeon environment.
-								The player plays as a skeleton making its way through several rooms with either a puzzle or
-								parkour challenge.
-								The only information the player can get in the beginning is that the exit only opens for those
-								who are well equipped.
-								After traversing the two pathways of the dungeon, the final gate opens and the player will be
-								able to leave the dungeon and finish the game.
+								This was the first ever game project I worked on.
+								<br>
+								IndianaBones is a 2.5D puzzle platformer.
+								The player plays as a skeleton making its way through a dungeon full of puzzles.
+								The goal of the game is to complete puzzles, find all your equipment and get out of the dungeon.
 							</p>
 					</div>
 					<div class="item">
-						<p class="item-heading">
-							<u><b>SaveGame/Progression</b></u>
-						</p>
-						<img src="images/IndianaBonesPage02.gif" alt="Gif missing" style="max-width: 100%; display: block;">
-							<p>
-								<br>The progression in the game is semi linear.
-								The way I did this is by allowing the player to choose a path and then forcing the door closed
-								after they enter one of these paths.
-								This is to stop the player from backtracking.
-								If the player dies they will load the last saved state of the game, which if they just started
-								is the beginning of the game.
-								If the player reaches the end of one of the paths they will recieve a quest item, which is saved
-								as a boolean in a array of booleans.
-								After the player takes the quest item, a door at the other end of the room opens.
-								When entering through the door a Save Trigger occurs.
-								This will use static variables representing the Players values like hp and coins that get
-								updated when changed during the game.
-								These are used to fill the rest of the save template and that will save the template in binary.
-								<br>
-								<img src="images/IndianaBonesPage03.gif" alt="Gif missing" style="max-width: 100%; display: block;">
-								<br>
-								The scene will be reloaded with the new savedata and because of a lack of player coordinates
-								they will be placed in the start room.
-								When the SaveTrigger class loads and cannot confirm a filled save file, it will make a private
-								new instance of the save template to be filled at a save trigger.
-								When the SaveTrigger class loads and can confirm a filled save file, it will make its template
-								the same as the current save file.
-								Then it will adjusts an array used to save quest items, setting the already collected items to
-								true.
-								When a Doors class loads it checks if its part of a path (Only the doors that enter into
-								pathways are classified as this).
-								If so the class checks for a filled save file.
-								If this is also found it will check if its paths quest item has been picked up and close itself
-								when this is true.
-								Besides checking if the player went down a certain path already, the quest items also gets used
-								to check if the game is complete.
-								If so the gate placed underneath the starting room will open and if passed will trigger the
-								EndGame.
-							</p>
-					</div>
-					<div class="item">
-						<p class="item-heading">
-							<u><b>PuzzleElements & system</b></u>
-						</p>
-							<br>The puzzle system works using the PuzzleManager.
-							All puzzle elements in the game need to go through the PuzzleManager to trigger functionality in
-							their puzzles.
-							this is using variables referencing their puzzle and which part they are.
-							The PuzzleManager uses this information to pick the right puzzle out of a list and trigger the
-							Puzzle Trigger function in the puzzle class.
-							This takes the information and uses it to perform the appropriate action.
-							<br>
-							<img src="images/IndianaBonesPage04.gif" alt="Gif missing" style="max-width: 100%; display: block;">
-							<p>
-								<br>I personally made one of the puzzles and a puzzle element for the parkour path.
-								The puzzle I made was a Skyrim style Turn-Stone Puzzle.
-								This puzzle works by turning pillars with markings on each side.
-								with the correct combination, the player can pull a lever.
-								The correct combination is hinted at through the entire path shown on gravestones placed in some
-								rooms.
-								If the player give the wrong input, spikes will pop up from the floor and kill them.
-								When the player give the correct input, the door will open and allows them to proceed.
-								In the game itself this puzzle is placed at the end a path to give enough space for placing the
-								gravestones.
-								<br>
-								<img src="images/IndianaBonesPage05.gif" alt="Gif missing" style="max-width: 100%; display: block;">
-								<br>
-								<br>The puzzle element I made was a wooden beam used as a platforming challenge or just as floor to
-								stand on.
-								The beam has four states: Instant, Gradual, AfterTime and StayInPlace.
-								<ul>
-									<li>Instant: Instantly retracts after being fully extended.
-									<li>Gradual: Gradual slows the animation making it take longer for the beam to retract.
-									<li>AfterTime: Instantly retracts after a certain amount of time passed.
-									<li>StayInPlace: The beam starts in the scene extended and stays like that till the end of the game.
+						<p>
+							<div class="item-heading">
+								<u>SaveGame/Progression</u>
+							</div>
+							<ul>
+								<li><hi>Progression using quest items</hi></li>
+								<li><hi>Save states at the end of the paths</hi></li>
+								<ul style="list-style-type: circle;">
+									<li><hi>System sets variables</hi></li>
+									<li><hi>Respawning loads variables</hi></li>
+									<li><hi>Respawning</hi> always sends the player <hi>to the start room</hi></li>
+									<li><hi>Completed paths stay closed</hi> to avoid backtracking</li>
 								</ul>
-								<br>The "Puzzle" I made with this, was the first parkour challenge you find with this mechanic.
-								This extends several beams as a jumping stairway, which after some time would retract in again.
-								This puzzle was triggered by a button next to a pit of spikes.
+							</ul>
+							<summary>
+							<hi>Summary:</hi><br>
+							<hi>The game tracks the players progress through quest items</hi> found at the end of each path.
+							<hi>This progress is saved after the player passes through the open door at the end of each path.</hi>
+							This door brings them back to the starting room.
+							<hi>To avoid backtracking the door to each path closes behind the player and stays closed after finishing the path.</hi>
+							<hi>If the player ever dies,</hi>
+							<hi>they respawn in the starting room with all the progress they had since the last save point.</hi>
+							The progress made with the quest items, 
+							besides being used to keep the finished paths closed,
+							also opens the exit to the dungeon.
+							</summary>
 							</p>
+							<smaller><hi>Progression system in action.</hi> The player enters a path, Collects the quest item, sees the door to the finished path is closed and starts the new path.</smaller>
+							<video width="40%" height="40%" autoplay muted loop style="margin-bottom:30px;">
+								<source src="video/IndianaBones/IndianaBonesPage02.webm" type="video/webm">
+							</video>
 					</div>
 					<div class="item">
-						<p class="item-heading">
-							<u><b>Interactable Objects</b></u>
+						<p>
+							<div class="item-heading">
+								<u>PuzzleElements & system</u>
+							</div>
+							<ul>
+								<li><hi>Puzzles that block progression</hi></li>
+								<li><hi>Puzzles open a door on completion</hi></li>
+								<li><hi>I made a platforming puzzle</hi></li>
+								<li><hi>I made a skyrim style combination puzzle</hi></li>
+							</ul>
+							<summary>
+							<hi>Summary:</hi><br>
+							<hi>The puzzle system works using a puzzle manager,</hi>
+							<hi>which all puzzle elements in the game need to go through to trigger completion and interact with their own puzzle.</hi>
+							<hi>I personally made one of the puzzles in the puzzle focused path and a puzzle element for the platformer path.</hi>
+							For the platformer path <hi>I setup a modifiable, retractable, platform.</hi>
+							It could stay in place, instantly retract, retract after some time.
+							The puzzle <hi>I made</hi> was <hi>a Skyrim style "Turn-Stone" Puzzle.</hi>
+							This puzzle works by turning pillars with markings on each side, 
+							and pulling a lever when you think you have the right combination
+							If correct the door opens, if wrong the player gets impaled.
+							<hi>The correct combination is hinted at through gravestones placed in some of the rooms.</hi>
+							</summary>
 						</p>
-							<img src="images/IndianaBonesPage06.gif" alt="Gif missing" style="max-width: 100%; display: block;">
-							<p>
-								<br>The Interactable Objects system works by using interactable objects and triggered Objects.
-								Interactable objects are all the Objects The player can interact with like buttons and levers.
-								Triggered objects are objects that react to the input of an interactable object like a door.
-								When a interactable object gets an input it will trigger its trigger objects and make the player
-								interact appropriately (kicks the chest or pushes a button).
-								When a triggered object is triggered, it will trigger its Trigger Functionality.
-								Some objects are both an interactable object and a triggered object, which both takes the
-								players input and react to it.
-								An example of this is a chest which the player kicks open shooting out its contents.
-							</p>
+						<smaller><hi>Both the platformer challenge using the retractable platforms and the shape combination puzzle.</hi> The gravestones show the combination</smaller>
+						<video width="40%" height="40%" autoplay muted loop style="margin-bottom:30px;">
+							<source src="video/IndianaBones/IndianaBonesPage03.webm" type="video/webm">
+						</video>
+					</div>
+					<div class="item">
+						<p>
+							<div class="item-heading">
+								<u>Interactable Objects</u>
+							</div>
+							<ul>
+								<li><hi>Triggerable objects</hi></li>
+								<li><hi>Triggered objects</hi></li>
+							</ul>
+							<summary>
+							<hi>Summary:</hi><br>
+							<hi>There are interactable objects and triggered Objects.</hi>
+							<hi>Interactable objects are</hi> all the <hi>Objects The player can interact with</hi> like buttons and levers.
+							<hi>Triggered objects are objects that react to the input of an interactable object.</hi>
+							Think of objects like doors or puzzle elements.
+							</summary>
+						</p>
+						<smaller><hi>The player interacting with different objects in the game</hi></smaller>
+						<img src="images/IndianaBonesPage06.gif"alt="Gif missing" style="max-width: 100%; display: block;">
 					</div>
 					<br>
 					<p><a class="link" href="https://github.com/PeterBosDeltion/IndianaBonesRepo/tree/master/IndianaBones/Assets/GameFiles/Scripts" target="_blank">
