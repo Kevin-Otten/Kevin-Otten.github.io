@@ -41,12 +41,12 @@
                          Gameplay Programmer.<br>
                     <span class="heading">My contribution:</span>
                         <ul>
-                            <li>EventSystem</li>
+                            <li>Event System</li>
                             <li>Economy</li>
-                            <li>Site Interaction</li>
-                            <li>ToolTip</li>
+                            <li>Site interaction</li>
+                            <li>Tool tip</li>
                             <li>Diplomacy</li>
-                            <li>TimeScaleing</li>
+                            <li>Time scaling</li>
                         </ul>
                 </b2>
                 <!-- Work Items -->
@@ -59,7 +59,7 @@
                             <li><a class="link"
                                     href="https://github.com/HanHakkenberg/Project-3.2/tree/master/Project%203.2/Assets/%5BSource%5D/Scenes/Kevin/Work/Scripts"
                                     target="_blank">
-                                    <b2><u> EventSystem </u></b2>
+                                    <b2><u> Event system </u></b2>
                                 </a></li>
                             The Event system which uses a combination of several event related systems to make event pop ups
                             with a variety of effects.
@@ -68,8 +68,8 @@
                                     target="_blank">
                                     <b2><u> Economy </u></b2>
                                 </a></li>
-                            The system using GameTicks to consume resources over time using the CivManager and the
-                            GameManager.
+                            The system using Game ticks to consume resources over time using the Civ manager and the
+                            Game manager.
                             <li><a class="link"
                                     href="https://github.com/HanHakkenberg/Project-3.2/blob/master/Project%203.2/Assets/%5BSource%5D/Scenes/Kevin/Work/Scripts/IslandInteractionManager.cs"
                                     target="_blank">
@@ -78,174 +78,134 @@
                             The system used to interact with islands and loot sites both in diplomacy and raiding.
                         </ul>
                 </div>
-                <span class="image main"><img src="images/NoMansBoat011.jpg" alt="" /></span>
                 <div class="item">
 					<div class="item-heading">
 						<u>The Game</u>
 					</div>
-					
                         <p>
-                            <br>NoMansBoat is a civilization management game set in a large islands filled sea. The focus of
-                            the game lies on keeping your civilization alive.
-                            This is mainly done by using trade and other interactions with surrounding islands and loot
-                            sites. The game plays in a top down view both on the players island and the world map.
-                            <br>Besides trade you can also pillage both inhabited and uninhabited islands or build buildings
-                            on your island.
-                            This helps in the short term to relieve the players deficits but it won’t help the players
-                            civilization through the late game.
-                            The biggest problem the player will have is going to be the large influx of people arriving at
-                            their island.
-                            This causes an ever increasing need for food.
-                            <br>Another factor which affects both the game and the players actions are events.
-                            These events can either give, take or both take and give at the same time.
-                            They mainly give or take resources, but you can also lose or gain stability to them.
-                            Some events also have special effects like ending the game.
-                            <br>
-                            <br>The goal of the game is to survive through the main event chain without being banished by
-                            your people.
+                            NoMansBoat is a civilization management game set in a large island filled sea. The goal of
+                            the game is to keep your civilization alive through trading with or pillaging other islands,
+                            looting resource sites and other interactions with the world around you.
+                            You must survive through several challenging events with one final event winning you the game.
                         </p>
-                    
                 </div>
                 <div class="item">
-					<div class="item-heading">
-						<u>EventSystem</u>
-					</div>
-                    
-                        <p>
-                            <img src="images/NoMansBoat02.gif" alt="Gif missing" style="max-width: 100%; display: block;">
-                            <br>The EventSystem uses The EventManager, ScriptableEvents,EventChain and the SpecialEvents
-                            script.
-                            The system Starts by creating an Event template.
-                            These templates are scriptable objects derived from the ScriptableEvents class.
-                            In these events you can add the main flavor text, the amount of options/buttons you want, the
-                            effects of every option and the flavor text for the different option buttons.
-                            Once created, a scriptable event can be assigned to The EventManager.
-                            <br>
-                            <br>The EventManager uses the assigned events through the TriggerRandomEvent function.
-                            This function is subscribed to a delegate which gets triggered every in game day.
-                            The function itself uses an if statement with a randomized value to decide if an event actually gets
-                            triggered or not.
-                            The EventManager can instead of a normal event also trigger the next step of an event chain.
-                            This will pop up as any normal event but will later pop up again with the next part of the
-                            story/chain.
-                            <br>
-                            <br>By hovering over one of the events option buttons a popup window will appear with information
-                            about the effects of clicking the button.
-                            This window will follow the mouse cursor as long as the cursor is above a button.
-                            If the player clicks the button the shown effects will be triggered.
-                            These effects can remove or add resources and stability.
-                            The effects of an event button can also trigger a function.
-                            This is simply done using a integer value on a switch case.
-                            This switch has several cases which all trigger their related function.
-                        </p>
-                    
-                </div>
+					<p>
+						<div class="item-heading">
+							<u>EventSystem</u>
+						</div>
+						<ul>
+                            <li><hi>Popup events</hi></li>
+							<li><hi>Templated for easy additions</hi></li>
+                            <li><hi>Both scripted and random events</hi></li>
+                            <li><hi>Hover over tool tips</hi></li>
+						</ul>
+						<summary>
+                        <hi>The event system works by setting up templated events</hi> made using scriptable objects.
+                        These <hi>templates contain fields for the flavour text,</hi> 
+                        <hi>the number of buttons you want, </hi>
+                        <hi>the text in said buttons and the effect of each button.</hi>
+                        <hi>The event manager</hi> holds these filled out templates and <hi>can then at random show them to the player after each daily tick.</hi> 
+                        <hi>Besides random events there are also Scripted events that occur at specific times in a game</hi>
+                        These represent the main story quests.
+                        These mainly consist of challenges for the player to survive like an influx of new people that need to be fed.
+                        the final quest event makes the player win the game.
+                        <hi>By hovering over one of the events buttons a popup window will appear with information</hi> about the effects of clicking the button.
+						</summary>
+					</p>
+					<smaller><hi>An example of a popup and the hover over tool tip</hi></smaller>
+					<img src="images/NoMansBoat02.gif"alt="Gif missing" style="max-width: 100%; display: block;">
+				</div>
                 <div class="item">
-					<div class="item-heading">
-						<u>Economy</u>
-					</div>
-                    
-                        <p>
-                            <img src="images/NoMansBoat03.gif" alt="Gif missing" style="max-width: 100%; display: block;">
-                            <br> The economy system uses the CivManager and the GameManager.
-                            The player has 4 types of resources at their disposal.
-                            These resources are: food, materials, money and people.
-                            Besides resources the player also has stability.
-                            This is a value that modifies other values like island income.
-                            Stability cannot be used to directly pay for something.
-                            <br>
-                            <br>Events, the passing of time and other actions can subtract or increase resource values.
-                            They do this by using the add and remove Income functions.
-                            These functions require a Type(Enum) and a value(int).
-                            They use these to remove or add the given value to the selected type.
-                            <br>At normal speed, every real time minute, food will be subtracted from storage.
-                            The amount is calculated by dividing the daily expenses by the amount of minutes in a day.
-                            The amount of minutes in a day is calculated using the GameManagers LongGameplayTick(amount of
-                            seconds in a day) and dividing this by Sixty.
-                            <br>
-                            <br>Stability works as a multiplier on island income.
-                            When a building calculates its income it uses the stability modifier.
-                            The value for this modifier is decided using a switch case.
-                            Every case within the switch has a different stability level as its parameter.
-                            The stability modifier doesn’t just give positive effects, as a level of stability under zerowill cause negative effects.
-                            These negative effects are more severe than the positive effects and should be avoided by the player.
-                            Stability as a value gets changed in the same way as the other resources.
-                            The only difference is that changing stability triggers the UpdateStability function.
-                            Stability can only be gained or lost through events.
-                            When stability or food drops below a certain value the player gets a few days to fix the problem or a “game over” will be triggered.
-                        </p>
-                    
-                </div>
+					<p>
+						<div class="item-heading">
+							<u>Economy</u>
+						</div>
+						<ul>
+                            <li><hi>Player interaction, events and the daily tick affect the resources</hi></li>
+							<li><hi>Resource management</hi></li>
+							<ul style="list-style-type: circle;">
+								<li><hi>Food for the people</hi></li>
+								<li><hi>Materials for building</hi></li>
+								<li><hi>Money for trading and other actions</hi></li>
+                                <li><hi>People that need food to survive</hi></li>
+                                <li><hi>Stability that affects money income and the lose condition</hi></li>
+							</ul>
+						</ul>
+						<summary>
+                        <hi>The player manages 4 types of resources</hi>: food, materials, money and people.
+                        <hi>These values are held, adjusted and obtained from the "civ manager".</hi>
+                        Besides resources <hi>the player also has stability</hi> this value <hi>acts as a positive or negative modifier on the island's income.</hi>
+                        <hi>The negative effects scale more aggressively</hi> than the positive effects.
+                        <hi>Resources get added or removed through the players actions, events and the daily tick.</hi>
+                        <hi>When the stability or food drops below a certain value for too long, “game over” will be triggered.</hi>
+						</summary>
+					</p>
+					<smaller><hi>Example of the daily tick</hi> (5am in game) <hi>removing food</hi> from the players resources</smaller>
+					<img src="images/NoMansBoat03.gif"alt="Gif missing" style="max-width: 100%; display: block;">
+				</div>
                 <div class="item">
-					<div class="item-heading">
-						<u>Site Interaction & Diplomacy</u>
-					</div>
-                    
-                        <p>
-                            <img src="images/NoMansBoat04.gif" alt="Gif missing" style="max-width: 100%; display: block;">
-                            <br>Island and loot site interaction mainly works using the IslandInteractionManager and the
-                            Island script.
-                            By clicking on an interactable object the objects information gets send to the
-                            IslandInteractionManager.
-                            Here an insert function sends the interactable object to a function called
-                            ToggleInteractionPannels.
-                            This function takes the type of interactable object and its current state, using it to
-                            open\unlock the correct UI panels\Buttons.
-                            For example if the interactable object is a loot site it will unlock the pillage button and
-                            allow the player to loot it.
-                            If the interactable object is an island it will first have to be explored.
-                            If it has been explored it will either give the option to pillage it if uninhabited or both
-                            pillaging and trade if inhabited.
-                        </p>
-                        <p>
-                            <img src="images/NoMansBoat05.gif" alt="Gif missing" style="max-width: 100%; display: block;">
-                            <br>When looting, in case of an uninhabited island or loot site the player will get resources.
-                            Looting an islands will give more resources in the category it has excess of.
-                            After looting an island it gets locked from interaction for a few in game days.
-                            Loot sites will give a sizable amount of one type of resource and then self-destruct
-                            disappearing under the water.
-                            <br>
-                            <br>When looting an inhabited island you will get mostly the same effects as an uninhabited
-                            island.
-                            The notable difference is that after the island gets unlocked for further interaction you won’t
-                            be able to trade with them.
-                            To once again interact diplomatically with the island you need at least -75 relations.
-                            Pillaging lowers this by 200.
-                            Therefore the only way to increase relations when trading is locked is by waiting for them to
-                            increase naturally.
-                            The further away relations are from zero the faster the value moves towards zero.
-                            This works for both positive and negative relations.
-                        </p>
-                        <p>
-                            <img src="images/NoMansBoat06.gif" alt="Gif missing" style="max-width: 100%; display: block;">
-                            <br>Interacting with an inhabited island can also be done through trade.
-                            Trade has several aspects to it:
-                            <br>Excess and demand, the amount of trade left and the islands attitude.
-                            <br>
-                            <br>Excess is a random enum state in an interactable object.
-                            It resembles both the cheapest resource and the resource the island will give the least for.
-                            Demand on the other hand is the exact opposite of excess.
-                            If your offer matches their demand they will give more of what you demand yourself.
-                            If your request is of the same type as their demand it will cost more to get.
-                            <br>What the player demands and asks for can be freely changed.
-                            This is done using the arrow buttons underneath the excess and demand input fields.
-                            This changes the resource the players demands or request.
-                            They also trigger the CheckRequest and CheckDemand functions.
-                            Those functions makes sure the correct values get set and displayed.
-                        </p>
-                        <p>
-                            The amount of trade left is related to the islands opinion towards the player.
-                            If the islands opinion gets higher the max trade also gets higher.
-                            Trade left equals the amount already traded deducted from max trade.
-                            Trading itself improves the relations between the player and the island, therefore increasing the max trade value.
-                            To actually trade, the player has to click the confirm button.
-                            This triggers the Confirm function which checks three factors.
-                            These factors are: If the players has the resources to pay for the transaction, if the player
-                            isn’t trying to pay the same as they demand and if the player still has some amount of trade left.
-                            If they can trade, all values will be updated and the UI will be refreshed.
-                        </p>
-                    
-                </div>    
+					<p>
+						<div class="item-heading">
+							<u>Point of interest Interaction & Diplomacy</u>
+						</div>
+						<ul>
+                            <li><hi>Interactable points of interest</hi> (Interactable objects)</li>
+                            <ul style="list-style-type: circle;">
+								<li><hi>Uninhabited and inhabited islands</hi> that can be pillaged or traded with</li>
+                                <li><hi>Lootable resource deposits</hi></li>
+							</ul>
+							
+						</ul>
+						<summary>
+                        <hi>all lootable sites and islands are interactable objects.</hi>
+                        <hi>When selecting</hi> an interactable object,
+                        <hi>it will check its details and present the player with the correct UI elements.</hi>
+                        This includes <hi>locking or unlocking certain buttons based on what options are available.</hi>
+                        Islands need to be explored to interact with them.
+                        <hi>If inhabited,</hi> 
+                        <hi>you get the options to trade or pillage</hi> while an <hi>uninhabited island can only be pillaged.</hi>
+                        <hi>What you get form islands depends on the resources its rich in.</hi>
+                        If you <hi>pillage an inhabited island,</hi>
+                        you <hi>lock yourself out of trade.</hi>
+                        This is <hi>based on the attitude of the island towards you.</hi>
+                        These <hi>relations naturally move towards 0,</hi>
+                        <hi>Changing each daily tick,</hi> 
+                        and <hi>the further form 0 it is the faster it changes.</hi>
+                        Besides islands there are also resource deposits in the ocean, 
+                        these give 1 type of resource and then permanently disappear.
+						</summary>
+					</p>
+					<smaller><hi>Example of exploring and pillaging an inhabited island</hi> leaving them at -100 attitude stopping you from interacting with them</smaller>
+					<video width="40%" height="40%" autoplay muted loop style="margin-bottom:30px;">
+                        <source src="video/NoMansBoat/NoMansBoat02.webm" type="video/webm">
+                    </video>
+				</div>
+                <div class="item">
+					<p>
+						<div class="item-heading">
+							<u>Trade</u>
+						</div>
+                        <ul>
+                            <li><hi>Prices are affected by:</hi></li>
+                            <ul style="list-style-type: circle;">
+								<li><hi>Prices are affected by</hi> the islands <hi>excess and demand</hi></li>
+                                <li><hi>Prices and trade capacity are affected by the current attitude</hi></hi></li>
+							</ul>
+						</ul>
+						<summary>
+                        <hi>Trade is affected by the islands resource excess and demand, the amount of trade capacity and the islands attitude towards the player.</hi>
+                        The excess and demand of an island is determined by an Enum.
+                        While trading, 
+                        <hi>the island will give more for an item it has demand for and pay less for an item that it has excess of.</hi>
+                        What the player demands and asks for can be freely changed in the trade screen.
+                        <hi>The amount of trade left is related to the island's opinion towards the player</hi> and limits how much it can trade with the island.
+                        <hi>Trading itself improves the relations between the player and the island</hi> which in turn increases the maximum amount the player can trade.
+						</summary>
+					</p>
+					<smaller><hi>Showing off trading and some of the restrictions</hi>, like not being able to buy the same item you’re using as payment</smaller>
+                    <img src="images/NoMansBoat06.gif"alt="Gif missing" style="max-width: 100%; display: block;">
+				</div>
                 <p><a class="link" href="https://github.com/HanHakkenberg/Project-3.2/tree/master/Project%203.2/Assets/%5BSource%5D/Scenes/Kevin/Work/Scripts" target="_blank">
                 <b2><u> Click Here </u></b2> to go to the Github
                 </a></p>
