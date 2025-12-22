@@ -49,14 +49,14 @@
 									target="_blank">
 									<b2><u> Hex connection </u></b2>
 								</a></li>
-							The system I made that assigns a tiles neighbours using ray casts in the Start function.
+							The system I made that assigns a tile's neighbours using ray casts in the Start function.
 							<li><a class="link"
 									href="https://github.com/KevinOttenDeltion/HexBasedStratagyProject/blob/master/HexBasedPrototype/Assets/Scripts/HexBased/HexInfo.cs"
 									target="_blank">
 									<b2><u> Astar system </u></b2>
 								</a></li>
-							The System I made using the A* Algorithm which determines the hexes a unit can move towards and
-							what the cheapest cost is to move there. This uses the ProcesAStarPathfinding function and the
+							The system I made using the A* Algorithm which determines the hexes a unit can move towards and
+							what the cheapest cost is to move there. This uses the ProcessAStarPathfinding function and the
 							AStarStep function.
 							<li><a class="link"
 									href="https://github.com/KevinOttenDeltion/HexBasedStratagyProject/blob/master/HexBasedPrototype/Assets/Scripts/HexBased/HexInfo.cs"
@@ -64,7 +64,7 @@
 									<b2><u> Movement </u></b2>
 								</a></li>
 							This system checks if a tile can be accessed by a unit and if so, goes through the needed steps
-							to move a unit there. This uses the ProcesUnit function.
+							to move a unit there. This uses the ProcessUnit function.
 						</ul>
 				</div>
 				<div class="item">
@@ -137,9 +137,9 @@
 						<hi>Summary:</hi><br>
 						<hi>While having a unit selected</hi> it can move to any highlighted tile.
 						<hi>Pressing right mouse button</hi> starts this process.
-						<hi>If the tile pressed on is either not in the A* calculated range or on an inpassible tile the move will fail.</hi>
-						<hi>If the tile is within range the movement cost will be reducted,</hi>
-						<hi>the unit will both visualy and in the data move to the new tile,</hi>
+						<hi>If the tile pressed on is either not in the A* calculated range or on an impassable tile the move will fail.</hi>
+						<hi>If the tile is within range the movement cost will be subtracted,</hi>
+						<hi>the unit will both visually and in the data move to the new tile,</hi>
 						and the <hi>tile costs and visuals will be reset.</hi>
 						</summary>
 					</p>

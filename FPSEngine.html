@@ -43,8 +43,8 @@
 					<ul>
 						<li>Input system & engine API</li>
 						<li>Debug Camera</li>
-						<li>Trigger boxes and conditional triggers setup in trenchbroom</li>
-						<li>trenchbroom recreation of Sponza for graphics and overall testing purposes</li>
+						<li>Trigger boxes and conditional triggers setup in TrenchBroom</li>
+						<li>TrenchBroom recreation of Sponza for graphics and overall testing purposes</li>
 						<li>Character controller</li>
 						<li>Setting up the gameplay in the main level</li>
 					</ul>
@@ -59,8 +59,8 @@
 							we had to make an engine for a FPS game,
 							and make a simple example game to go along with it.
 							It works for both PlayStation 5 and PC,
-							using trench broom as a level editor,
-							PS5's own implementation and windows systems for Input.
+							using TrenchBroom as a level editor,
+							PS5's own implementation and Windows systems for Input.
 							DirectX and PlayStation existing libraries were used for the graphics.
 						</p>
 				</div>
@@ -71,21 +71,21 @@
 						</div>
 						<ul>
 							<li><hi>For PS5 Input I used their own systems and documentation</hi></li>
-							<li><hi>For PC I implemented an input method directly using windows</hi></li>
+							<li><hi>For PC I implemented an input method directly using Windows</hi></li>
 						</ul>
 						<summary>
 						<hi>Summary:</hi><br>
 						<hi>Most of the work I did for the engine</hi> part of the project <hi>was the input handling.</hi>
                         <hi>The PlayStation controls were not that difficult</hi> as they provide clear documentation.
-                        <hi>The windows controls were a lot more difficult,</hi> 
-                        I ran into allot of issues and vaguely documented methods but managed to make it work in the end.
-                        I learned afterwards that we did not need to make the input form scratch so I could have used a library instead.
+                        <hi>The Windows controls were a lot more difficult,</hi> 
+                        I ran into a lot of issues and vaguely documented methods but managed to make it work in the end.
+                        I learned afterwards that we did not need to make the input from scratch so I could have used a library instead.
                         <br>
                         <hi>The input system is split into a PC and PS5 input cpp that have their own unique implementation of the Input header.</hi>
                         This way, no matter the used platform, all the same functions are used without unwanted errors or side effects.
 						</summary>
 					</p>
-					<smaller><hi>The debug camera using the Input system to fly though a trenchbroom level</hi> that was made by a designer for their separate assignment.</smaller>
+					<smaller><hi>The debug camera using the Input system to fly through a TrenchBroom level</hi> that was made by a designer for their separate assignment.</smaller>
 					<video width="75%" height="75%" autoplay muted loop style="margin-bottom:30px;">
 						<source src="video/FPSEngine/DebugCamPlaceholder.webm" type="video/webm">
 					</video>

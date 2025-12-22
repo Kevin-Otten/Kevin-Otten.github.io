@@ -64,7 +64,7 @@
 						<u>The Game</u>
 						</div>
 						Sicaria is a stealth game where you use takedowns and gadgets to navigate through the levels and complete objectives.
-						You play as an assasin/partizan sabotaging the spanish effort in Antwerp during the 80 years war.
+						You play as an assassin/partizan sabotaging the Spanish effort in Antwerp during the 80 years war.
 						<br><a class="link" href="https://store.steampowered.com/app/2707390/Sicaria/" target="_blank">
 							<b2><u> The game can be found on steam through this link. </u></b2>
 						</a>
@@ -85,7 +85,7 @@
 						</ul>
 						<summary>
 						<hi>Summary:</hi><br>
-						The <hi>Implementation</hi> was done <hi>in</hi> its dedicated <hi>investigation sub behaviour tree</hi>.
+						The <hi>Implementation</hi> was done <hi>in</hi> it's dedicated <hi>investigation sub behaviour tree</hi>.
 						Any AI can respond to a noise or something it saw with a group related voice line but only the closest AI investigates, both <hi>actions are determined using a token system</hi>.
 						<hi>To find a point</hi> that is <hi>at a valid distance</hi> and <hi>in line of sight</hi> of what triggered the behaviour <hi>we use EQS</hi>.
 						<br>
@@ -116,13 +116,13 @@
 						</ul>
 						<summary>
 						<hi>Summary:</hi><br>
-						The flow in <hi>the behaviour tree makes active use of a Token system</hi> I made <hi>and Unreal's EQS</hi> (Enviormental query system).
+						The flow in <hi>the behaviour tree makes active use of a Token system</hi> I made <hi>and Unreal's EQS</hi> (Environmental query system).
 						Both the melee and ranged <hi>AI use EQS to decide where to move to</hi>, at specified ranges around the player, 
-						<hi>keeping some distance</hi> from eachother and the player <hi>to not overwhelm the player</hi> and to allow them to try and run.
+						<hi>keeping some distance</hi> from each other and the player <hi>to not overwhelm the player</hi> and to allow them to try and run.
 						By only assigning one melee and ranged attack token to a group,
 						<hi>the token system is used to avoid overwhelming the player</hi> by only <hi>allowing one enemy to attack at a time</hi>.
 						<br>
-						This was all <hi>done acording to the design</hi> I made but it was still <hi>passed by our AI designer to verify</hi> it worked and <hi>fit the game in the way they expected from my design</hi>.
+						This was all <hi>done according to the design</hi> I made but it was still <hi>passed by our AI designer to verify</hi> it worked and <hi>fit the game in the way they expected from my design</hi>.
 						</summary>
 					</p>
 					<smaller>The <hi>AI behaviour showcased</hi> in my test world using geometry from the main level</smaller>
@@ -149,7 +149,7 @@
 						<hi>Summary:</hi><br>
 						The system was made using a <hi>core behaviour tree that used a state machine to control which sub tree to run</hi>.
 						<br>
-						To get <hi>feedback</hi> on the <hi>technical design</hi> I <hi>passed it by</hi> the <hi>AI team</hi> and communicated with <hi>level desing</hi> regarding their needs for the AI.
+						To get <hi>feedback</hi> on the <hi>technical design</hi> I <hi>passed it by</hi> the <hi>AI team</hi> and communicated with <hi>level design</hi> regarding their needs for the AI.
 						<br>
 						<br>
 						<hi>After the project I learned</hi> that while a state machine does work,
@@ -160,7 +160,7 @@
 						</summary>
 					</p>
 					<smaller>The <hi>technical design</hi> as documented in Miro.</smaller>
-					<img src="images/StealthPage_01.png" alt="Iamge missing"
+					<img src="images/StealthPage_01.png" alt="Image missing"
 						style="max-width: 100%; display: block;margin-bottom: 30px;">
 				</div>
 				<div class="item">
@@ -175,12 +175,12 @@
 								<li><hi>Groups</hi> that <hi>manages actors and tokens</hi></li>
 								<li><hi>Tokens</hi> used that <hi>allow AI to act</hi></li>
 								<li><hi>Releasing and returning tokens in C++</hi> (Only minor adjustments needed)</li>
-								<li><hi>Specific checks</hi> for releasing tokens <hi>in blueprint</hi> (Allot of smaller adjustments made by programmers and designers)</li>
+								<li><hi>Specific checks</hi> for releasing tokens <hi>in blueprint</hi> (A lot of smaller adjustments made by programmers and designers)</li>
 							</ul>
 						</ul>
 						<summary>
 						<hi>Summary:</hi><br>
-						The system works by <hi>handing out "tokens" to AI actors</hi> based on specific variables <hi>to allow the actor to peform specific actions</hi>,
+						The system works by <hi>handing out "tokens" to AI actors</hi> based on specific variables <hi>to allow the actor to perform specific actions</hi>,
 						this way you can for example have one or more enemy’s attack at a time or have only one enemy in a group investigate some sound they heard. 
 						The core of the group behaviour was based on a simple token system as explained by one of our lecturers.
 						<br>
@@ -188,7 +188,7 @@
 						</summary>
 					</p>
 					<smaller>The <hi>technical design</hi> as documented in Miro:</smaller>
-					<img src="images/TokenSystemDesign.PNG" alt="Iamge missing"
+					<img src="images/TokenSystemDesign.PNG" alt="Image missing"
 						style="max-width: 100%; display: block;margin-bottom: 30px;">
 				</div>
 				<div class="item">
@@ -217,7 +217,7 @@
 						I passed my work by the AI team but <hi>primarily checked in with Level Design to address the needs of the level</hi>.
 						</summary>
 					</p>
-					<smaller>Example of <hi>audio perception with its relevant checks</hi> in action.</smaller>
+					<smaller>Example of <hi>audio perception with it's relevant checks</hi> in action.</smaller>
 					<video width="75%" height="75%" style="margin-bottom:30px;" controls>
 						<source src="video/StealthProject/AudioDetetionExample_01.webm" type="video/webm">
 					</video>
@@ -246,10 +246,10 @@
 						</summary>
 					</p>
 					<smaller><hi>Visualized design</hi> of the group behaviour for both melee and ranged enemies, <hi>does not include some of the reasonings that would be described in the research document</hi></smaller>
-					<img src="images/AgroGroupBehaviourDesign.PNG" alt="Iamge missing"
+					<img src="images/AgroGroupBehaviourDesign.PNG" alt="Image missing"
 						style="max-width: 100%; display: block;margin-bottom: 30px;">
-					<smaller>The <hi>technical design</hi> for the <hi>behaviour tree</hi> and its <hi>flow</hi>, besides some minor adjustments to variables its mostly accurate to the final product</smaller>
-					<img src="images/GroupAgroFlow.PNG" alt="Iamge missing"
+					<smaller>The <hi>technical design</hi> for the <hi>behaviour tree</hi> and it's <hi>flow</hi>, besides some minor adjustments to variables it's mostly accurate to the final product</smaller>
+					<img src="images/GroupAgroFlow.PNG" alt="Image missing"
 						style="max-width: 100%; display: block;margin-bottom: 30px;">
 				</div>
 			</div>
